@@ -1,5 +1,5 @@
-﻿using System.Resources;
-using System.Reflection;
+﻿using System.Reflection;
+using System.Resources;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("PlenBotLogUploader")]
 [assembly: AssemblyDescription("A GW2 arcdps log uploader.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Plenyx's Bad Software")]
+[assembly: AssemblyCompany("Plenyx Software")]
 [assembly: AssemblyProduct("PlenBotLogUploader")]
-[assembly: AssemblyCopyright("Copyright © 2020")]
+[assembly: AssemblyCopyright("Copyright © 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
