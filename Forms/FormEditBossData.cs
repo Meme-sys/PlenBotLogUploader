@@ -1,6 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using PlenBotLogUploader.DPSReport;
 using System.Collections.Generic;
-using PlenBotLogUploader.DPSReport;
+using System.Windows.Forms;
 
 namespace PlenBotLogUploader
 {
@@ -27,7 +27,7 @@ namespace PlenBotLogUploader
             textBoxSuccessMsg.Text = data?.SuccessMsg ?? Properties.Settings.Default.BossTemplateSuccess;
             textBoxFailMsg.Text = data?.FailMsg ?? Properties.Settings.Default.BossTemplateFail;
             textBoxIcon.Text = data?.Icon ?? "";
-            switch(data?.Type ?? BossType.None)
+            switch (data?.Type ?? BossType.None)
             {
                 case BossType.Raid:
                     radioButtonTypeRaid.Checked = true;
@@ -101,7 +101,7 @@ namespace PlenBotLogUploader
                         boss.FailMsg = textBoxFailMsg.Text;
                         boss.Icon = textBoxIcon.Text;
                         BossType type = BossType.None;
-                        if(radioButtonTypeRaid.Checked)
+                        if (radioButtonTypeRaid.Checked)
                         {
                             type = BossType.Raid;
                         }

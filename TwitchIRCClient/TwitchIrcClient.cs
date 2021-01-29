@@ -1,9 +1,9 @@
 ﻿using System;
-using System.IO;
-using System.Threading;
-using System.Net.Sockets;
-using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Sockets;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace PlenBotLogUploader.TwitchIRCClient
 {
@@ -244,9 +244,6 @@ namespace PlenBotLogUploader.TwitchIRCClient
             }
         }
 
-        /// <summary>
-        /// Disposes of the resources held by the class.
-        /// </summary>
         public void Dispose()
         {
             Connecting = false;
@@ -255,6 +252,7 @@ namespace PlenBotLogUploader.TwitchIRCClient
             inputStream?.Dispose();
             outputStream?.Dispose();
             tcpClient?.Close();
+            tcpClient?.Dispose();
         }
 
         private async void ReadMessagesAsync()

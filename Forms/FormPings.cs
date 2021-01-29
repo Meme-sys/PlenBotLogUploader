@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using System.ComponentModel;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using PlenBotLogUploader.DPSReport;
+﻿using PlenBotLogUploader.DPSReport;
 using PlenBotLogUploader.RemotePing;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PlenBotLogUploader
 {
@@ -116,7 +116,9 @@ namespace PlenBotLogUploader
         private void ToolStripMenuItemAdd_Click(object sender, EventArgs e)
         {
             settingsIdsKey++;
-            new FormEditPing(this, settingsIdsKey, true, null).Show();
+            FormEditPing formEditPing = new FormEditPing(this, settingsIdsKey, true, null);
+            formEditPing.Show();
+            formEditPing.Dispose();
         }
 
         private void ToolStripMenuItemEdit_Click(object sender, EventArgs e)
@@ -125,7 +127,9 @@ namespace PlenBotLogUploader
             {
                 var selected = listViewPings.SelectedItems[0];
                 int.TryParse(selected.Name, out int reservedId);
-                new FormEditPing(this, reservedId, false, AllPings[reservedId]).Show();
+                FormEditPing formEditPing = new FormEditPing(this, reservedId, false, AllPings[reservedId]);
+                formEditPing.Show();
+                formEditPing.Dispose();
             }
         }
 
@@ -175,7 +179,9 @@ namespace PlenBotLogUploader
         private void ButtonAddNew_Click(object sender, EventArgs e)
         {
             settingsIdsKey++;
-            new FormEditPing(this, settingsIdsKey, true, null).Show();
+            FormEditPing formEditPing = new FormEditPing(this, settingsIdsKey, true, null);
+            formEditPing.Show();
+            formEditPing.Dispose();
         }
     }
 }

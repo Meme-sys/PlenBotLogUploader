@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using PlenBotLogUploader.Tools;
+﻿using PlenBotLogUploader.DiscordAPI;
 using PlenBotLogUploader.DPSReport;
-using PlenBotLogUploader.DiscordAPI;
+using PlenBotLogUploader.Tools;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace PlenBotLogUploader
 {
@@ -27,7 +27,7 @@ namespace PlenBotLogUploader
             Text = (data == null) ? "Add a new webhook" : "Edit an existing webhook";
             textBoxName.Text = data?.Name ?? "";
             textBoxUrl.Text = data?.URL ?? "";
-            switch(data?.SuccessFailToggle ?? DiscordWebhookDataSuccessToggle.OnSuccessAndFailure)
+            switch (data?.SuccessFailToggle ?? DiscordWebhookDataSuccessToggle.OnSuccessAndFailure)
             {
                 case DiscordWebhookDataSuccessToggle.OnSuccessOnly:
                     radioButtonOnlySuccess.Checked = true;

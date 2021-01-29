@@ -49,7 +49,7 @@ namespace PlenBotLogUploader.DPSReport
         /// <returns>Returns a string that represents the current object.</returns>
         public string ToString(bool savableFormat = false)
         {
-            if(!savableFormat)
+            if (!savableFormat)
             {
                 return base.ToString();
             }
@@ -85,7 +85,7 @@ namespace PlenBotLogUploader.DPSReport
                 int.TryParse(values[6], out int isEvent);
                 return new BossData() { BossId = bossId, Name = values[1], SuccessMsg = values[2], FailMsg = values[3], Icon = values[4], Type = (BossType)(type), Event = (isEvent == 1) ? true : false };
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new Exception(e.Message);
             }

@@ -1,16 +1,16 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Net.Http;
-using System.Diagnostics;
-using System.Windows.Forms;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using PlenBotLogUploader.Tools;
 using PlenBotLogUploader.Aleeva;
 using PlenBotLogUploader.DPSReport;
+using PlenBotLogUploader.Tools;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PlenBotLogUploader
 {
@@ -31,7 +31,7 @@ namespace PlenBotLogUploader
                 groupBoxSendNotification.Enabled = value;
                 if (groupBoxAleevaStatus.InvokeRequired)
                 {
-                    groupBoxAleevaStatus.Invoke((Action) delegate() { groupBoxAleevaStatus.Text = (value) ? "Status: Aleeva successfully authorised" : "Status: Not authorised"; });
+                    groupBoxAleevaStatus.Invoke((Action)delegate () { groupBoxAleevaStatus.Text = (value) ? "Status: Aleeva successfully authorised" : "Status: Not authorised"; });
                 }
                 else
                 {
@@ -231,7 +231,7 @@ namespace PlenBotLogUploader
                 aleevaServers.Clear();
                 if (comboBoxServer.InvokeRequired)
                 {
-                    comboBoxServer.Invoke((Action) delegate() { comboBoxServer.Items.Clear(); });
+                    comboBoxServer.Invoke((Action)delegate () { comboBoxServer.Items.Clear(); });
                 }
                 else
                 {
@@ -342,7 +342,12 @@ namespace PlenBotLogUploader
         private void FormAleeva_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            Process.Start("https://www.aleeva.io/");
+            _ = Process.Start("https://www.aleeva.io/");
+        }
+
+        public new void Dispose()
+        {
+            controller?.Dispose();
         }
     }
 }

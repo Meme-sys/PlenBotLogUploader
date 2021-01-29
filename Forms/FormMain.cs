@@ -1,21 +1,21 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Drawing;
-using System.Net.Http;
-using System.Threading;
-using System.Diagnostics;
-using System.Windows.Forms;
-using System.IO.Compression;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Microsoft.Win32;
-using PlenBotLogUploader.Tools;
-using PlenBotLogUploader.GW2API;
-using PlenBotLogUploader.DPSReport;
-using PlenBotLogUploader.TwitchIRCClient;
+﻿using Microsoft.Win32;
 using Newtonsoft.Json;
+using PlenBotLogUploader.DPSReport;
+using PlenBotLogUploader.GW2API;
+using PlenBotLogUploader.Tools;
+using PlenBotLogUploader.TwitchIRCClient;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Net.Http;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PlenBotLogUploader
 {
@@ -276,7 +276,7 @@ namespace PlenBotLogUploader
                 logSessionLink.checkBoxSaveToFile.CheckedChanged += new EventHandler(logSessionLink.CheckBoxSaveToFile_CheckedChanged);
                 arcVersionsLink.checkBoxAutoUpdateArc.CheckedChanged += new EventHandler(arcVersionsLink.CheckBoxAutoUpdateArc_CheckedChanged);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show($"An error has been encountered in the configuration.\n\n{e.Message}\n\nIf the problem persists, try deleting the configuration file and try again.", "An error has occurred");
                 ExitApp();
@@ -369,7 +369,10 @@ namespace PlenBotLogUploader
             }
         }
 
-        private void RichTextBoxUploadInfo_LinkClicked(object sender, LinkClickedEventArgs e) => Process.Start(e.LinkText);
+        private void RichTextBoxUploadInfo_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            _ = Process.Start(e.LinkText);
+        }
         #endregion
 
         #region main program methods
@@ -431,7 +434,8 @@ namespace PlenBotLogUploader
 
         private void LogsScan(string directory)
         {
-            Parallel.ForEach(Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories), f => {
+            Parallel.ForEach(Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories), f =>
+            {
                 if (f.EndsWith(".evtc") || f.EndsWith(".zevtc"))
                 {
                     Interlocked.Increment(ref logsCount);
@@ -616,8 +620,12 @@ namespace PlenBotLogUploader
             {
                 foreach (string key in postData.Keys)
                 {
-                    content.Add(new StringContent(postData[key]), key);
+                    using (var stringContent = new StringContent(postData[key]))
+                    {
+                        content.Add(stringContent, key);
+                    }
                 }
+
                 AddToText($">:> Uploading {Path.GetFileName(file)}");
                 int bossId = 1;
                 try
@@ -713,7 +721,7 @@ namespace PlenBotLogUploader
                                             // aleeva pings
                                             await aleevaLink.PostLogToAleeva(reportJSON);
                                         }
-                                        else if(reportJSON.Error.Length > 0)
+                                        else if (reportJSON.Error.Length > 0)
                                         {
                                             AddToText($">:> Unable to process file {Path.GetFileName(file)}, dps.report responded with following error message: {reportJSON.Error}");
                                         }
@@ -754,7 +762,7 @@ namespace PlenBotLogUploader
                                                 delay = 3000;
                                                 break;
                                         }
-                                        AddToText($">:> Retrying in {(delay/1000)}s...");
+                                        AddToText($">:> Retrying in {(delay / 1000)}s...");
                                         await Task.Delay(delay);
                                         await HttpUploadLogAsync(file, postData, bypassMessage);
                                     });
@@ -892,7 +900,7 @@ namespace PlenBotLogUploader
                     }
                     if (reconnectedFailCounter <= 3)
                     {
-                        AddToText($"<-?-> TRYING TO RECONNECT TO TWITCH IN {reconnectedFailCounter*10}s");
+                        AddToText($"<-?-> TRYING TO RECONNECT TO TWITCH IN {reconnectedFailCounter * 10}s");
                         await Task.Run(() =>
                         {
                             Thread.Sleep(reconnectedFailCounter * 10000);
@@ -951,6 +959,7 @@ namespace PlenBotLogUploader
                     try
                     {
                         Process process = Process.GetProcessesByName("Spotify").FirstOrDefault(anon => !string.IsNullOrWhiteSpace(anon.MainWindowTitle));
+                        process.Dispose();
                         if (process.MainWindowTitle.Contains("Spotify"))
                         {
                             await chatConnect.SendChatMessageAsync(Properties.Settings.Default.TwitchChannelName, "No song is being played.");
@@ -1125,7 +1134,10 @@ namespace PlenBotLogUploader
 
         private void ToolStripMenuItemPostToTwitch_CheckedChanged(object sender, EventArgs e) => checkBoxPostToTwitch.Checked = toolStripMenuItemPostToTwitch.Checked;
 
-        private void ButtonOpenLogs_Click(object sender, EventArgs e) => Process.Start(Properties.Settings.Default.LogsLocation);
+        private void ButtonOpenLogs_Click(object sender, EventArgs e)
+        {
+            _ = Process.Start(Properties.Settings.Default.LogsLocation);
+        }
 
         private void ButtonDPSReportServer_Click(object sender, EventArgs e)
         {
@@ -1226,7 +1238,7 @@ namespace PlenBotLogUploader
             var result = await HttpClientController.DownloadFileAsync("https://plenbot.net/uploader/update/", $"{LocalDir}PlenBotLogUploader_Update.exe");
             if (result)
             {
-                Process.Start($"{LocalDir}PlenBotLogUploader_Update.exe", "-update " + Path.GetFileName(Application.ExecutablePath.Replace('/', '\\')));
+                _ = Process.Start($"{LocalDir}PlenBotLogUploader_Update.exe", "-update " + Path.GetFileName(Application.ExecutablePath.Replace('/', '\\')));
                 if (InvokeRequired)
                 {
                     // invokes the function on the main thread
@@ -1270,7 +1282,7 @@ namespace PlenBotLogUploader
             DialogResult result = MessageBox.Show("Are you sure you want to do this?\nThis resets all your settings but not boss data, webhooks and ping configurations.\nIf you click yes the application will close itself.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result.Equals(DialogResult.Yes))
             {
-                Process.Start(LocalDir);
+                _ = Process.Start(LocalDir);
                 Properties.Settings.Default.Reset();
                 ExitApp();
             }
@@ -1313,5 +1325,29 @@ namespace PlenBotLogUploader
             }
         }
         #endregion
+
+        private void checkBoxFileSizeIgnore_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        public new void Dispose()
+        {
+            HttpClientController?.Dispose();
+            watcher?.Dispose();
+            twitchNameLink?.Dispose();
+            customNameLink?.Dispose();
+            semaphore?.Dispose();
+            dpsReportSettingsLink?.Dispose();
+            pingsLink?.Dispose();
+            bossDataLink?.Dispose();
+            arcVersionsLink?.Dispose();
+            twitchCommandsLink?.Dispose();
+            gw2APILink?.Dispose();
+            aleevaLink?.Dispose();
+            discordWebhooksLink?.Dispose();
+            logSessionLink?.Dispose();
+            chatConnect?.Dispose();
+        }
     }
 }

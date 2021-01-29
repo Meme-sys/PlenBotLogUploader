@@ -36,6 +36,9 @@ namespace PlenBotLogUploader
             groupBoxCustomNameSettings.Enabled = checkBoxCustomNameEnable.Checked;
         }
 
-        private void LinkLabelGetOAuth_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Process.Start("https://twitchapps.com/tmi/");
+        private void LinkLabelGetOAuth_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _ = Process.Start("https://twitchapps.com/tmi/");
+        }
     }
 }

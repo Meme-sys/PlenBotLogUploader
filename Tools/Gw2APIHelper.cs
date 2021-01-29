@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 using PlenBotLogUploader.GW2API;
-using Newtonsoft.Json;
+using System;
+using System.Threading.Tasks;
 
 namespace PlenBotLogUploader.Tools
 {
@@ -33,6 +33,9 @@ namespace PlenBotLogUploader.Tools
             }
         }
 
-        public void Dispose() => HttpClientController?.Dispose();
+        public void Dispose()
+        {
+            HttpClientController?.Dispose();
+        }
     }
 }

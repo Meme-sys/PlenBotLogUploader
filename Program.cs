@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Diagnostics;
 using System.Windows.Forms;
-using Microsoft.Win32;
 
 namespace PlenBotLogUploader
 {
@@ -23,12 +23,12 @@ namespace PlenBotLogUploader
             var localDir = $"{Path.GetDirectoryName(Application.ExecutablePath.Replace('/', '\\'))}\\";
             if (args.Count == 3)
             {
-                if(args[1].ToLower().Equals("-update"))
+                if (args[1].ToLower().Equals("-update"))
                 {
                     if (otherProcesses.Count == 0)
                     {
                         File.Copy(Application.ExecutablePath.Replace('/', '\\'), $"{localDir}{args[2]}", true);
-                        Process.Start($"{localDir}{args[2]}", "-finishupdate");
+                        _ = Process.Start($"{localDir}{args[2]}", "-finishupdate");
                         return;
                     }
                     else
@@ -46,7 +46,7 @@ namespace PlenBotLogUploader
                             }
                         }
                         File.Copy(Application.ExecutablePath.Replace('/', '\\'), localDir + args[2], true);
-                        Process.Start($"{localDir}{args[2]}", "-finishupdate");
+                        _ = Process.Start($"{localDir}{args[2]}", "-finishupdate");
                         return;
                     }
                 }
@@ -73,7 +73,10 @@ namespace PlenBotLogUploader
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new FormMain());
+                using (var formMain = new FormMain())
+                {
+                    Application.Run(formMain);
+                }
             }
         }
     }

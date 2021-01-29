@@ -1,8 +1,8 @@
-﻿using System;
+﻿using PlenBotLogUploader.DPSReport;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using PlenBotLogUploader.DPSReport;
 
 namespace PlenBotLogUploader
 {
@@ -58,7 +58,9 @@ namespace PlenBotLogUploader
         {
             var selected = listViewBosses.SelectedItems[0];
             int.TryParse(selected.Name, out int reservedId);
-            new FormEditBossData(this, allBosses[reservedId], reservedId).Show();
+            FormEditBossData formEditBossData = new FormEditBossData(this, allBosses[reservedId], reservedId);
+            formEditBossData.Show();
+            formEditBossData.Dispose();
         }
 
         private async void FormBossData_FormClosing(object sender, FormClosingEventArgs e)
@@ -97,13 +99,17 @@ namespace PlenBotLogUploader
         private void ButtonAddNew_Click(object sender, EventArgs e)
         {
             bossesIdsKey++;
-            new FormEditBossData(this, null, bossesIdsKey).Show();
+            FormEditBossData formEditBossData = new FormEditBossData(this, null, bossesIdsKey);
+            formEditBossData.Show();
+            formEditBossData.Dispose();
         }
 
         private void ToolStripMenuItemAddNew_Click(object sender, EventArgs e)
         {
             bossesIdsKey++;
-            new FormEditBossData(this, null, bossesIdsKey).Show();
+            FormEditBossData formEditBossData = new FormEditBossData(this, null, bossesIdsKey);
+            formEditBossData.Show();
+            formEditBossData.Dispose();
         }
 
         private void ToolStripMenuItemEditBoss_Click(object sender, EventArgs e)
@@ -112,7 +118,9 @@ namespace PlenBotLogUploader
             {
                 var selected = listViewBosses.SelectedItems[0];
                 int.TryParse(selected.Name, out int reservedId);
-                new FormEditBossData(this, allBosses[reservedId], reservedId).Show();
+                FormEditBossData formEditBossData = new FormEditBossData(this, allBosses[reservedId], reservedId);
+                formEditBossData.Show();
+                formEditBossData.Dispose();
             }
         }
 
@@ -141,6 +149,11 @@ namespace PlenBotLogUploader
         {
             templateLink.Show();
             templateLink.BringToFront();
+        }
+
+        public new void Dispose()
+        {
+            templateLink?.Dispose();
         }
     }
 }

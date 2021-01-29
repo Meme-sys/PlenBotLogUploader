@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using System.Diagnostics;
-using System.Windows.Forms;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PlenBotLogUploader
 {
@@ -219,14 +219,17 @@ namespace PlenBotLogUploader
             buttonEnabler.Enabled = false;
         }
 
-        private void LinkLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Process.Start("https://deltaconnected.com/arcdps/");
+        private void LinkLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _ = Process.Start("https://deltaconnected.com/arcdps/");
+        }
 
         private async void ButtonUpdate_Click(object sender, EventArgs e) => await UpdateArcAsync();
 
         private void FormArcVersions_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            Process.Start("https://deltaconnected.com/arcdps/");
+            _ = Process.Start("https://deltaconnected.com/arcdps/");
         }
 
         public void CheckBoxAutoUpdateArc_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.ArcAutoUpdate = checkBoxAutoUpdateArc.Checked;
