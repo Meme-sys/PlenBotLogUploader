@@ -117,12 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBoxTwitchSettings.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBoxTwitchSettings.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonTwitchCommands.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 23</value>
+    <value>237, 23</value>
   </data>
   <data name="buttonDisConnectTwitch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 23</value>
+    <value>237, 23</value>
   </data>
   <data name="buttonCustomName.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 23</value>
@@ -137,7 +145,13 @@
     <value>105, 23</value>
   </data>
   <data name="groupBoxTwitchSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 181</value>
+    <value>249, 191</value>
+  </data>
+  <data name="groupBoxArcdpsLogs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBoxArcdpsLogs.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="labelLocationInfo.Location" type="System.Drawing.Point, System.Drawing">
     <value>35, 149</value>
@@ -145,15 +159,28 @@
   <data name="groupBoxArcdpsLogs.Location" type="System.Drawing.Point, System.Drawing">
     <value>426, 199</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+  <data name="groupBoxArcdpsLogs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>249, 188</value>
+  </data>
+  <data name="groupBoxOtherSettings.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBoxOtherSettings.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonDiscordWebhooks.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="groupBoxOtherSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 279</value>
+  </data>
   <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>906, 390</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
 </root>

@@ -30,7 +30,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.groupBoxTwitchSettings = new System.Windows.Forms.GroupBox();
             this.buttonTwitchCommands = new System.Windows.Forms.Button();
             this.checkBoxTwitchOnlySuccess = new System.Windows.Forms.CheckBox();
@@ -86,7 +85,8 @@
             // 
             // groupBoxTwitchSettings
             // 
-            resources.ApplyResources(this.groupBoxTwitchSettings, "groupBoxTwitchSettings");
+            this.groupBoxTwitchSettings.AutoSize = true;
+            this.groupBoxTwitchSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBoxTwitchSettings.Controls.Add(this.buttonTwitchCommands);
             this.groupBoxTwitchSettings.Controls.Add(this.checkBoxTwitchOnlySuccess);
             this.groupBoxTwitchSettings.Controls.Add(this.buttonDisConnectTwitch);
@@ -94,90 +94,121 @@
             this.groupBoxTwitchSettings.Controls.Add(this.buttonChangeTwitchChannel);
             this.groupBoxTwitchSettings.Controls.Add(this.checkBoxPostToTwitch);
             this.groupBoxTwitchSettings.Controls.Add(this.buttonReconnectBot);
+            this.groupBoxTwitchSettings.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.groupBoxTwitchSettings.Location = new System.Drawing.Point(426, 12);
             this.groupBoxTwitchSettings.Name = "groupBoxTwitchSettings";
+            this.groupBoxTwitchSettings.Size = new System.Drawing.Size(249, 191);
+            this.groupBoxTwitchSettings.TabIndex = 4;
             this.groupBoxTwitchSettings.TabStop = false;
-            this.toolTip.SetToolTip(this.groupBoxTwitchSettings, resources.GetString("groupBoxTwitchSettings.ToolTip"));
+            this.groupBoxTwitchSettings.Text = " Twitch Settings ";
             // 
             // buttonTwitchCommands
             // 
-            resources.ApplyResources(this.buttonTwitchCommands, "buttonTwitchCommands");
+            this.buttonTwitchCommands.Location = new System.Drawing.Point(6, 120);
             this.buttonTwitchCommands.Name = "buttonTwitchCommands";
-            this.toolTip.SetToolTip(this.buttonTwitchCommands, resources.GetString("buttonTwitchCommands.ToolTip"));
+            this.buttonTwitchCommands.Size = new System.Drawing.Size(237, 23);
+            this.buttonTwitchCommands.TabIndex = 12;
+            this.buttonTwitchCommands.Text = "Twitch Commands";
             this.buttonTwitchCommands.UseVisualStyleBackColor = true;
             this.buttonTwitchCommands.Click += new System.EventHandler(this.ButtonTwitchCommands_Click);
             // 
             // checkBoxTwitchOnlySuccess
             // 
-            resources.ApplyResources(this.checkBoxTwitchOnlySuccess, "checkBoxTwitchOnlySuccess");
+            this.checkBoxTwitchOnlySuccess.AutoSize = true;
+            this.checkBoxTwitchOnlySuccess.Enabled = false;
+            this.checkBoxTwitchOnlySuccess.Location = new System.Drawing.Point(6, 68);
             this.checkBoxTwitchOnlySuccess.Name = "checkBoxTwitchOnlySuccess";
-            this.toolTip.SetToolTip(this.checkBoxTwitchOnlySuccess, resources.GetString("checkBoxTwitchOnlySuccess.ToolTip"));
+            this.checkBoxTwitchOnlySuccess.Size = new System.Drawing.Size(152, 17);
+            this.checkBoxTwitchOnlySuccess.TabIndex = 11;
+            this.checkBoxTwitchOnlySuccess.Text = "Post Successful Logs Only";
             this.checkBoxTwitchOnlySuccess.UseVisualStyleBackColor = true;
             // 
             // buttonDisConnectTwitch
             // 
-            resources.ApplyResources(this.buttonDisConnectTwitch, "buttonDisConnectTwitch");
+            this.buttonDisConnectTwitch.Location = new System.Drawing.Point(6, 149);
             this.buttonDisConnectTwitch.Name = "buttonDisConnectTwitch";
-            this.toolTip.SetToolTip(this.buttonDisConnectTwitch, resources.GetString("buttonDisConnectTwitch.ToolTip"));
+            this.buttonDisConnectTwitch.Size = new System.Drawing.Size(237, 23);
+            this.buttonDisConnectTwitch.TabIndex = 10;
+            this.buttonDisConnectTwitch.Text = "Disconnect from Twitch";
             this.buttonDisConnectTwitch.UseVisualStyleBackColor = true;
             this.buttonDisConnectTwitch.Click += new System.EventHandler(this.ButtonDisConnectTwitch_Click);
             // 
             // buttonCustomName
             // 
-            resources.ApplyResources(this.buttonCustomName, "buttonCustomName");
+            this.buttonCustomName.Location = new System.Drawing.Point(6, 91);
             this.buttonCustomName.Name = "buttonCustomName";
-            this.toolTip.SetToolTip(this.buttonCustomName, resources.GetString("buttonCustomName.ToolTip"));
+            this.buttonCustomName.Size = new System.Drawing.Size(126, 23);
+            this.buttonCustomName.TabIndex = 9;
+            this.buttonCustomName.Text = "Custom Name";
             this.buttonCustomName.UseVisualStyleBackColor = true;
             this.buttonCustomName.Click += new System.EventHandler(this.ButtonCustomName_Click);
             // 
             // buttonChangeTwitchChannel
             // 
-            resources.ApplyResources(this.buttonChangeTwitchChannel, "buttonChangeTwitchChannel");
+            this.buttonChangeTwitchChannel.Location = new System.Drawing.Point(6, 16);
             this.buttonChangeTwitchChannel.Name = "buttonChangeTwitchChannel";
-            this.toolTip.SetToolTip(this.buttonChangeTwitchChannel, resources.GetString("buttonChangeTwitchChannel.ToolTip"));
+            this.buttonChangeTwitchChannel.Size = new System.Drawing.Size(126, 23);
+            this.buttonChangeTwitchChannel.TabIndex = 8;
+            this.buttonChangeTwitchChannel.Text = "Change Twitch Channel";
             this.buttonChangeTwitchChannel.UseVisualStyleBackColor = true;
             this.buttonChangeTwitchChannel.Click += new System.EventHandler(this.ButtonChangeTwitchChannel_Click);
             // 
             // checkBoxPostToTwitch
             // 
-            resources.ApplyResources(this.checkBoxPostToTwitch, "checkBoxPostToTwitch");
+            this.checkBoxPostToTwitch.AutoSize = true;
+            this.checkBoxPostToTwitch.Enabled = false;
+            this.checkBoxPostToTwitch.Location = new System.Drawing.Point(6, 45);
             this.checkBoxPostToTwitch.Name = "checkBoxPostToTwitch";
-            this.toolTip.SetToolTip(this.checkBoxPostToTwitch, resources.GetString("checkBoxPostToTwitch.ToolTip"));
+            this.checkBoxPostToTwitch.Size = new System.Drawing.Size(147, 17);
+            this.checkBoxPostToTwitch.TabIndex = 6;
+            this.checkBoxPostToTwitch.Text = "Post Links to Twitch Chat";
             this.checkBoxPostToTwitch.UseVisualStyleBackColor = true;
             // 
             // buttonReconnectBot
             // 
-            resources.ApplyResources(this.buttonReconnectBot, "buttonReconnectBot");
+            this.buttonReconnectBot.Location = new System.Drawing.Point(138, 92);
             this.buttonReconnectBot.Name = "buttonReconnectBot";
-            this.toolTip.SetToolTip(this.buttonReconnectBot, resources.GetString("buttonReconnectBot.ToolTip"));
+            this.buttonReconnectBot.Size = new System.Drawing.Size(105, 23);
+            this.buttonReconnectBot.TabIndex = 4;
+            this.buttonReconnectBot.Text = "Reconnect Bot";
             this.buttonReconnectBot.UseVisualStyleBackColor = true;
             this.buttonReconnectBot.Click += new System.EventHandler(this.ButtonReconnectBot_Click);
             // 
             // buttonBossData
             // 
-            resources.ApplyResources(this.buttonBossData, "buttonBossData");
+            this.buttonBossData.Location = new System.Drawing.Point(138, 65);
             this.buttonBossData.Name = "buttonBossData";
-            this.toolTip.SetToolTip(this.buttonBossData, resources.GetString("buttonBossData.ToolTip"));
+            this.buttonBossData.Size = new System.Drawing.Size(105, 23);
+            this.buttonBossData.TabIndex = 12;
+            this.buttonBossData.Text = "Edit Boss Data";
             this.buttonBossData.UseVisualStyleBackColor = true;
             this.buttonBossData.Click += new System.EventHandler(this.ButtonBossData_Click);
             // 
             // checkBoxFileSizeIgnore
             // 
-            resources.ApplyResources(this.checkBoxFileSizeIgnore, "checkBoxFileSizeIgnore");
+            this.checkBoxFileSizeIgnore.AutoSize = true;
+            this.checkBoxFileSizeIgnore.Location = new System.Drawing.Point(9, 42);
             this.checkBoxFileSizeIgnore.Name = "checkBoxFileSizeIgnore";
-            this.toolTip.SetToolTip(this.checkBoxFileSizeIgnore, resources.GetString("checkBoxFileSizeIgnore.ToolTip"));
+            this.checkBoxFileSizeIgnore.Size = new System.Drawing.Size(160, 17);
+            this.checkBoxFileSizeIgnore.TabIndex = 7;
+            this.checkBoxFileSizeIgnore.Text = "Ignore File Size Limit of 8 KB";
             this.checkBoxFileSizeIgnore.UseVisualStyleBackColor = true;
             this.checkBoxFileSizeIgnore.CheckedChanged += new System.EventHandler(this.checkBoxFileSizeIgnore_CheckedChanged_1);
             // 
             // checkBoxUploadLogs
             // 
-            resources.ApplyResources(this.checkBoxUploadLogs, "checkBoxUploadLogs");
+            this.checkBoxUploadLogs.AutoSize = true;
+            this.checkBoxUploadLogs.Location = new System.Drawing.Point(9, 19);
             this.checkBoxUploadLogs.Name = "checkBoxUploadLogs";
-            this.toolTip.SetToolTip(this.checkBoxUploadLogs, resources.GetString("checkBoxUploadLogs.ToolTip"));
+            this.checkBoxUploadLogs.Size = new System.Drawing.Size(86, 17);
+            this.checkBoxUploadLogs.TabIndex = 3;
+            this.checkBoxUploadLogs.Text = "Upload Logs";
             this.checkBoxUploadLogs.UseVisualStyleBackColor = true;
             // 
             // groupBoxArcdpsLogs
             // 
-            resources.ApplyResources(this.groupBoxArcdpsLogs, "groupBoxArcdpsLogs");
+            this.groupBoxArcdpsLogs.AutoSize = true;
+            this.groupBoxArcdpsLogs.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBoxArcdpsLogs.Controls.Add(this.buttonCopyApplicationSession);
             this.groupBoxArcdpsLogs.Controls.Add(this.buttonSession);
             this.groupBoxArcdpsLogs.Controls.Add(this.buttonBossData);
@@ -187,72 +218,92 @@
             this.groupBoxArcdpsLogs.Controls.Add(this.labelLocationInfo);
             this.groupBoxArcdpsLogs.Controls.Add(this.buttonLogsLocation);
             this.groupBoxArcdpsLogs.Controls.Add(this.checkBoxUploadLogs);
+            this.groupBoxArcdpsLogs.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.groupBoxArcdpsLogs.Location = new System.Drawing.Point(426, 199);
             this.groupBoxArcdpsLogs.Name = "groupBoxArcdpsLogs";
+            this.groupBoxArcdpsLogs.Size = new System.Drawing.Size(249, 188);
+            this.groupBoxArcdpsLogs.TabIndex = 5;
             this.groupBoxArcdpsLogs.TabStop = false;
-            this.toolTip.SetToolTip(this.groupBoxArcdpsLogs, resources.GetString("groupBoxArcdpsLogs.ToolTip"));
+            this.groupBoxArcdpsLogs.Text = " arcdps Logs and DPS.report ";
             // 
             // buttonCopyApplicationSession
             // 
-            resources.ApplyResources(this.buttonCopyApplicationSession, "buttonCopyApplicationSession");
+            this.buttonCopyApplicationSession.Location = new System.Drawing.Point(138, 94);
             this.buttonCopyApplicationSession.Name = "buttonCopyApplicationSession";
-            this.toolTip.SetToolTip(this.buttonCopyApplicationSession, resources.GetString("buttonCopyApplicationSession.ToolTip"));
+            this.buttonCopyApplicationSession.Size = new System.Drawing.Size(105, 23);
+            this.buttonCopyApplicationSession.TabIndex = 14;
+            this.buttonCopyApplicationSession.Text = "Copy to Clipboard";
             this.buttonCopyApplicationSession.UseVisualStyleBackColor = true;
             this.buttonCopyApplicationSession.Click += new System.EventHandler(this.ButtonCopyApplicationSession_Click);
             // 
             // buttonSession
             // 
-            resources.ApplyResources(this.buttonSession, "buttonSession");
+            this.buttonSession.Location = new System.Drawing.Point(6, 65);
             this.buttonSession.Name = "buttonSession";
-            this.toolTip.SetToolTip(this.buttonSession, resources.GetString("buttonSession.ToolTip"));
+            this.buttonSession.Size = new System.Drawing.Size(126, 23);
+            this.buttonSession.TabIndex = 13;
+            this.buttonSession.Text = "Log Sessions";
             this.buttonSession.UseVisualStyleBackColor = true;
             this.buttonSession.Click += new System.EventHandler(this.ButtonSession_Click);
             // 
             // buttonOpenLogs
             // 
-            resources.ApplyResources(this.buttonOpenLogs, "buttonOpenLogs");
+            this.buttonOpenLogs.Enabled = false;
+            this.buttonOpenLogs.Location = new System.Drawing.Point(138, 123);
             this.buttonOpenLogs.Name = "buttonOpenLogs";
-            this.toolTip.SetToolTip(this.buttonOpenLogs, resources.GetString("buttonOpenLogs.ToolTip"));
+            this.buttonOpenLogs.Size = new System.Drawing.Size(105, 23);
+            this.buttonOpenLogs.TabIndex = 2;
+            this.buttonOpenLogs.Text = "Open";
             this.buttonOpenLogs.UseVisualStyleBackColor = true;
             this.buttonOpenLogs.Click += new System.EventHandler(this.ButtonOpenLogs_Click);
             // 
             // buttonDPSReportServer
             // 
-            resources.ApplyResources(this.buttonDPSReportServer, "buttonDPSReportServer");
+            this.buttonDPSReportServer.Location = new System.Drawing.Point(6, 94);
             this.buttonDPSReportServer.Name = "buttonDPSReportServer";
-            this.toolTip.SetToolTip(this.buttonDPSReportServer, resources.GetString("buttonDPSReportServer.ToolTip"));
+            this.buttonDPSReportServer.Size = new System.Drawing.Size(126, 23);
+            this.buttonDPSReportServer.TabIndex = 1;
+            this.buttonDPSReportServer.Text = "DPS.report Settings";
             this.buttonDPSReportServer.UseVisualStyleBackColor = true;
             this.buttonDPSReportServer.Click += new System.EventHandler(this.ButtonDPSReportServer_Click);
             // 
             // labelLocationInfo
             // 
-            resources.ApplyResources(this.labelLocationInfo, "labelLocationInfo");
+            this.labelLocationInfo.Location = new System.Drawing.Point(35, 149);
             this.labelLocationInfo.Name = "labelLocationInfo";
-            this.toolTip.SetToolTip(this.labelLocationInfo, resources.GetString("labelLocationInfo.ToolTip"));
+            this.labelLocationInfo.Size = new System.Drawing.Size(188, 23);
+            this.labelLocationInfo.TabIndex = 1;
+            this.labelLocationInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonLogsLocation
             // 
-            resources.ApplyResources(this.buttonLogsLocation, "buttonLogsLocation");
+            this.buttonLogsLocation.Location = new System.Drawing.Point(6, 123);
             this.buttonLogsLocation.Name = "buttonLogsLocation";
-            this.toolTip.SetToolTip(this.buttonLogsLocation, resources.GetString("buttonLogsLocation.ToolTip"));
+            this.buttonLogsLocation.Size = new System.Drawing.Size(126, 23);
+            this.buttonLogsLocation.TabIndex = 0;
+            this.buttonLogsLocation.Text = "Change Log Directory";
             this.buttonLogsLocation.UseVisualStyleBackColor = true;
             this.buttonLogsLocation.Click += new System.EventHandler(this.ButtonLogsLocation_Click);
             // 
             // checkBoxTrayMinimiseToIcon
             // 
-            resources.ApplyResources(this.checkBoxTrayMinimiseToIcon, "checkBoxTrayMinimiseToIcon");
+            this.checkBoxTrayMinimiseToIcon.AutoSize = true;
+            this.checkBoxTrayMinimiseToIcon.Location = new System.Drawing.Point(9, 19);
             this.checkBoxTrayMinimiseToIcon.Name = "checkBoxTrayMinimiseToIcon";
-            this.toolTip.SetToolTip(this.checkBoxTrayMinimiseToIcon, resources.GetString("checkBoxTrayMinimiseToIcon.ToolTip"));
+            this.checkBoxTrayMinimiseToIcon.Size = new System.Drawing.Size(102, 17);
+            this.checkBoxTrayMinimiseToIcon.TabIndex = 0;
+            this.checkBoxTrayMinimiseToIcon.Text = "Minimize to Tray";
             this.checkBoxTrayMinimiseToIcon.UseVisualStyleBackColor = true;
             // 
             // notifyIconTray
             // 
-            resources.ApplyResources(this.notifyIconTray, "notifyIconTray");
             this.notifyIconTray.ContextMenuStrip = this.contextMenuStripIcon;
+            this.notifyIconTray.Text = "PlenBot Log Uploader";
+            this.notifyIconTray.Visible = true;
             this.notifyIconTray.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIconTray_MouseDoubleClick);
             // 
             // contextMenuStripIcon
             // 
-            resources.ApplyResources(this.contextMenuStripIcon, "contextMenuStripIcon");
             this.contextMenuStripIcon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemUploadLogs,
             this.toolStripMenuItemPostToTwitch,
@@ -267,82 +318,92 @@
             this.toolStripSeparatorThird,
             this.toolStripMenuItemExit});
             this.contextMenuStripIcon.Name = "contextMenuStripIcon";
-            this.toolTip.SetToolTip(this.contextMenuStripIcon, resources.GetString("contextMenuStripIcon.ToolTip"));
+            this.contextMenuStripIcon.Size = new System.Drawing.Size(278, 220);
             // 
             // toolStripMenuItemUploadLogs
             // 
-            resources.ApplyResources(this.toolStripMenuItemUploadLogs, "toolStripMenuItemUploadLogs");
             this.toolStripMenuItemUploadLogs.CheckOnClick = true;
             this.toolStripMenuItemUploadLogs.Name = "toolStripMenuItemUploadLogs";
+            this.toolStripMenuItemUploadLogs.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemUploadLogs.Text = "upload logs";
             this.toolStripMenuItemUploadLogs.CheckedChanged += new System.EventHandler(this.ToolStripMenuItemUploadLogs_CheckedChanged);
             // 
             // toolStripMenuItemPostToTwitch
             // 
-            resources.ApplyResources(this.toolStripMenuItemPostToTwitch, "toolStripMenuItemPostToTwitch");
             this.toolStripMenuItemPostToTwitch.CheckOnClick = true;
             this.toolStripMenuItemPostToTwitch.Name = "toolStripMenuItemPostToTwitch";
+            this.toolStripMenuItemPostToTwitch.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemPostToTwitch.Text = "post links to Twitch chat";
             this.toolStripMenuItemPostToTwitch.CheckedChanged += new System.EventHandler(this.ToolStripMenuItemPostToTwitch_CheckedChanged);
             // 
             // toolStripSeparatorFirst
             // 
-            resources.ApplyResources(this.toolStripSeparatorFirst, "toolStripSeparatorFirst");
             this.toolStripSeparatorFirst.Name = "toolStripSeparatorFirst";
+            this.toolStripSeparatorFirst.Size = new System.Drawing.Size(274, 6);
             // 
             // toolStripMenuItemOpenDPSReportServer
             // 
-            resources.ApplyResources(this.toolStripMenuItemOpenDPSReportServer, "toolStripMenuItemOpenDPSReportServer");
             this.toolStripMenuItemOpenDPSReportServer.Name = "toolStripMenuItemOpenDPSReportServer";
+            this.toolStripMenuItemOpenDPSReportServer.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemOpenDPSReportServer.Text = "Open DPS.report settings";
             this.toolStripMenuItemOpenDPSReportServer.Click += new System.EventHandler(this.ToolStripMenuItemOpenDPSReportServer_Click);
             // 
             // toolStripMenuItemOpenCustomName
             // 
-            resources.ApplyResources(this.toolStripMenuItemOpenCustomName, "toolStripMenuItemOpenCustomName");
             this.toolStripMenuItemOpenCustomName.Name = "toolStripMenuItemOpenCustomName";
+            this.toolStripMenuItemOpenCustomName.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemOpenCustomName.Text = "Open custom name settings";
             this.toolStripMenuItemOpenCustomName.Click += new System.EventHandler(this.ToolStripMenuItemOpenCustomName_Click);
             // 
             // toolStripMenuItemOpenTwitchCommands
             // 
-            resources.ApplyResources(this.toolStripMenuItemOpenTwitchCommands, "toolStripMenuItemOpenTwitchCommands");
             this.toolStripMenuItemOpenTwitchCommands.Name = "toolStripMenuItemOpenTwitchCommands";
+            this.toolStripMenuItemOpenTwitchCommands.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemOpenTwitchCommands.Text = "Open Twitch commands";
             this.toolStripMenuItemOpenTwitchCommands.Click += new System.EventHandler(this.ToolStripMenuItemOpenTwitchCommands_Click);
             // 
             // toolStripMenuItemOpenArcVersionsSettings
             // 
-            resources.ApplyResources(this.toolStripMenuItemOpenArcVersionsSettings, "toolStripMenuItemOpenArcVersionsSettings");
             this.toolStripMenuItemOpenArcVersionsSettings.Name = "toolStripMenuItemOpenArcVersionsSettings";
+            this.toolStripMenuItemOpenArcVersionsSettings.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemOpenArcVersionsSettings.Text = "Open arcdps version checking settings";
             this.toolStripMenuItemOpenArcVersionsSettings.Click += new System.EventHandler(this.ToolStripMenuItemOpenArcVersionsSettings_Click);
             // 
             // toolStripSeparatorSecond
             // 
-            resources.ApplyResources(this.toolStripSeparatorSecond, "toolStripSeparatorSecond");
             this.toolStripSeparatorSecond.Name = "toolStripSeparatorSecond";
+            this.toolStripSeparatorSecond.Size = new System.Drawing.Size(274, 6);
             // 
             // toolStripMenuItemDiscordWebhooks
             // 
-            resources.ApplyResources(this.toolStripMenuItemDiscordWebhooks, "toolStripMenuItemDiscordWebhooks");
             this.toolStripMenuItemDiscordWebhooks.Name = "toolStripMenuItemDiscordWebhooks";
+            this.toolStripMenuItemDiscordWebhooks.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemDiscordWebhooks.Text = "Discord webhooks";
             this.toolStripMenuItemDiscordWebhooks.Click += new System.EventHandler(this.ToolStripMenuItemDiscordWebhooks_Click);
             // 
             // toolStripMenuItemOpenPingSettings
             // 
-            resources.ApplyResources(this.toolStripMenuItemOpenPingSettings, "toolStripMenuItemOpenPingSettings");
             this.toolStripMenuItemOpenPingSettings.Name = "toolStripMenuItemOpenPingSettings";
+            this.toolStripMenuItemOpenPingSettings.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemOpenPingSettings.Text = "Remote server pings";
             this.toolStripMenuItemOpenPingSettings.Click += new System.EventHandler(this.ToolStripMenuItemOpenPingSettings_Click);
             // 
             // toolStripSeparatorThird
             // 
-            resources.ApplyResources(this.toolStripSeparatorThird, "toolStripSeparatorThird");
             this.toolStripSeparatorThird.Name = "toolStripSeparatorThird";
+            this.toolStripSeparatorThird.Size = new System.Drawing.Size(274, 6);
             // 
             // toolStripMenuItemExit
             // 
-            resources.ApplyResources(this.toolStripMenuItemExit, "toolStripMenuItemExit");
             this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
+            this.toolStripMenuItemExit.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemExit.Text = "Shutdown";
             this.toolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
             // 
             // groupBoxOtherSettings
             // 
-            resources.ApplyResources(this.groupBoxOtherSettings, "groupBoxOtherSettings");
+            this.groupBoxOtherSettings.AutoSize = true;
+            this.groupBoxOtherSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBoxOtherSettings.Controls.Add(this.buttonAleevaSettings);
             this.groupBoxOtherSettings.Controls.Add(this.buttonGW2API);
             this.groupBoxOtherSettings.Controls.Add(this.comboBoxMaxUploads);
@@ -353,96 +414,125 @@
             this.groupBoxOtherSettings.Controls.Add(this.buttonArcVersionChecking);
             this.groupBoxOtherSettings.Controls.Add(this.checkBoxTrayMinimiseToIcon);
             this.groupBoxOtherSettings.Controls.Add(this.buttonPingSettings);
+            this.groupBoxOtherSettings.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.groupBoxOtherSettings.Location = new System.Drawing.Point(691, 12);
             this.groupBoxOtherSettings.Name = "groupBoxOtherSettings";
+            this.groupBoxOtherSettings.Size = new System.Drawing.Size(200, 279);
+            this.groupBoxOtherSettings.TabIndex = 7;
             this.groupBoxOtherSettings.TabStop = false;
-            this.toolTip.SetToolTip(this.groupBoxOtherSettings, resources.GetString("groupBoxOtherSettings.ToolTip"));
+            this.groupBoxOtherSettings.Text = " Other Settings ";
             // 
             // buttonAleevaSettings
             // 
-            resources.ApplyResources(this.buttonAleevaSettings, "buttonAleevaSettings");
             this.buttonAleevaSettings.Image = global::PlenBotLogUploader.Properties.Resources.aleeva_icon16;
+            this.buttonAleevaSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonAleevaSettings.Location = new System.Drawing.Point(6, 208);
             this.buttonAleevaSettings.Name = "buttonAleevaSettings";
-            this.toolTip.SetToolTip(this.buttonAleevaSettings, resources.GetString("buttonAleevaSettings.ToolTip"));
+            this.buttonAleevaSettings.Size = new System.Drawing.Size(188, 23);
+            this.buttonAleevaSettings.TabIndex = 13;
+            this.buttonAleevaSettings.Text = "Aleeva Integration";
             this.buttonAleevaSettings.UseVisualStyleBackColor = true;
             this.buttonAleevaSettings.Click += new System.EventHandler(this.ButtonAleevaSettings_Click);
             // 
             // buttonGW2API
             // 
-            resources.ApplyResources(this.buttonGW2API, "buttonGW2API");
+            this.buttonGW2API.Location = new System.Drawing.Point(6, 121);
             this.buttonGW2API.Name = "buttonGW2API";
-            this.toolTip.SetToolTip(this.buttonGW2API, resources.GetString("buttonGW2API.ToolTip"));
+            this.buttonGW2API.Size = new System.Drawing.Size(188, 23);
+            this.buttonGW2API.TabIndex = 12;
+            this.buttonGW2API.Text = "GW2 API Settings";
             this.buttonGW2API.UseVisualStyleBackColor = true;
             this.buttonGW2API.Click += new System.EventHandler(this.ButtonGW2API_Click);
             // 
             // comboBoxMaxUploads
             // 
-            resources.ApplyResources(this.comboBoxMaxUploads, "comboBoxMaxUploads");
             this.comboBoxMaxUploads.FormattingEnabled = true;
             this.comboBoxMaxUploads.Items.AddRange(new object[] {
-            resources.GetString("comboBoxMaxUploads.Items"),
-            resources.GetString("comboBoxMaxUploads.Items1"),
-            resources.GetString("comboBoxMaxUploads.Items2"),
-            resources.GetString("comboBoxMaxUploads.Items3"),
-            resources.GetString("comboBoxMaxUploads.Items4"),
-            resources.GetString("comboBoxMaxUploads.Items5"),
-            resources.GetString("comboBoxMaxUploads.Items6"),
-            resources.GetString("comboBoxMaxUploads.Items7"),
-            resources.GetString("comboBoxMaxUploads.Items8"),
-            resources.GetString("comboBoxMaxUploads.Items9")});
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.comboBoxMaxUploads.Location = new System.Drawing.Point(144, 65);
             this.comboBoxMaxUploads.Name = "comboBoxMaxUploads";
-            this.toolTip.SetToolTip(this.comboBoxMaxUploads, resources.GetString("comboBoxMaxUploads.ToolTip"));
+            this.comboBoxMaxUploads.Size = new System.Drawing.Size(50, 21);
+            this.comboBoxMaxUploads.TabIndex = 11;
             // 
             // labelMaximumUploads
             // 
-            resources.ApplyResources(this.labelMaximumUploads, "labelMaximumUploads");
+            this.labelMaximumUploads.AutoSize = true;
+            this.labelMaximumUploads.Location = new System.Drawing.Point(6, 68);
             this.labelMaximumUploads.Name = "labelMaximumUploads";
-            this.toolTip.SetToolTip(this.labelMaximumUploads, resources.GetString("labelMaximumUploads.ToolTip"));
+            this.labelMaximumUploads.Size = new System.Drawing.Size(132, 13);
+            this.labelMaximumUploads.TabIndex = 10;
+            this.labelMaximumUploads.Text = "Concurrent Uploads (max.)";
             // 
             // buttonReset
             // 
-            resources.ApplyResources(this.buttonReset, "buttonReset");
+            this.buttonReset.Location = new System.Drawing.Point(6, 237);
             this.buttonReset.Name = "buttonReset";
-            this.toolTip.SetToolTip(this.buttonReset, resources.GetString("buttonReset.ToolTip"));
+            this.buttonReset.Size = new System.Drawing.Size(188, 23);
+            this.buttonReset.TabIndex = 9;
+            this.buttonReset.Text = "Reset All Settings";
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.ButtonReset_Click);
             // 
             // checkBoxStartWhenWindowsStarts
             // 
-            resources.ApplyResources(this.checkBoxStartWhenWindowsStarts, "checkBoxStartWhenWindowsStarts");
+            this.checkBoxStartWhenWindowsStarts.AutoSize = true;
+            this.checkBoxStartWhenWindowsStarts.Location = new System.Drawing.Point(9, 42);
             this.checkBoxStartWhenWindowsStarts.Name = "checkBoxStartWhenWindowsStarts";
-            this.toolTip.SetToolTip(this.checkBoxStartWhenWindowsStarts, resources.GetString("checkBoxStartWhenWindowsStarts.ToolTip"));
+            this.checkBoxStartWhenWindowsStarts.Size = new System.Drawing.Size(163, 17);
+            this.checkBoxStartWhenWindowsStarts.TabIndex = 5;
+            this.checkBoxStartWhenWindowsStarts.Text = "Start Uploader with Windows";
             this.checkBoxStartWhenWindowsStarts.UseVisualStyleBackColor = true;
             // 
             // buttonDiscordWebhooks
             // 
-            resources.ApplyResources(this.buttonDiscordWebhooks, "buttonDiscordWebhooks");
+            this.buttonDiscordWebhooks.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonDiscordWebhooks.Location = new System.Drawing.Point(6, 92);
             this.buttonDiscordWebhooks.Name = "buttonDiscordWebhooks";
-            this.toolTip.SetToolTip(this.buttonDiscordWebhooks, resources.GetString("buttonDiscordWebhooks.ToolTip"));
+            this.buttonDiscordWebhooks.Size = new System.Drawing.Size(188, 23);
+            this.buttonDiscordWebhooks.TabIndex = 4;
+            this.buttonDiscordWebhooks.Text = "Discord Webhooks";
             this.buttonDiscordWebhooks.UseVisualStyleBackColor = true;
             this.buttonDiscordWebhooks.Click += new System.EventHandler(this.ButtonDiscordWebhooks_Click);
             // 
             // buttonArcVersionChecking
             // 
-            resources.ApplyResources(this.buttonArcVersionChecking, "buttonArcVersionChecking");
+            this.buttonArcVersionChecking.Location = new System.Drawing.Point(6, 150);
             this.buttonArcVersionChecking.Name = "buttonArcVersionChecking";
-            this.toolTip.SetToolTip(this.buttonArcVersionChecking, resources.GetString("buttonArcVersionChecking.ToolTip"));
+            this.buttonArcVersionChecking.Size = new System.Drawing.Size(188, 23);
+            this.buttonArcVersionChecking.TabIndex = 3;
+            this.buttonArcVersionChecking.Text = "arcdps Version Check Settings";
             this.buttonArcVersionChecking.UseVisualStyleBackColor = true;
             this.buttonArcVersionChecking.Click += new System.EventHandler(this.ButtonArcVersionChecking_Click);
             // 
             // buttonPingSettings
             // 
-            resources.ApplyResources(this.buttonPingSettings, "buttonPingSettings");
+            this.buttonPingSettings.Location = new System.Drawing.Point(6, 179);
             this.buttonPingSettings.Name = "buttonPingSettings";
-            this.toolTip.SetToolTip(this.buttonPingSettings, resources.GetString("buttonPingSettings.ToolTip"));
+            this.buttonPingSettings.Size = new System.Drawing.Size(188, 23);
+            this.buttonPingSettings.TabIndex = 0;
+            this.buttonPingSettings.Text = "Remote Server Ping";
             this.buttonPingSettings.UseVisualStyleBackColor = true;
             this.buttonPingSettings.Click += new System.EventHandler(this.ButtonPingSettings_Click);
             // 
             // buttonUpdateNow
             // 
-            resources.ApplyResources(this.buttonUpdateNow, "buttonUpdateNow");
+            this.buttonUpdateNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.buttonUpdateNow.Location = new System.Drawing.Point(725, 303);
             this.buttonUpdateNow.Name = "buttonUpdateNow";
-            this.toolTip.SetToolTip(this.buttonUpdateNow, resources.GetString("buttonUpdateNow.ToolTip"));
+            this.buttonUpdateNow.Size = new System.Drawing.Size(126, 40);
+            this.buttonUpdateNow.TabIndex = 8;
+            this.buttonUpdateNow.Text = "Uploader Update Available";
             this.buttonUpdateNow.UseVisualStyleBackColor = true;
+            this.buttonUpdateNow.Visible = false;
             this.buttonUpdateNow.Click += new System.EventHandler(this.ButtonUpdateNow_Click);
             // 
             // timerCheckUpdate
@@ -456,19 +546,26 @@
             // 
             // richTextBoxMainConsole
             // 
-            resources.ApplyResources(this.richTextBoxMainConsole, "richTextBoxMainConsole");
             this.richTextBoxMainConsole.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.richTextBoxMainConsole.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.richTextBoxMainConsole.Location = new System.Drawing.Point(12, 12);
             this.richTextBoxMainConsole.Name = "richTextBoxMainConsole";
             this.richTextBoxMainConsole.ReadOnly = true;
-            this.toolTip.SetToolTip(this.richTextBoxMainConsole, resources.GetString("richTextBoxMainConsole.ToolTip"));
+            this.richTextBoxMainConsole.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.richTextBoxMainConsole.Size = new System.Drawing.Size(408, 364);
+            this.richTextBoxMainConsole.TabIndex = 9;
+            this.richTextBoxMainConsole.Text = "";
             this.richTextBoxMainConsole.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.RichTextBoxUploadInfo_LinkClicked);
             // 
             // FormMain
             // 
-            resources.ApplyResources(this, "$this");
             this.AllowDrop = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(906, 390);
             this.Controls.Add(this.buttonUpdateNow);
             this.Controls.Add(this.groupBoxOtherSettings);
             this.Controls.Add(this.groupBoxArcdpsLogs);
@@ -476,7 +573,8 @@
             this.Controls.Add(this.richTextBoxMainConsole);
             this.MaximizeBox = false;
             this.Name = "FormMain";
-            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "PlenBot Log Uploader";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -491,6 +589,7 @@
             this.groupBoxOtherSettings.ResumeLayout(false);
             this.groupBoxOtherSettings.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
