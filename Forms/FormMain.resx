@@ -117,11 +117,1127 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;buttonReconnectBot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonChangeTwitchChannel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxUploadLogs.Name" xml:space="preserve">
+    <value>checkBoxUploadLogs</value>
+  </data>
+  <data name="checkBoxUploadLogs.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonChangeTwitchChannel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 16</value>
+  </data>
+  <data name="comboBoxMaxUploads.Items3" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="comboBoxMaxUploads.Items2" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonOpenLogs.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBoxMaxUploads.Items7" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="comboBoxMaxUploads.Items6" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="checkBoxStartWhenWindowsStarts.Text" xml:space="preserve">
+    <value>Start Uploader with Windows</value>
+  </data>
+  <data name="comboBoxMaxUploads.Items4" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="checkBoxTwitchOnlySuccess.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBoxFileSizeIgnore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 42</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonUpdateNow.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripMenuItemOpenCustomName.Text" xml:space="preserve">
+    <value>Open custom name settings</value>
+  </data>
+  <data name="buttonSession.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxStartWhenWindowsStarts.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="buttonGW2API.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;checkBoxUploadLogs.Parent" xml:space="preserve">
+    <value>groupBoxArcdpsLogs</value>
+  </data>
+  <data name="&gt;&gt;buttonBossData.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemPostToTwitch.Name" xml:space="preserve">
+    <value>toolStripMenuItemPostToTwitch</value>
+  </data>
+  <data name="&gt;&gt;buttonAleevaSettings.Name" xml:space="preserve">
+    <value>buttonAleevaSettings</value>
+  </data>
+  <data name="buttonOpenLogs.Text" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMaxUploads.Name" xml:space="preserve">
+    <value>comboBoxMaxUploads</value>
+  </data>
+  <data name="checkBoxUploadLogs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 19</value>
+  </data>
+  <data name="buttonSession.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="checkBoxTwitchOnlySuccess.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;buttonUpdateNow.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;buttonSession.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxMaxUploads.Items" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxArcdpsLogs.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;buttonDiscordWebhooks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelLocationInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 149</value>
+  </data>
+  <data name="buttonUpdateNow.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxFileSizeIgnore.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOtherSettings.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonDPSReportServer.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxPostToTwitch.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMaxUploads.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxStartWhenWindowsStarts.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemDiscordWebhooks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorThird.Name" xml:space="preserve">
+    <value>toolStripSeparatorThird</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonDiscordWebhooks.Parent" xml:space="preserve">
+    <value>groupBoxOtherSettings</value>
+  </data>
+  <data name="buttonDisConnectTwitch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 149</value>
+  </data>
+  <data name="buttonReset.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;buttonAleevaSettings.Parent" xml:space="preserve">
+    <value>groupBoxOtherSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonGW2API.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonPingSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBoxArcdpsLogs.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFileSizeIgnore.Name" xml:space="preserve">
+    <value>checkBoxFileSizeIgnore</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStartWhenWindowsStarts.Name" xml:space="preserve">
+    <value>checkBoxStartWhenWindowsStarts</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStartWhenWindowsStarts.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="checkBoxTrayMinimiseToIcon.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonDPSReportServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="&gt;&gt;labelMaximumUploads.Parent" xml:space="preserve">
+    <value>groupBoxOtherSettings</value>
+  </data>
+  <data name="checkBoxUploadLogs.Text" xml:space="preserve">
+    <value>Upload Logs</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>PlenBot Log Uploader</value>
+  </data>
+  <data name="buttonArcVersionChecking.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOpenPingSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelMaximumUploads.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 68</value>
+  </data>
+  <data name="comboBoxMaxUploads.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxOtherSettings.Text" xml:space="preserve">
+    <value>Other Settings</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyApplicationSession.Parent" xml:space="preserve">
+    <value>groupBoxArcdpsLogs</value>
+  </data>
+  <data name="toolStripMenuItemExit.Text" xml:space="preserve">
+    <value>Shutdown</value>
+  </data>
+  <data name="&gt;&gt;timerCheckUpdate.Name" xml:space="preserve">
+    <value>timerCheckUpdate</value>
+  </data>
+  <data name="buttonBossData.Text" xml:space="preserve">
+    <value>Edit Boss Data</value>
+  </data>
+  <data name="buttonChangeTwitchChannel.Text" xml:space="preserve">
+    <value>Change Twitch Channel</value>
+  </data>
+  <data name="comboBoxMaxUploads.Items9" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="buttonLogsLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorFirst.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBoxUploadLogs.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="buttonBossData.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;groupBoxTwitchSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelLocationInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonBossData.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxFileSizeIgnore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 17</value>
+  </data>
+  <data name="checkBoxPostToTwitch.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBoxMaxUploads.Items8" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="buttonPingSettings.Text" xml:space="preserve">
+    <value>Remote Server Ping</value>
+  </data>
+  <data name="checkBoxUploadLogs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 17</value>
+  </data>
+  <data name="groupBoxTwitchSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>426, 12</value>
+  </data>
+  <data name="richTextBoxMainConsole.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxFileSizeIgnore.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="toolStripMenuItemDiscordWebhooks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>277, 22</value>
+  </data>
+  <data name="comboBoxMaxUploads.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 21</value>
+  </data>
+  <data name="richTextBoxMainConsole.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripIcon.Name" xml:space="preserve">
+    <value>contextMenuStripIcon</value>
+  </data>
+  <data name="buttonReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 237</value>
+  </data>
+  <data name="buttonCopyApplicationSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 94</value>
+  </data>
+  <data name="buttonAleevaSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 208</value>
+  </data>
+  <data name="&gt;&gt;labelLocationInfo.Parent" xml:space="preserve">
+    <value>groupBoxArcdpsLogs</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemExit.Name" xml:space="preserve">
+    <value>toolStripMenuItemExit</value>
+  </data>
+  <data name="toolStripMenuItemOpenDPSReportServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>277, 22</value>
+  </data>
+  <data name="richTextBoxMainConsole.Size" type="System.Drawing.Size, System.Drawing">
+    <value>408, 364</value>
+  </data>
+  <data name="&gt;&gt;buttonReconnectBot.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="buttonReconnectBot.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="toolStripMenuItemOpenTwitchCommands.Text" xml:space="preserve">
+    <value>Open Twitch commands</value>
+  </data>
+  <data name="&gt;&gt;buttonDisConnectTwitch.Name" xml:space="preserve">
+    <value>buttonDisConnectTwitch</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenLogs.Parent" xml:space="preserve">
+    <value>groupBoxArcdpsLogs</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonAleevaSettings.Text" xml:space="preserve">
+    <value>Aleeva Integration</value>
+  </data>
+  <data name="&gt;&gt;buttonDPSReportServer.Name" xml:space="preserve">
+    <value>buttonDPSReportServer</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTwitchOnlySuccess.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonChangeTwitchChannel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripMenuItemPostToTwitch.Text" xml:space="preserve">
+    <value>post links to Twitch chat</value>
+  </data>
+  <data name="contextMenuStripIcon.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemExit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTwitchOnlySuccess.Parent" xml:space="preserve">
+    <value>groupBoxTwitchSettings</value>
+  </data>
+  <data name="buttonUpdateNow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>725, 303</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPostToTwitch.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelMaximumUploads.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 13</value>
+  </data>
+  <data name="buttonDPSReportServer.Text" xml:space="preserve">
+    <value>DPS.report Settings</value>
+  </data>
+  <data name="checkBoxTwitchOnlySuccess.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 17</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFileSizeIgnore.Parent" xml:space="preserve">
+    <value>groupBoxArcdpsLogs</value>
+  </data>
+  <data name="checkBoxStartWhenWindowsStarts.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonReset.Text" xml:space="preserve">
+    <value>Reset All Settings</value>
+  </data>
+  <data name="buttonDiscordWebhooks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 23</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOpenTwitchCommands.Name" xml:space="preserve">
+    <value>toolStripMenuItemOpenTwitchCommands</value>
+  </data>
+  <data name="checkBoxStartWhenWindowsStarts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 42</value>
+  </data>
+  <data name="buttonDisConnectTwitch.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;checkBoxPostToTwitch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTwitchOnlySuccess.Name" xml:space="preserve">
+    <value>checkBoxTwitchOnlySuccess</value>
+  </data>
+  <data name="&gt;&gt;buttonTwitchCommands.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonGW2API.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;buttonLogsLocation.Parent" xml:space="preserve">
+    <value>groupBoxArcdpsLogs</value>
+  </data>
+  <data name="&gt;&gt;buttonArcVersionChecking.Name" xml:space="preserve">
+    <value>buttonArcVersionChecking</value>
+  </data>
+  <data name="&gt;&gt;buttonLogsLocation.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;buttonLogsLocation.Name" xml:space="preserve">
+    <value>buttonLogsLocation</value>
+  </data>
+  <data name="labelLocationInfo.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;groupBoxArcdpsLogs.Name" xml:space="preserve">
+    <value>groupBoxArcdpsLogs</value>
+  </data>
+  <data name="groupBoxTwitchSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStartWhenWindowsStarts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonUpdateNow.Name" xml:space="preserve">
+    <value>buttonUpdateNow</value>
+  </data>
+  <data name="groupBoxTwitchSettings.Text" xml:space="preserve">
+    <value>Twitch Settings</value>
+  </data>
+  <data name="buttonBossData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 23</value>
+  </data>
+  <data name="checkBoxTrayMinimiseToIcon.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOpenDPSReportServer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxMainConsole.Name" xml:space="preserve">
+    <value>richTextBoxMainConsole</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxMainConsole.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonDiscordWebhooks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 92</value>
+  </data>
+  <data name="buttonReconnectBot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 23</value>
+  </data>
+  <data name="toolStripMenuItemOpenDPSReportServer.Text" xml:space="preserve">
+    <value>Open DPS.report settings</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOpenCustomName.Name" xml:space="preserve">
+    <value>toolStripMenuItemOpenCustomName</value>
+  </data>
+  <data name="&gt;&gt;buttonLogsLocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonAleevaSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBoxOtherSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonUpdateNow.Text" xml:space="preserve">
+    <value>Uploader Update Available</value>
+  </data>
+  <data name="checkBoxTrayMinimiseToIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 19</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemDiscordWebhooks.Name" xml:space="preserve">
+    <value>toolStripMenuItemDiscordWebhooks</value>
+  </data>
+  <data name="&gt;&gt;labelMaximumUploads.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMaxUploads.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBoxArcdpsLogs.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxOtherSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 265</value>
+  </data>
+  <data name="&gt;&gt;buttonGW2API.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonDiscordWebhooks.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="buttonCustomName.Text" xml:space="preserve">
+    <value>Custom Name</value>
+  </data>
+  <data name="&gt;&gt;buttonReconnectBot.Name" xml:space="preserve">
+    <value>buttonReconnectBot</value>
+  </data>
+  <data name="buttonLogsLocation.Text" xml:space="preserve">
+    <value>Change Log Directory</value>
+  </data>
+  <data name="&gt;&gt;groupBoxTwitchSettings.Name" xml:space="preserve">
+    <value>groupBoxTwitchSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonTwitchCommands.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonUpdateNow.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTrayMinimiseToIcon.Parent" xml:space="preserve">
+    <value>groupBoxOtherSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonCustomName.Name" xml:space="preserve">
+    <value>buttonCustomName</value>
+  </data>
+  <data name="buttonDPSReportServer.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxTwitchOnlySuccess.Text" xml:space="preserve">
+    <value>Post Successful Logs Only</value>
+  </data>
+  <data name="&gt;&gt;buttonArcVersionChecking.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonTwitchCommands.Name" xml:space="preserve">
+    <value>buttonTwitchCommands</value>
+  </data>
+  <data name="checkBoxTwitchOnlySuccess.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelMaximumUploads.Text" xml:space="preserve">
+    <value>Concurrent Uploads (max.)</value>
+  </data>
+  <data name="buttonOpenLogs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 23</value>
+  </data>
+  <data name="checkBoxTwitchOnlySuccess.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonDiscordWebhooks.Text" xml:space="preserve">
+    <value>Discord Webhooks</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTwitchOnlySuccess.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxTrayMinimiseToIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 17</value>
+  </data>
+  <data name="&gt;&gt;groupBoxTwitchSettings.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="buttonOpenLogs.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTrayMinimiseToIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="richTextBoxMainConsole.ScrollBars" type="System.Windows.Forms.RichTextBoxScrollBars, System.Windows.Forms">
+    <value>ForcedVertical</value>
+  </data>
+  <data name="labelLocationInfo.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="buttonLogsLocation.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxTwitchOnlySuccess.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 68</value>
+  </data>
+  <data name="buttonCopyApplicationSession.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 65</value>
+  </data>
+  <data name="&gt;&gt;buttonGW2API.Parent" xml:space="preserve">
+    <value>groupBoxOtherSettings</value>
+  </data>
+  <data name="buttonCopyApplicationSession.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;buttonTwitchCommands.Parent" xml:space="preserve">
+    <value>groupBoxTwitchSettings</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStartWhenWindowsStarts.Parent" xml:space="preserve">
+    <value>groupBoxOtherSettings</value>
+  </data>
+  <data name="buttonDiscordWebhooks.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;checkBoxUploadLogs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBoxUploadLogs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="toolStripMenuItemOpenTwitchCommands.Size" type="System.Drawing.Size, System.Drawing">
+    <value>277, 22</value>
+  </data>
+  <data name="buttonPingSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;buttonCopyApplicationSession.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenLogs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOpenDPSReportServer.Name" xml:space="preserve">
+    <value>toolStripMenuItemOpenDPSReportServer</value>
+  </data>
+  <data name="buttonTwitchCommands.Text" xml:space="preserve">
+    <value>Twitch Commands</value>
+  </data>
+  <data name="checkBoxTrayMinimiseToIcon.Text" xml:space="preserve">
+    <value>Minimize to Tray</value>
+  </data>
+  <data name="buttonArcVersionChecking.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 23</value>
+  </data>
+  <data name="buttonArcVersionChecking.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 150</value>
+  </data>
+  <data name="checkBoxPostToTwitch.Text" xml:space="preserve">
+    <value>Post Links to Twitch Chat</value>
+  </data>
+  <data name="groupBoxOtherSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOpenTwitchCommands.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonCustomName.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="checkBoxPostToTwitch.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="buttonOpenLogs.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonBossData.Parent" xml:space="preserve">
+    <value>groupBoxArcdpsLogs</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="labelMaximumUploads.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;buttonCustomName.Parent" xml:space="preserve">
+    <value>groupBoxTwitchSettings</value>
+  </data>
+  <data name="buttonTwitchCommands.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="buttonTwitchCommands.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 120</value>
+  </data>
+  <data name="checkBoxPostToTwitch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 45</value>
+  </data>
+  <data name="toolStripSeparatorFirst.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 6</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPostToTwitch.Name" xml:space="preserve">
+    <value>checkBoxPostToTwitch</value>
+  </data>
+  <data name="buttonArcVersionChecking.Text" xml:space="preserve">
+    <value>arcdps Version Check Settings</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorThird.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBoxTwitchSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 179</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOpenCustomName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonUpdateNow.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="buttonReconnectBot.Text" xml:space="preserve">
+    <value>Reconnect Bot</value>
+  </data>
+  <data name="toolStripMenuItemOpenPingSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>277, 22</value>
+  </data>
+  <data name="&gt;&gt;timerCheckUpdate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonChangeTwitchChannel.Parent" xml:space="preserve">
+    <value>groupBoxTwitchSettings</value>
+  </data>
+  <data name="notifyIconTray.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBoxMaxUploads.Items1" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxPostToTwitch.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;buttonDisConnectTwitch.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxFileSizeIgnore.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxStartWhenWindowsStarts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 17</value>
+  </data>
+  <data name="notifyIconTray.Text" xml:space="preserve">
+    <value>PlenBot Log Uploader</value>
+  </data>
+  <data name="toolStripMenuItemOpenArcVersionsSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>277, 22</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemUploadLogs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripMenuItemUploadLogs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>277, 22</value>
+  </data>
+  <data name="groupBoxArcdpsLogs.Text" xml:space="preserve">
+    <value>arcdps Logs and DPS.report</value>
+  </data>
+  <data name="labelLocationInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 23</value>
+  </data>
+  <data name="&gt;&gt;buttonReconnectBot.Parent" xml:space="preserve">
+    <value>groupBoxTwitchSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenLogs.Name" xml:space="preserve">
+    <value>buttonOpenLogs</value>
+  </data>
+  <data name="&gt;&gt;notifyIconTray.Name" xml:space="preserve">
+    <value>notifyIconTray</value>
+  </data>
+  <data name="&gt;&gt;buttonDPSReportServer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxMaxUploads.Items5" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormMain</value>
+  </data>
+  <data name="&gt;&gt;buttonDisConnectTwitch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxMaxUploads.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;labelLocationInfo.Name" xml:space="preserve">
+    <value>labelLocationInfo</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenLogs.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;buttonAleevaSettings.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;buttonPingSettings.Parent" xml:space="preserve">
+    <value>groupBoxOtherSettings</value>
+  </data>
+  <data name="buttonOpenLogs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 123</value>
+  </data>
+  <data name="&gt;&gt;buttonArcVersionChecking.Parent" xml:space="preserve">
+    <value>groupBoxOtherSettings</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxMainConsole.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonDisConnectTwitch.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;buttonDPSReportServer.Parent" xml:space="preserve">
+    <value>groupBoxArcdpsLogs</value>
+  </data>
+  <data name="buttonCopyApplicationSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 23</value>
+  </data>
+  <data name="checkBoxFileSizeIgnore.Text" xml:space="preserve">
+    <value>Ignore File Size Limit of 8 KB</value>
+  </data>
+  <data name="buttonPingSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 23</value>
+  </data>
+  <data name="&gt;&gt;buttonDPSReportServer.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;groupBoxTwitchSettings.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="buttonCustomName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 23</value>
+  </data>
+  <data name="&gt;&gt;labelMaximumUploads.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxMainConsole.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="toolStripMenuItemOpenArcVersionsSettings.Text" xml:space="preserve">
+    <value>Open arcdps version checking settings</value>
+  </data>
+  <data name="buttonReconnectBot.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonLogsLocation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 123</value>
+  </data>
+  <data name="&gt;&gt;notifyIconTray.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBoxPostToTwitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 17</value>
+  </data>
+  <data name="buttonDisConnectTwitch.Text" xml:space="preserve">
+    <value>Disconnect from Twitch</value>
+  </data>
+  <data name="&gt;&gt;buttonBossData.Name" xml:space="preserve">
+    <value>buttonBossData</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFileSizeIgnore.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;buttonChangeTwitchChannel.Name" xml:space="preserve">
+    <value>buttonChangeTwitchChannel</value>
+  </data>
+  <data name="labelMaximumUploads.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonChangeTwitchChannel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 23</value>
+  </data>
+  <data name="buttonReset.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="buttonPingSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 179</value>
+  </data>
+  <data name="comboBoxMaxUploads.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 65</value>
+  </data>
+  <data name="&gt;&gt;buttonCustomName.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonCustomName.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemUploadLogs.Name" xml:space="preserve">
+    <value>toolStripMenuItemUploadLogs</value>
+  </data>
+  <data name="buttonGW2API.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 121</value>
+  </data>
+  <data name="&gt;&gt;buttonBossData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonBossData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 65</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTrayMinimiseToIcon.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;buttonUpdateNow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripSeparatorSecond.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 6</value>
+  </data>
+  <data name="richTextBoxMainConsole.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="&gt;&gt;buttonSession.Name" xml:space="preserve">
+    <value>buttonSession</value>
+  </data>
+  <data name="toolStripMenuItemDiscordWebhooks.Text" xml:space="preserve">
+    <value>Discord webhooks</value>
+  </data>
+  <data name="buttonGW2API.Text" xml:space="preserve">
+    <value>GW2 API Settings</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOpenArcVersionsSettings.Name" xml:space="preserve">
+    <value>toolStripMenuItemOpenArcVersionsSettings</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFileSizeIgnore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOtherSettings.Name" xml:space="preserve">
+    <value>groupBoxOtherSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonPingSettings.Name" xml:space="preserve">
+    <value>buttonPingSettings</value>
+  </data>
+  <data name="buttonCustomName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 91</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTrayMinimiseToIcon.Name" xml:space="preserve">
+    <value>checkBoxTrayMinimiseToIcon</value>
+  </data>
+  <data name="&gt;&gt;labelLocationInfo.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemPostToTwitch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxArcdpsLogs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonReconnectBot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 91</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorSecond.Name" xml:space="preserve">
+    <value>toolStripSeparatorSecond</value>
+  </data>
+  <data name="groupBoxArcdpsLogs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>259, 179</value>
+  </data>
+  <data name="groupBoxOtherSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>691, 12</value>
+  </data>
+  <data name="&gt;&gt;buttonSession.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonPingSettings.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="buttonLogsLocation.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="toolStripMenuItemPostToTwitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>277, 22</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Name" xml:space="preserve">
+    <value>buttonReset</value>
+  </data>
+  <data name="buttonDPSReportServer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 94</value>
+  </data>
+  <data name="toolStripSeparatorThird.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 6</value>
+  </data>
+  <data name="&gt;&gt;labelLocationInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorSecond.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>906, 388</value>
+  </data>
+  <data name="buttonTwitchCommands.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelMaximumUploads.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonAleevaSettings.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;buttonAleevaSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOpenPingSettings.Name" xml:space="preserve">
+    <value>toolStripMenuItemOpenPingSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonChangeTwitchChannel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBoxTwitchSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonSession.Text" xml:space="preserve">
+    <value>Log Sessions</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyApplicationSession.Name" xml:space="preserve">
+    <value>buttonCopyApplicationSession</value>
+  </data>
+  <data name="contextMenuStripIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 220</value>
+  </data>
+  <data name="buttonGW2API.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 23</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Parent" xml:space="preserve">
+    <value>groupBoxOtherSettings</value>
+  </data>
+  <data name="buttonUpdateNow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 40</value>
+  </data>
+  <data name="&gt;&gt;checkBoxUploadLogs.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="richTextBoxMainConsole.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="&gt;&gt;buttonDisConnectTwitch.Parent" xml:space="preserve">
+    <value>groupBoxTwitchSettings</value>
+  </data>
+  <data name="buttonUpdateNow.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonDiscordWebhooks.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonAleevaSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 23</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOtherSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMaxUploads.Parent" xml:space="preserve">
+    <value>groupBoxOtherSettings</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorFirst.Name" xml:space="preserve">
+    <value>toolStripSeparatorFirst</value>
+  </data>
+  <data name="buttonTwitchCommands.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 23</value>
+  </data>
+  <data name="groupBoxArcdpsLogs.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="checkBoxTrayMinimiseToIcon.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonAleevaSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;buttonSession.Parent" xml:space="preserve">
+    <value>groupBoxArcdpsLogs</value>
+  </data>
+  <data name="&gt;&gt;buttonArcVersionChecking.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="richTextBoxMainConsole.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;labelMaximumUploads.Name" xml:space="preserve">
+    <value>labelMaximumUploads</value>
+  </data>
+  <data name="toolStripMenuItemOpenPingSettings.Text" xml:space="preserve">
+    <value>Remote server pings</value>
+  </data>
+  <data name="buttonArcVersionChecking.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOtherSettings.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemOpenArcVersionsSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripMenuItemExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>277, 22</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPostToTwitch.Parent" xml:space="preserve">
+    <value>groupBoxTwitchSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonPingSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonDisConnectTwitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 23</value>
+  </data>
+  <data name="toolStripMenuItemOpenCustomName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>277, 22</value>
+  </data>
+  <data name="groupBoxArcdpsLogs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>426, 197</value>
+  </data>
+  <data name="buttonChangeTwitchChannel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyApplicationSession.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;buttonCustomName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonCopyApplicationSession.Text" xml:space="preserve">
+    <value>Copy to Clipboard</value>
+  </data>
+  <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 23</value>
+  </data>
+  <data name="toolStripMenuItemUploadLogs.Text" xml:space="preserve">
+    <value>upload logs</value>
+  </data>
+  <data name="&gt;&gt;buttonDiscordWebhooks.Name" xml:space="preserve">
+    <value>buttonDiscordWebhooks</value>
+  </data>
+  <data name="&gt;&gt;buttonGW2API.Name" xml:space="preserve">
+    <value>buttonGW2API</value>
+  </data>
+  <metadata name="contextMenuStripIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>140, 20</value>
+  </metadata>
   <metadata name="notifyIconTray.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>22, 18</value>
   </metadata>
-  <metadata name="contextMenuStripIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>140, 20</value>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>en</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
   </metadata>
   <metadata name="timerCheckUpdate.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>300, 20</value>
