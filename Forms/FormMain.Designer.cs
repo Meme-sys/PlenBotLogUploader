@@ -147,7 +147,7 @@
             // 
             this.buttonChangeTwitchChannel.Location = new System.Drawing.Point(6, 16);
             this.buttonChangeTwitchChannel.Name = "buttonChangeTwitchChannel";
-            this.buttonChangeTwitchChannel.Size = new System.Drawing.Size(126, 23);
+            this.buttonChangeTwitchChannel.Size = new System.Drawing.Size(237, 23);
             this.buttonChangeTwitchChannel.TabIndex = 8;
             this.buttonChangeTwitchChannel.Text = "Change Twitch Channel";
             this.buttonChangeTwitchChannel.UseVisualStyleBackColor = true;
