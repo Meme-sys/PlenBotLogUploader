@@ -108,7 +108,7 @@ namespace PlenBotLogUploader
                 }
                 if (Properties.Settings.Default.LogsLocation.Equals("") || !Directory.Exists(Properties.Settings.Default.LogsLocation))
                 {
-                    labelLocationInfo.Text = "!!! Select a directory with arc logs !!!";
+                    labelLocationInfo.Text = "Select a Directory with Arc Logs!";
                 }
                 else
                 {
@@ -123,7 +123,7 @@ namespace PlenBotLogUploader
                     else
                     {
                         Properties.Settings.Default.LogsLocation = "";
-                        labelLocationInfo.Text = "!!! Select a directory with arc logs !!!";
+                        labelLocationInfo.Text = "Select a Directory with Arc Logs!";
                     }
                 }
                 Properties.Settings.Default.TwitchChannelName = Properties.Settings.Default.TwitchChannelName.ToLower();
@@ -1326,7 +1326,7 @@ namespace PlenBotLogUploader
         }
         #endregion
 
-        private void checkBoxFileSizeIgnore_CheckedChanged_1(object sender, EventArgs e)
+        private void CheckBoxFileSizeIgnore_CheckedChanged_1(object sender, EventArgs e)
         {
 
         }

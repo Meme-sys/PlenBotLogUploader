@@ -30,6 +30,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.groupBoxTwitchSettings = new System.Windows.Forms.GroupBox();
             this.buttonTwitchCommands = new System.Windows.Forms.Button();
             this.checkBoxTwitchOnlySuccess = new System.Windows.Forms.CheckBox();
@@ -85,7 +86,6 @@
             // 
             // groupBoxTwitchSettings
             // 
-            this.groupBoxTwitchSettings.AutoSize = true;
             this.groupBoxTwitchSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBoxTwitchSettings.Controls.Add(this.buttonTwitchCommands);
             this.groupBoxTwitchSettings.Controls.Add(this.checkBoxTwitchOnlySuccess);
@@ -95,9 +95,9 @@
             this.groupBoxTwitchSettings.Controls.Add(this.checkBoxPostToTwitch);
             this.groupBoxTwitchSettings.Controls.Add(this.buttonReconnectBot);
             this.groupBoxTwitchSettings.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBoxTwitchSettings.Location = new System.Drawing.Point(426, 12);
+            this.groupBoxTwitchSettings.Location = new System.Drawing.Point(416, 12);
             this.groupBoxTwitchSettings.Name = "groupBoxTwitchSettings";
-            this.groupBoxTwitchSettings.Size = new System.Drawing.Size(249, 191);
+            this.groupBoxTwitchSettings.Size = new System.Drawing.Size(253, 181);
             this.groupBoxTwitchSettings.TabIndex = 4;
             this.groupBoxTwitchSettings.TabStop = false;
             this.groupBoxTwitchSettings.Text = " Twitch Settings ";
@@ -193,7 +193,7 @@
             this.checkBoxFileSizeIgnore.TabIndex = 7;
             this.checkBoxFileSizeIgnore.Text = "Ignore File Size Limit of 8 KB";
             this.checkBoxFileSizeIgnore.UseVisualStyleBackColor = true;
-            this.checkBoxFileSizeIgnore.CheckedChanged += new System.EventHandler(this.checkBoxFileSizeIgnore_CheckedChanged_1);
+            this.checkBoxFileSizeIgnore.CheckedChanged += new System.EventHandler(this.CheckBoxFileSizeIgnore_CheckedChanged_1);
             // 
             // checkBoxUploadLogs
             // 
@@ -207,7 +207,6 @@
             // 
             // groupBoxArcdpsLogs
             // 
-            this.groupBoxArcdpsLogs.AutoSize = true;
             this.groupBoxArcdpsLogs.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBoxArcdpsLogs.Controls.Add(this.buttonCopyApplicationSession);
             this.groupBoxArcdpsLogs.Controls.Add(this.buttonSession);
@@ -219,12 +218,12 @@
             this.groupBoxArcdpsLogs.Controls.Add(this.buttonLogsLocation);
             this.groupBoxArcdpsLogs.Controls.Add(this.checkBoxUploadLogs);
             this.groupBoxArcdpsLogs.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBoxArcdpsLogs.Location = new System.Drawing.Point(426, 199);
+            this.groupBoxArcdpsLogs.Location = new System.Drawing.Point(416, 199);
             this.groupBoxArcdpsLogs.Name = "groupBoxArcdpsLogs";
-            this.groupBoxArcdpsLogs.Size = new System.Drawing.Size(249, 188);
+            this.groupBoxArcdpsLogs.Size = new System.Drawing.Size(253, 170);
             this.groupBoxArcdpsLogs.TabIndex = 5;
             this.groupBoxArcdpsLogs.TabStop = false;
-            this.groupBoxArcdpsLogs.Text = " arcdps Logs and DPS.report ";
+            this.groupBoxArcdpsLogs.Text = " Arcdps Logs and DPS.report ";
             // 
             // buttonCopyApplicationSession
             // 
@@ -269,9 +268,10 @@
             // 
             // labelLocationInfo
             // 
-            this.labelLocationInfo.Location = new System.Drawing.Point(35, 149);
+            this.labelLocationInfo.ForeColor = System.Drawing.Color.Red;
+            this.labelLocationInfo.Location = new System.Drawing.Point(28, 149);
             this.labelLocationInfo.Name = "labelLocationInfo";
-            this.labelLocationInfo.Size = new System.Drawing.Size(188, 23);
+            this.labelLocationInfo.Size = new System.Drawing.Size(188, 18);
             this.labelLocationInfo.TabIndex = 1;
             this.labelLocationInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -402,7 +402,6 @@
             // 
             // groupBoxOtherSettings
             // 
-            this.groupBoxOtherSettings.AutoSize = true;
             this.groupBoxOtherSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBoxOtherSettings.Controls.Add(this.buttonAleevaSettings);
             this.groupBoxOtherSettings.Controls.Add(this.buttonGW2API);
@@ -415,9 +414,9 @@
             this.groupBoxOtherSettings.Controls.Add(this.checkBoxTrayMinimiseToIcon);
             this.groupBoxOtherSettings.Controls.Add(this.buttonPingSettings);
             this.groupBoxOtherSettings.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBoxOtherSettings.Location = new System.Drawing.Point(691, 12);
+            this.groupBoxOtherSettings.Location = new System.Drawing.Point(692, 12);
             this.groupBoxOtherSettings.Name = "groupBoxOtherSettings";
-            this.groupBoxOtherSettings.Size = new System.Drawing.Size(200, 279);
+            this.groupBoxOtherSettings.Size = new System.Drawing.Size(200, 268);
             this.groupBoxOtherSettings.TabIndex = 7;
             this.groupBoxOtherSettings.TabStop = false;
             this.groupBoxOtherSettings.Text = " Other Settings ";
@@ -509,7 +508,7 @@
             this.buttonArcVersionChecking.Name = "buttonArcVersionChecking";
             this.buttonArcVersionChecking.Size = new System.Drawing.Size(188, 23);
             this.buttonArcVersionChecking.TabIndex = 3;
-            this.buttonArcVersionChecking.Text = "arcdps Version Check Settings";
+            this.buttonArcVersionChecking.Text = "Arcdps Version Check Settings";
             this.buttonArcVersionChecking.UseVisualStyleBackColor = true;
             this.buttonArcVersionChecking.Click += new System.EventHandler(this.ButtonArcVersionChecking_Click);
             // 
@@ -526,7 +525,7 @@
             // buttonUpdateNow
             // 
             this.buttonUpdateNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.buttonUpdateNow.Location = new System.Drawing.Point(725, 303);
+            this.buttonUpdateNow.Location = new System.Drawing.Point(727, 313);
             this.buttonUpdateNow.Name = "buttonUpdateNow";
             this.buttonUpdateNow.Size = new System.Drawing.Size(126, 40);
             this.buttonUpdateNow.TabIndex = 8;
@@ -552,7 +551,7 @@
             this.richTextBoxMainConsole.Name = "richTextBoxMainConsole";
             this.richTextBoxMainConsole.ReadOnly = true;
             this.richTextBoxMainConsole.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBoxMainConsole.Size = new System.Drawing.Size(408, 364);
+            this.richTextBoxMainConsole.Size = new System.Drawing.Size(397, 357);
             this.richTextBoxMainConsole.TabIndex = 9;
             this.richTextBoxMainConsole.Text = "";
             this.richTextBoxMainConsole.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.RichTextBoxUploadInfo_LinkClicked);
@@ -565,12 +564,13 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(906, 390);
+            this.ClientSize = new System.Drawing.Size(904, 381);
             this.Controls.Add(this.buttonUpdateNow);
             this.Controls.Add(this.groupBoxOtherSettings);
             this.Controls.Add(this.groupBoxArcdpsLogs);
             this.Controls.Add(this.groupBoxTwitchSettings);
             this.Controls.Add(this.richTextBoxMainConsole);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -589,7 +589,6 @@
             this.groupBoxOtherSettings.ResumeLayout(false);
             this.groupBoxOtherSettings.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

@@ -262,9 +262,6 @@
     <EmbeddedResource Include="Forms\FormLogSession.resx">
       <DependentUpon>FormLogSession.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain.en.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormPings.resx">
       <DependentUpon>FormPings.cs</DependentUpon>
     </EmbeddedResource>
