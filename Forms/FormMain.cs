@@ -285,10 +285,10 @@ namespace PlenBotLogUploader
         #endregion
 
         #region form events
-        private void FormMain_Load(object sender, EventArgs e)
+        private async void FormMain_Load(object sender, EventArgs e)
         {
-            DoCommandArgs();
-            Task.Run(() => NewReleaseCheckAsync());
+            await DoCommandArgs();
+            _ = Task.Run(() => NewReleaseCheckAsync());
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -444,7 +444,7 @@ namespace PlenBotLogUploader
             UpdateLogCount();
         }
 
-        protected async void NewReleaseCheckAsync()
+        protected async Task NewReleaseCheckAsync()
         {
             try
             {
@@ -487,7 +487,7 @@ namespace PlenBotLogUploader
             Application.Exit();
         }
 
-        protected async void DoCommandArgs()
+        protected async Task DoCommandArgs()
         {
             var args = Environment.GetCommandLineArgs().ToList();
             if (args.Count > 1)
@@ -779,7 +779,7 @@ namespace PlenBotLogUploader
             }
         }
 
-        public async Task ExecuteSessionLogWebhooksAsync(LogSessionSettings logSessionSettings)
+        public Task ExecuteSessionLogWebhooksAsync(LogSessionSettings logSessionSettings)
         {
             var builder = new System.Text.StringBuilder($">:> Session summary:{Environment.NewLine}");
             foreach (var log in SessionLogs)
@@ -787,7 +787,7 @@ namespace PlenBotLogUploader
                 builder.AppendLine($"{log?.ExtraJSON.FightName ?? log.Encounter.Boss}: {log.Permalink}");
             }
             AddToText(builder.ToString());
-            await discordWebhooksLink.ExecuteSessionWebhooksAsync(SessionLogs, logSessionSettings);
+            return discordWebhooksLink.ExecuteSessionWebhooksAsync(SessionLogs, logSessionSettings);
         }
         #endregion
 

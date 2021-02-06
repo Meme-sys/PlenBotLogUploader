@@ -19,7 +19,7 @@ namespace PlenBotLogUploader.RemotePing
 
         public PingAuthentication Authentication { get; set; }
 
-        public async Task<bool> PingServerAsync(FormMain mainLink, DPSReportJSON reportJSON) => await PingServerAsync(this, mainLink, reportJSON);
+        public Task<bool> PingServerAsync(FormMain mainLink, DPSReportJSON reportJSON) => PingServerAsync(this, mainLink, reportJSON);
 
         public static async Task<bool> PingServerAsync(PingConfiguration configuration, FormMain mainLink, DPSReportJSON reportJSON)
         {
