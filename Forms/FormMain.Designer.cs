@@ -325,7 +325,7 @@
             this.toolStripMenuItemUploadLogs.CheckOnClick = true;
             this.toolStripMenuItemUploadLogs.Name = "toolStripMenuItemUploadLogs";
             this.toolStripMenuItemUploadLogs.Size = new System.Drawing.Size(277, 22);
-            this.toolStripMenuItemUploadLogs.Text = "upload logs";
+            this.toolStripMenuItemUploadLogs.Text = "Upload Logs";
             this.toolStripMenuItemUploadLogs.CheckedChanged += new System.EventHandler(this.ToolStripMenuItemUploadLogs_CheckedChanged);
             // 
             // toolStripMenuItemPostToTwitch
@@ -333,7 +333,7 @@
             this.toolStripMenuItemPostToTwitch.CheckOnClick = true;
             this.toolStripMenuItemPostToTwitch.Name = "toolStripMenuItemPostToTwitch";
             this.toolStripMenuItemPostToTwitch.Size = new System.Drawing.Size(277, 22);
-            this.toolStripMenuItemPostToTwitch.Text = "post links to Twitch chat";
+            this.toolStripMenuItemPostToTwitch.Text = "Post Links to Twitch Chat";
             this.toolStripMenuItemPostToTwitch.CheckedChanged += new System.EventHandler(this.ToolStripMenuItemPostToTwitch_CheckedChanged);
             // 
             // toolStripSeparatorFirst
@@ -345,28 +345,28 @@
             // 
             this.toolStripMenuItemOpenDPSReportServer.Name = "toolStripMenuItemOpenDPSReportServer";
             this.toolStripMenuItemOpenDPSReportServer.Size = new System.Drawing.Size(277, 22);
-            this.toolStripMenuItemOpenDPSReportServer.Text = "Open DPS.report settings";
+            this.toolStripMenuItemOpenDPSReportServer.Text = "Open DPS.report Settings";
             this.toolStripMenuItemOpenDPSReportServer.Click += new System.EventHandler(this.ToolStripMenuItemOpenDPSReportServer_Click);
             // 
             // toolStripMenuItemOpenCustomName
             // 
             this.toolStripMenuItemOpenCustomName.Name = "toolStripMenuItemOpenCustomName";
             this.toolStripMenuItemOpenCustomName.Size = new System.Drawing.Size(277, 22);
-            this.toolStripMenuItemOpenCustomName.Text = "Open custom name settings";
+            this.toolStripMenuItemOpenCustomName.Text = "Open Custom Name Settings";
             this.toolStripMenuItemOpenCustomName.Click += new System.EventHandler(this.ToolStripMenuItemOpenCustomName_Click);
             // 
             // toolStripMenuItemOpenTwitchCommands
             // 
             this.toolStripMenuItemOpenTwitchCommands.Name = "toolStripMenuItemOpenTwitchCommands";
             this.toolStripMenuItemOpenTwitchCommands.Size = new System.Drawing.Size(277, 22);
-            this.toolStripMenuItemOpenTwitchCommands.Text = "Open Twitch commands";
+            this.toolStripMenuItemOpenTwitchCommands.Text = "Open Twitch Commands";
             this.toolStripMenuItemOpenTwitchCommands.Click += new System.EventHandler(this.ToolStripMenuItemOpenTwitchCommands_Click);
             // 
             // toolStripMenuItemOpenArcVersionsSettings
             // 
             this.toolStripMenuItemOpenArcVersionsSettings.Name = "toolStripMenuItemOpenArcVersionsSettings";
             this.toolStripMenuItemOpenArcVersionsSettings.Size = new System.Drawing.Size(277, 22);
-            this.toolStripMenuItemOpenArcVersionsSettings.Text = "Open arcdps version checking settings";
+            this.toolStripMenuItemOpenArcVersionsSettings.Text = "Open Arcdps Version Checking Settings";
             this.toolStripMenuItemOpenArcVersionsSettings.Click += new System.EventHandler(this.ToolStripMenuItemOpenArcVersionsSettings_Click);
             // 
             // toolStripSeparatorSecond
@@ -378,14 +378,14 @@
             // 
             this.toolStripMenuItemDiscordWebhooks.Name = "toolStripMenuItemDiscordWebhooks";
             this.toolStripMenuItemDiscordWebhooks.Size = new System.Drawing.Size(277, 22);
-            this.toolStripMenuItemDiscordWebhooks.Text = "Discord webhooks";
+            this.toolStripMenuItemDiscordWebhooks.Text = "Discord Webhooks";
             this.toolStripMenuItemDiscordWebhooks.Click += new System.EventHandler(this.ToolStripMenuItemDiscordWebhooks_Click);
             // 
             // toolStripMenuItemOpenPingSettings
             // 
             this.toolStripMenuItemOpenPingSettings.Name = "toolStripMenuItemOpenPingSettings";
             this.toolStripMenuItemOpenPingSettings.Size = new System.Drawing.Size(277, 22);
-            this.toolStripMenuItemOpenPingSettings.Text = "Remote server pings";
+            this.toolStripMenuItemOpenPingSettings.Text = "Remote Server Pings";
             this.toolStripMenuItemOpenPingSettings.Click += new System.EventHandler(this.ToolStripMenuItemOpenPingSettings_Click);
             // 
             // toolStripSeparatorThird
