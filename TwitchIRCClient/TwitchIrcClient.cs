@@ -84,7 +84,7 @@ namespace PlenBotLogUploader.TwitchIRCClient
         /// <summary>
         /// Start the connection to the IRC.
         /// </summary>
-        public void BeginConnection()
+        public async Task BeginConnectionAsync()
         {
             try
             {
@@ -92,7 +92,7 @@ namespace PlenBotLogUploader.TwitchIRCClient
                 inputStream = new StreamReader(tcpClient.GetStream());
                 outputStream = new StreamWriter(tcpClient.GetStream());
                 StateChange?.Invoke(this, new IrcChangedEventArgs(IrcStates.Connecting));
-                LoginAsync();
+                await LoginAsync();
             }
             catch
             {
@@ -100,7 +100,7 @@ namespace PlenBotLogUploader.TwitchIRCClient
             }
         }
 
-        private async void LoginAsync()
+        private async Task LoginAsync()
         {
             try
             {
@@ -255,13 +255,13 @@ namespace PlenBotLogUploader.TwitchIRCClient
             tcpClient?.Dispose();
         }
 
-        private async void ReadMessagesAsync()
+        private void ReadMessagesAsync()
         {
             while (Connecting || Connected)
             {
                 try
                 {
-                    string message = await inputStream.ReadLineAsync();
+                    string message = inputStream.ReadLine();
                     ReceiveMessage?.Invoke(this, new IrcMessageEventArgs(message));
                 }
                 catch

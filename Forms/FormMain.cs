@@ -42,7 +42,7 @@ namespace PlenBotLogUploader
         private readonly FormLogSession logSessionLink;
         private readonly FormGW2API gw2APILink;
         private readonly FormAleeva aleevaLink;
-        private readonly Dictionary<int, BossData> allBosses = Bosses.GetAllBosses();
+        //        private readonly Dictionary<int, BossData> allBosses = Bosses.GetAllBosses();
         private readonly List<string> allSessionLogs = new List<string>();
         private SemaphoreSlim semaphore;
         private TwitchIrcClient chatConnect;
@@ -189,7 +189,7 @@ namespace PlenBotLogUploader
                 {
                     if (File.Exists($@"{arcVersionsLink.GW2Location}\Gw2-64.exe") || File.Exists($@"{arcVersionsLink.GW2Location}\Gw2.exe"))
                     {
-                        Task.Run(() => { arcVersionsLink.StartTimerAsync(true); });
+                        Task.Run(async () => { await arcVersionsLink.StartTimerAsync(true); });
                         arcVersionsLink.buttonEnabler.Enabled = true;
                         arcVersionsLink.buttonCheckNow.Enabled = true;
                     }
@@ -239,7 +239,7 @@ namespace PlenBotLogUploader
                     }
                     chatConnect.ReceiveMessage += ReadMessagesAsync;
                     chatConnect.StateChange += OnIrcStateChanged;
-                    chatConnect.BeginConnection();
+                    _ = chatConnect.BeginConnectionAsync();
                 }
                 else
                 {
@@ -831,7 +831,7 @@ namespace PlenBotLogUploader
             }
             chatConnect.ReceiveMessage += ReadMessagesAsync;
             chatConnect.StateChange += OnIrcStateChanged;
-            chatConnect.BeginConnection();
+            _ = chatConnect.BeginConnectionAsync();
             Properties.Settings.Default.ConnectToTwitch = true;
         }
 
@@ -878,7 +878,7 @@ namespace PlenBotLogUploader
             }
             chatConnect.ReceiveMessage += ReadMessagesAsync;
             chatConnect.StateChange += OnIrcStateChanged;
-            chatConnect.BeginConnection();
+            _ = chatConnect.BeginConnectionAsync();
         }
 
         protected async void OnIrcStateChanged(object sender, IrcChangedEventArgs e)
@@ -898,13 +898,8 @@ namespace PlenBotLogUploader
                     }
                     if (reconnectedFailCounter <= 4)
                     {
-<<<<<<< HEAD
-                        AddToText($"<-?-> TRYING TO RECONNECT TO TWITCH IN {reconnectedFailCounter * 10}s");
-                        await Task.Run(() =>
-=======
-                        AddToText($"<-?-> TRYING TO RECONNECT TO TWITCH IN {reconnectedFailCounter*15}s");
+                        AddToText($"<-?-> TRYING TO RECONNECT TO TWITCH IN {reconnectedFailCounter * 15}s");
                         await Task.Run(async () =>
->>>>>>> origin/master
                         {
                             await Task.Delay(reconnectedFailCounter * 15000);
                             ReconnectTwitchBot();
@@ -961,12 +956,8 @@ namespace PlenBotLogUploader
                     AddToText("> (Spotify) SMART SONG RECOGNITION USED");
                     try
                     {
-<<<<<<< HEAD
-                        Process process = Process.GetProcessesByName("Spotify").FirstOrDefault(anon => !string.IsNullOrWhiteSpace(anon.MainWindowTitle));
-                        process.Dispose();
-=======
                         var process = Process.GetProcessesByName("Spotify").FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.MainWindowTitle));
->>>>>>> origin/master
+                        process.Dispose();
                         if (process.MainWindowTitle.Contains("Spotify"))
                         {
                             await chatConnect.SendChatMessageAsync(Properties.Settings.Default.TwitchChannelName, "No song is being played.");

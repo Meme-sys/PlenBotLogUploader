@@ -18,7 +18,7 @@ namespace PlenBotLogUploader
         #region definitions
         // fields
         private readonly FormMain mainLink;
-        private readonly Dictionary<int, BossData> allBosses = Bosses.GetAllBosses();
+        //      private readonly Dictionary<int, BossData> allBosses = Bosses.GetAllBosses();
         private int webhookIdsKey = 0;
         private readonly Dictionary<int, DiscordWebhookData> allWebhooks = DiscordWebhooks.GetAllWebhooks();
         #endregion
@@ -55,7 +55,7 @@ namespace PlenBotLogUploader
         {
             e.Cancel = true;
             Hide();
-            using (var writer = new StreamWriter($@"{mainLink.LocalDir}\discord_webhooks.txt"))
+            using (StreamWriter writer = new StreamWriter($@"{mainLink.LocalDir}\discord_webhooks.txt"))
             {
                 await writer.WriteLineAsync("## Edit the contents of this file at your own risk, use the application interface instead.");
                 foreach (int key in allWebhooks.Keys)
@@ -166,258 +166,8 @@ namespace PlenBotLogUploader
 
         public async Task ExecuteSessionWebhooksAsync(List<DPSReportJSON> reportsJSON, LogSessionSettings logSessionSettings)
         {
-<<<<<<< HEAD
-            var RaidLogs = reportsJSON
-                    .Where(anon => Bosses.GetWingForBoss(anon.EVTC.BossId) > 0)
-                    .Select(anon => new { LogData = anon, RaidWing = Bosses.GetWingForBoss(anon.EVTC.BossId) })
-                    .OrderBy(anon => anon.LogData.UploadTime)
-                    .ToList();
-            if (logSessionSettings.SortBy.Equals(LogSessionSortBy.Wing))
-            {
-                RaidLogs = reportsJSON
-                    .Where(anon => Bosses.GetWingForBoss(anon.EVTC.BossId) > 0)
-                    .Select(anon => new { LogData = anon, RaidWing = Bosses.GetWingForBoss(anon.EVTC.BossId) })
-                    .OrderBy(anon => Bosses.GetWingForBoss(anon.LogData.EVTC.BossId))
-                    .ThenBy(anon => Bosses.GetBossOrder(anon.LogData.Encounter.BossId))
-                    .ThenBy(anon => anon.LogData.UploadTime)
-                    .ToList();
-            }
-            var FractalLogs = reportsJSON
-                .Where(anon => allBosses
-                    .Where(anon2 => anon2.Value.BossId.Equals(anon.EVTC.BossId))
-                    .Where(anon2 => anon2.Value.Type.Equals(BossType.Fractal))
-                    .Count() > 0)
-                .ToList();
-            var StrikeLogs = reportsJSON
-                .Where(anon => allBosses
-                    .Where(anon2 => anon2.Value.BossId.Equals(anon.EVTC.BossId))
-                    .Where(anon2 => anon2.Value.Type.Equals(BossType.Strike))
-                    .Count() > 0)
-                .ToList();
-            var GolemLogs = reportsJSON
-                .Where(anon => allBosses
-                    .Where(anon2 => anon2.Value.BossId.Equals(anon.EVTC.BossId))
-                    .Where(anon2 => anon2.Value.Type.Equals(BossType.Golem))
-                    .Count() > 0)
-                .ToList();
-            var WvWLogs = reportsJSON
-                .Where(anon => allBosses
-                    .Where(anon2 => anon2.Value.BossId.Equals(anon.EVTC.BossId))
-                    .Where(anon2 => anon2.Value.Type.Equals(BossType.WvW))
-                    .Count() > 0)
-                .ToList();
-            var OtherLogs = reportsJSON
-                .Where(anon => allBosses
-                    .Where(anon2 => anon2.Value.BossId.Equals(anon.EVTC.BossId))
-                    .Where(anon2 => anon2.Value.Type.Equals(BossType.None))
-                    .Count() > 0 || allBosses
-                    .Where(anon2 => anon2.Value.BossId.Equals(anon.EVTC.BossId))
-                    .Count() == 0)
-                .ToList();
-            StringBuilder builder = new StringBuilder();
-            builder.Append($"Session duration: {logSessionSettings.ElapsedTime}\n\n");
-            int messageCount = 0;
-            if (RaidLogs.Count > 0)
-            {
-                builder.Append("***Raid logs:***\n");
-                if (logSessionSettings.SortBy.Equals(LogSessionSortBy.UploadTime))
-                {
-                    foreach (var data in RaidLogs)
-                    {
-                        string bossName = data.LogData.Encounter.Boss + (data.LogData.ChallengeMode ? " CM" : "");
-                        var bossDataRef = allBosses
-                            .Where(anon => anon.Value.BossId.Equals(data.LogData.Encounter.BossId))
-                            .Select(anon => anon.Value);
-                        if (bossDataRef.Count() == 1)
-                        {
-                            bossName = bossDataRef.First().Name + (data.LogData.ChallengeMode ? " CM" : "");
-                        }
-                        string duration = (data.LogData.ExtraJSON == null) ? "" : $" {data.LogData.ExtraJSON.Duration}";
-                        string successText = (logSessionSettings.ShowSuccess) ? ((data.LogData.Encounter.Success ?? false) ? " :white_check_mark:" : " ❌") : "";
-                        builder.Append($"[{bossName}]({data.LogData.Permalink}){duration}{successText}\n");
-                        if (builder.Length >= maxAllowedMessageSize)
-                        {
-                            messageCount++;
-                            if (logSessionSettings.UseSelectedWebhooksInstead)
-                            {
-                                await SendDiscordMessageToSelectedWebhooksAsync(logSessionSettings.SelectedWebhooks, logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                            }
-                            else
-                            {
-                                await SendDiscordMessageToAllActiveWebhooksAsync(logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                            }
-                            builder.Clear();
-                            builder.Append("***Raid logs:***\n");
-                        }
-                    }
-                }
-                else
-                {
-                    int lastWing = 0;
-                    foreach (var data in RaidLogs)
-                    {
-                        if (!lastWing.Equals(Bosses.GetWingForBoss(data.LogData.EVTC.BossId)))
-                        {
-                            builder.Append($"**{Bosses.GetWingName(data.RaidWing)} (wing {data.RaidWing})**\n");
-                            lastWing = Bosses.GetWingForBoss(data.LogData.EVTC.BossId);
-                        }
-                        string bossName = data.LogData.Encounter.Boss + (data.LogData.ChallengeMode ? " CM" : "");
-                        var bossDataRef = allBosses
-                            .Where(anon => anon.Value.BossId.Equals(data.LogData.Encounter.BossId))
-                            .Select(anon => anon.Value);
-                        if (bossDataRef.Count() == 1)
-                        {
-                            bossName = bossDataRef.First().Name + (data.LogData.ChallengeMode ? " CM" : "");
-                        }
-                        string duration = (data.LogData.ExtraJSON == null) ? "" : $" {data.LogData.ExtraJSON.Duration}";
-                        string successText = (logSessionSettings.ShowSuccess) ? ((data.LogData.Encounter.Success ?? false) ? " :white_check_mark:" : " ❌") : "";
-                        builder.Append($"[{bossName}]({data.LogData.Permalink}){duration}{successText}\n");
-                        if (builder.Length >= maxAllowedMessageSize)
-                        {
-                            messageCount++;
-                            if (logSessionSettings.UseSelectedWebhooksInstead)
-                            {
-                                await SendDiscordMessageToSelectedWebhooksAsync(logSessionSettings.SelectedWebhooks, logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                            }
-                            else
-                            {
-                                await SendDiscordMessageToAllActiveWebhooksAsync(logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                            }
-                            builder.Clear();
-                            builder.Append($"**{Bosses.GetWingName(data.RaidWing)} (wing {data.RaidWing})**\n");
-                        }
-                    }
-                }
-            }
-            if (FractalLogs.Count > 0)
-            {
-                if (!builder.ToString().EndsWith("***\n"))
-                {
-                    builder.Append("\n\n");
-                }
-                builder.Append("***Fractal logs:***\n");
-                foreach (var log in FractalLogs)
-                {
-                    string bossName = log.Encounter.Boss;
-                    var bossDataRef = allBosses
-                        .Where(anon => anon.Value.BossId.Equals(log.Encounter.BossId))
-                        .Select(anon => anon.Value);
-                    if (bossDataRef.Count() == 1)
-                    {
-                        bossName = bossDataRef.First().Name;
-                    }
-                    string duration = (log.ExtraJSON == null) ? "" : $" {log.ExtraJSON.Duration}";
-                    string successText = (logSessionSettings.ShowSuccess) ? ((log.Encounter.Success ?? false) ? " :white_check_mark:" : " ❌") : "";
-                    builder.Append($"[{bossName}]({log.Permalink}){duration}{successText}\n");
-                    if (builder.Length >= maxAllowedMessageSize)
-                    {
-                        messageCount++;
-                        if (logSessionSettings.UseSelectedWebhooksInstead)
-                        {
-                            await SendDiscordMessageToSelectedWebhooksAsync(logSessionSettings.SelectedWebhooks, logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                        }
-                        else
-                        {
-                            await SendDiscordMessageToAllActiveWebhooksAsync(logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                        }
-                        builder.Clear();
-                        builder.Append("***Fractal logs:***\n");
-                    }
-                }
-            }
-            if (StrikeLogs.Count > 0)
-            {
-                if (!builder.ToString().EndsWith("***\n"))
-                {
-                    builder.Append("\n\n");
-                }
-                builder.Append("***Strike mission logs:***\n");
-                foreach (var log in StrikeLogs)
-                {
-                    string bossName = log.Encounter.Boss;
-                    var bossDataRef = allBosses
-                        .Where(anon => anon.Value.BossId.Equals(log.Encounter.BossId))
-                        .Select(anon => anon.Value);
-                    if (bossDataRef.Count() == 1)
-                    {
-                        bossName = bossDataRef.First().Name;
-                    }
-                    string duration = (log.ExtraJSON == null) ? "" : $" {log.ExtraJSON.Duration}";
-                    string successText = (logSessionSettings.ShowSuccess) ? ((log.Encounter.Success ?? false) ? " :white_check_mark:" : " ❌") : "";
-                    builder.Append($"[{bossName}]({log.Permalink}){duration}{successText}\n");
-                    if (builder.Length >= maxAllowedMessageSize)
-                    {
-                        messageCount++;
-                        if (logSessionSettings.UseSelectedWebhooksInstead)
-                        {
-                            await SendDiscordMessageToSelectedWebhooksAsync(logSessionSettings.SelectedWebhooks, logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                        }
-                        else
-                        {
-                            await SendDiscordMessageToAllActiveWebhooksAsync(logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                        }
-                        builder.Clear();
-                        builder.Append("***Strike mission logs:***\n");
-                    }
-                }
-            }
-            if (GolemLogs.Count > 0)
-            {
-                if (!builder.ToString().EndsWith("***\n"))
-                {
-                    builder.Append("\n\n");
-                }
-                builder.Append("***Golem logs:***\n");
-                foreach (var log in GolemLogs)
-                {
-                    builder.Append($"{log.Permalink}\n");
-                    if (builder.Length >= maxAllowedMessageSize)
-                    {
-                        messageCount++;
-                        if (logSessionSettings.UseSelectedWebhooksInstead)
-                        {
-                            await SendDiscordMessageToSelectedWebhooksAsync(logSessionSettings.SelectedWebhooks, logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                        }
-                        else
-                        {
-                            await SendDiscordMessageToAllActiveWebhooksAsync(logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                        }
-                        builder.Clear();
-                        builder.Append("***Golem logs:***\n");
-                    }
-                }
-            }
-            if (WvWLogs.Count > 0)
-            {
-                if (!builder.ToString().EndsWith("***\n"))
-                {
-                    builder.Append("\n\n");
-                }
-                builder.Append("***WvW logs:***\n");
-                foreach (var log in WvWLogs)
-                {
-                    builder.Append($"{log.Permalink}\n");
-                    if (builder.Length >= maxAllowedMessageSize)
-                    {
-                        messageCount++;
-                        if (logSessionSettings.UseSelectedWebhooksInstead)
-                        {
-                            await SendDiscordMessageToSelectedWebhooksAsync(logSessionSettings.SelectedWebhooks, logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                        }
-                        else
-                        {
-                            await SendDiscordMessageToAllActiveWebhooksAsync(logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                        }
-                        builder.Clear();
-                        builder.Append("***WvW logs:***\n");
-                    }
-                }
-            }
-            if (OtherLogs.Count > 0)
-=======
             var discordEmbeds = SessionTextConstructor.ConstructSessionEmbeds(reportsJSON, logSessionSettings);
             if (logSessionSettings.UseSelectedWebhooksInstead)
->>>>>>> origin/master
             {
                 await SendDiscordMessageToSelectedWebhooksAsync(logSessionSettings.SelectedWebhooks, discordEmbeds, logSessionSettings.ContentText);
             }
@@ -517,7 +267,7 @@ namespace PlenBotLogUploader
         private void ToolStripMenuItemAdd_Click(object sender, EventArgs e)
         {
             webhookIdsKey++;
-            new FormEditDiscordWebhook(this, null, webhookIdsKey).Show();
+            (_disposable = new FormEditDiscordWebhook(this, null, webhookIdsKey)).Show();
         }
 
         private void ToolStripMenuItemDelete_Click(object sender, EventArgs e)
@@ -537,7 +287,7 @@ namespace PlenBotLogUploader
             {
                 var selected = listViewDiscordWebhooks.SelectedItems[0];
                 int.TryParse(selected.Name, out int reservedId);
-                new FormEditDiscordWebhook(this, allWebhooks[reservedId], reservedId).Show();
+                (_disposable = new FormEditDiscordWebhook(this, allWebhooks[reservedId], reservedId)).Show();
             }
         }
 
@@ -575,7 +325,14 @@ namespace PlenBotLogUploader
         private void ButtonAddNew_Click(object sender, EventArgs e)
         {
             webhookIdsKey++;
-            new FormEditDiscordWebhook(this, null, webhookIdsKey).Show();
+            (_disposable = new FormEditDiscordWebhook(this, null, webhookIdsKey)).Show();
+        }
+
+        private FormEditDiscordWebhook _disposable;
+
+        public new void Dispose()
+        {
+            _disposable?.Dispose();
         }
     }
 }

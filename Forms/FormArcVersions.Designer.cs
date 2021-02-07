@@ -132,7 +132,7 @@
             this.buttonEnabler.TabIndex = 2;
             this.buttonEnabler.Text = "Disable checking";
             this.buttonEnabler.UseVisualStyleBackColor = true;
-            this.buttonEnabler.Click += new System.EventHandler(this.ButtonEnabler_Click);
+            this.buttonEnabler.Click += new System.EventHandler(this.ButtonEnabler_ClickAsync);
             // 
             // labelIssues
             // 

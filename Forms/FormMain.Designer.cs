@@ -563,7 +563,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(904, 381);
             this.Controls.Add(this.buttonUpdateNow);
             this.Controls.Add(this.groupBoxOtherSettings);

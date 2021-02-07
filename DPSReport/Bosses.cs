@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-﻿using System.Collections.Generic;
+
+using System.Collections.Generic;
 using System.IO;
-=======
-﻿using System.IO;
 using System.Linq;
->>>>>>> origin/master
 using System.Threading.Tasks;
 
 namespace PlenBotLogUploader.DPSReport
