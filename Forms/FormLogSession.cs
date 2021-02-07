@@ -49,7 +49,7 @@ namespace PlenBotLogUploader
                 string elapsedTime = NiceTime.ParseTimeSpanHMS(stopWatch.Elapsed);
                 stopWatch.Reset();
                 int sortBy = radioButtonSortByUpload.Checked ? 1 : 0;
-                var logSessionSettings = new LogSessionSettings()
+                LogSessionSettings logSessionSettings = new LogSessionSettings()
                 {
                     Name = textBoxSessionName.Text,
                     ContentText = textBoxSessionContent.Text,
@@ -59,9 +59,9 @@ namespace PlenBotLogUploader
                     UseSelectedWebhooksInstead = radioButtonOnlySelectedWebhooks.Checked,
                     SelectedWebhooks = ConvertCheckboxListToList()
                 };
-                var fileName = $"{textBoxSessionName.Text.ToLower().Replace(" ", "")} {sessionTimeStarted.Year}-{sessionTimeStarted.Month}-{sessionTimeStarted.Day} {sessionTimeStarted.Hour}-{sessionTimeStarted.Minute}-{sessionTimeStarted.Second}";
+                string fileName = $"{textBoxSessionName.Text.ToLower().Replace(" ", "")} {sessionTimeStarted.Year}-{sessionTimeStarted.Month}-{sessionTimeStarted.Day} {sessionTimeStarted.Hour}-{sessionTimeStarted.Minute}-{sessionTimeStarted.Second}";
                 File.AppendAllText($"{mainLink.LocalDir}{fileName}.csv", "Boss;BossId;Success;Duration;RecordedBy;EliteInsightsVersion;arcdpsVersion;Permalink\n");
-                foreach (var reportJSON in mainLink.SessionLogs)
+                foreach (DPSReport.DPSReportJSON reportJSON in mainLink.SessionLogs)
                 {
                     string success = (reportJSON.Encounter.Success ?? false) ? "true" : "false";
                     File.AppendAllText($"{mainLink.LocalDir}{fileName}.csv",
@@ -89,27 +89,42 @@ namespace PlenBotLogUploader
             buttonUnPauseSession.Text = (!sessionPaused) ? "Pause session" : "Unpause session";
         }
 
-        public void CheckBoxSupressWebhooks_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.SessionSuppressWebhooks = checkBoxSupressWebhooks.Checked;
+        public void CheckBoxSupressWebhooks_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.SessionSuppressWebhooks = checkBoxSupressWebhooks.Checked;
+        }
 
-        public void CheckBoxOnlySuccess_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.SessionOnlySuccess = checkBoxOnlySuccess.Checked;
+        public void CheckBoxOnlySuccess_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.SessionOnlySuccess = checkBoxOnlySuccess.Checked;
+        }
 
-        public void CheckBoxSaveToFile_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.SessionSaveToFile = checkBoxSaveToFile.Checked;
+        public void CheckBoxSaveToFile_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.SessionSaveToFile = checkBoxSaveToFile.Checked;
+        }
 
-        private void RadioButtonSortByWing_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.SessionSort = 0;
+        private void RadioButtonSortByWing_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.SessionSort = 0;
+        }
 
-        private void RadioButtonSortByUpload_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.SessionSort = 1;
+        private void RadioButtonSortByUpload_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.SessionSort = 1;
+        }
 
         private List<DiscordWebhookData> ConvertCheckboxListToList()
         {
-            var allWebhooks = DiscordWebhooks.GetAllWebhooks();
-            var list = new List<DiscordWebhookData>();
+            Dictionary<int, DiscordWebhookData> allWebhooks = DiscordWebhooks.GetAllWebhooks();
+            List<DiscordWebhookData> list = new List<DiscordWebhookData>();
             for (int i = 0; i < checkedListBoxSelectedWebhooks.Items.Count; i++)
             {
-                var item = checkedListBoxSelectedWebhooks.Items[i];
+                object item = checkedListBoxSelectedWebhooks.Items[i];
                 if (item.GetType().Equals(typeof(DiscordWebhooksHelperClass)))
                 {
-                    var discordWebhookHelper = (DiscordWebhooksHelperClass)item;
-                    var checkedState = checkedListBoxSelectedWebhooks.GetItemChecked(i);
+                    DiscordWebhooksHelperClass discordWebhookHelper = (DiscordWebhooksHelperClass)item;
+                    bool checkedState = checkedListBoxSelectedWebhooks.GetItemChecked(i);
                     if (checkedState)
                     {
                         if (allWebhooks.ContainsKey(discordWebhookHelper.WebhookID))
@@ -125,8 +140,8 @@ namespace PlenBotLogUploader
         private void ReloadWebhooks()
         {
             checkedListBoxSelectedWebhooks.Items.Clear();
-            var allWebhooks = DiscordWebhooks.GetAllWebhooks();
-            foreach (var webhookNumber in allWebhooks.Keys)
+            Dictionary<int, DiscordWebhookData> allWebhooks = DiscordWebhooks.GetAllWebhooks();
+            foreach (int webhookNumber in allWebhooks.Keys)
             {
                 checkedListBoxSelectedWebhooks.Items.Add(new DiscordWebhooksHelperClass() { WebhookID = webhookNumber, Text = $"{allWebhooks[webhookNumber].Name}" }, allWebhooks[webhookNumber].Active);
             }

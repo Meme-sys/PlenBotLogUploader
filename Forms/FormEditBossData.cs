@@ -94,7 +94,7 @@ namespace PlenBotLogUploader
                     }
                     else
                     {
-                        var boss = allBosses[reservedId];
+                        BossData boss = allBosses[reservedId];
                         boss.BossId = bossId;
                         boss.Name = textBoxBossName.Text;
                         boss.SuccessMsg = textBoxSuccessMsg.Text;

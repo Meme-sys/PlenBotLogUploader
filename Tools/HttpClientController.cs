@@ -25,12 +25,12 @@ namespace PlenBotLogUploader.Tools
         {
             try
             {
-                var uri = new Uri(url);
-                using (var responseMessage = await GetAsync(uri))
+                Uri uri = new Uri(url);
+                using (HttpResponseMessage responseMessage = await GetAsync(uri))
                 {
-                    using (var response = await responseMessage.Content.ReadAsStreamAsync())
+                    using (Stream response = await responseMessage.Content.ReadAsStreamAsync())
                     {
-                        using (var stream = File.Create(@destination))
+                        using (FileStream stream = File.Create(@destination))
                         {
                             await response.CopyToAsync(stream);
                         }
@@ -51,10 +51,10 @@ namespace PlenBotLogUploader.Tools
         {
             try
             {
-                var uri = new Uri(url);
-                using (var responseMessage = await GetAsync(uri))
+                Uri uri = new Uri(url);
+                using (HttpResponseMessage responseMessage = await GetAsync(uri))
                 {
-                    var response = await responseMessage.Content.ReadAsStringAsync();
+                    string response = await responseMessage.Content.ReadAsStringAsync();
                     return response;
                 }
             }

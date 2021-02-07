@@ -3,7 +3,7 @@ using System.IO;
 
 namespace PlenBotLogUploader.DiscordAPI
 {
-    class DiscordWebhooks
+    internal class DiscordWebhooks
     {
         private static Dictionary<int, DiscordWebhookData> instance = null;
         /// <summary>
@@ -26,7 +26,7 @@ namespace PlenBotLogUploader.DiscordAPI
         /// <returns>A dictionary with all webhooks</returns>
         public static Dictionary<int, DiscordWebhookData> FromFile(string file)
         {
-            var allWebhooks = GetAllWebhooks();
+            Dictionary<int, DiscordWebhookData> allWebhooks = GetAllWebhooks();
             if (allWebhooks.Count > 0)
             {
                 allWebhooks.Clear();

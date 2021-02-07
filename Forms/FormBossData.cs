@@ -32,7 +32,7 @@ namespace PlenBotLogUploader
                 catch
                 {
                     allBosses.Clear();
-                    foreach (var keyPair in Bosses.GetDefaultSettingsForBossesAsDictionary())
+                    foreach (KeyValuePair<int, BossData> keyPair in Bosses.GetDefaultSettingsForBossesAsDictionary())
                     {
                         allBosses.Add(keyPair.Key, keyPair.Value);
                     }
@@ -42,7 +42,7 @@ namespace PlenBotLogUploader
             else
             {
                 allBosses.Clear();
-                foreach (var keyPair in Bosses.GetDefaultSettingsForBossesAsDictionary())
+                foreach (KeyValuePair<int, BossData> keyPair in Bosses.GetDefaultSettingsForBossesAsDictionary())
                 {
                     allBosses.Add(keyPair.Key, keyPair.Value);
                 }
@@ -56,7 +56,7 @@ namespace PlenBotLogUploader
 
         private void ListViewBosses_DoubleClick(object sender, EventArgs e)
         {
-            var selected = listViewBosses.SelectedItems[0];
+            ListViewItem selected = listViewBosses.SelectedItems[0];
             int.TryParse(selected.Name, out int reservedId);
             FormEditBossData formEditBossData = new FormEditBossData(this, allBosses[reservedId], reservedId);
             formEditBossData.Show();
@@ -79,12 +79,12 @@ namespace PlenBotLogUploader
 
         private void ButtonResetSettings_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Are you sure you want to reset all the bosses?\nThis will undo all Discord webhook icon and Twitch messages settings and reset them to their default state.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Are you sure you want to reset all the bosses?\nThis will undo all Discord webhook icon and Twitch messages settings and reset them to their default state.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result.Equals(DialogResult.Yes))
             {
                 listViewBosses.Items.Clear();
                 allBosses.Clear();
-                foreach (var keyPair in Bosses.GetDefaultSettingsForBossesAsDictionary())
+                foreach (KeyValuePair<int, BossData> keyPair in Bosses.GetDefaultSettingsForBossesAsDictionary())
                 {
                     allBosses.Add(keyPair.Key, keyPair.Value);
                 }
@@ -116,7 +116,7 @@ namespace PlenBotLogUploader
         {
             if (listViewBosses.SelectedItems.Count > 0)
             {
-                var selected = listViewBosses.SelectedItems[0];
+                ListViewItem selected = listViewBosses.SelectedItems[0];
                 int.TryParse(selected.Name, out int reservedId);
                 FormEditBossData formEditBossData = new FormEditBossData(this, allBosses[reservedId], reservedId);
                 formEditBossData.Show();
@@ -128,9 +128,9 @@ namespace PlenBotLogUploader
         {
             if (listViewBosses.SelectedItems.Count > 0)
             {
-                var selected = listViewBosses.SelectedItems[0];
+                ListViewItem selected = listViewBosses.SelectedItems[0];
                 int.TryParse(selected.Name, out int reservedId);
-                var result = MessageBox.Show("Are you sure you want to delete this boss?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this boss?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result.Equals(DialogResult.Yes))
                 {
                     listViewBosses.Items.RemoveByKey(reservedId.ToString());

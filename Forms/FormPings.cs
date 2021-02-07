@@ -30,7 +30,7 @@ namespace PlenBotLogUploader
                 AllPings = new Dictionary<int, PingConfiguration>();
                 try
                 {
-                    using (var reader = new StreamReader($@"{mainLink.LocalDir}\remote_pings.txt"))
+                    using (StreamReader reader = new StreamReader($@"{mainLink.LocalDir}\remote_pings.txt"))
                     {
                         string line = reader.ReadLine();
                         while ((line = reader.ReadLine()) != null)
@@ -44,7 +44,7 @@ namespace PlenBotLogUploader
                             {
                                 method = 0;
                             }
-                            var auth = new PingAuthentication()
+                            PingAuthentication auth = new PingAuthentication()
                             {
                                 Active = authActive == 1,
                                 UseAsAuth = useAsAuth == 1,
@@ -81,12 +81,12 @@ namespace PlenBotLogUploader
         {
             e.Cancel = true;
             Hide();
-            using (var writer = new StreamWriter($@"{mainLink.LocalDir}\remote_pings.txt"))
+            using (StreamWriter writer = new StreamWriter($@"{mainLink.LocalDir}\remote_pings.txt"))
             {
                 await writer.WriteLineAsync("## Edit the contents of this file at your own risk, use the application interface instead.");
                 foreach (int key in AllPings.Keys)
                 {
-                    var ping = AllPings[key];
+                    PingConfiguration ping = AllPings[key];
                     string active = ping.Active ? "1" : "0";
                     string method = ((int)ping.Method).ToString();
                     string authActive = ping.Authentication.Active ? "1" : "0";
@@ -125,7 +125,7 @@ namespace PlenBotLogUploader
         {
             if (listViewPings.SelectedItems.Count > 0)
             {
-                var selected = listViewPings.SelectedItems[0];
+                ListViewItem selected = listViewPings.SelectedItems[0];
                 int.TryParse(selected.Name, out int reservedId);
                 FormEditPing formEditPing = new FormEditPing(this, reservedId, false, AllPings[reservedId]);
                 formEditPing.Show();
@@ -137,7 +137,7 @@ namespace PlenBotLogUploader
         {
             if (listViewPings.SelectedItems.Count > 0)
             {
-                var selected = listViewPings.SelectedItems[0];
+                ListViewItem selected = listViewPings.SelectedItems[0];
                 int.TryParse(selected.Name, out int reservedId);
                 listViewPings.Items.RemoveByKey(reservedId.ToString());
                 AllPings.Remove(reservedId);
@@ -146,7 +146,7 @@ namespace PlenBotLogUploader
 
         private void ContextMenuStripInteract_Opening(object sender, CancelEventArgs e)
         {
-            var toggle = listViewPings.SelectedItems.Count > 0;
+            bool toggle = listViewPings.SelectedItems.Count > 0;
             toolStripMenuItemEdit.Enabled = toggle;
             toolStripMenuItemDelete.Enabled = toggle;
             toolStripMenuItemTest.Enabled = toggle;
@@ -162,9 +162,9 @@ namespace PlenBotLogUploader
         {
             if (listViewPings.SelectedItems.Count > 0)
             {
-                var selected = listViewPings.SelectedItems[0];
+                ListViewItem selected = listViewPings.SelectedItems[0];
                 int.TryParse(selected.Name, out int reservedId);
-                var result = await AllPings[reservedId].PingServerAsync(null, null);
+                bool result = await AllPings[reservedId].PingServerAsync(null, null);
                 if (result)
                 {
                     MessageBox.Show("Ping test successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

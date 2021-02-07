@@ -34,10 +34,10 @@ namespace PlenBotLogUploader
 
         private void ButtonChangeGWLocation_Click(object sender, EventArgs e)
         {
-            using (var dialog = new OpenFileDialog())
+            using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.Filter = "Guild Wars 2|Gw2-64.exe";
-                var result = dialog.ShowDialog();
+                DialogResult result = dialog.ShowDialog();
                 if (result.Equals(DialogResult.OK) && !string.IsNullOrWhiteSpace(dialog.FileName))
                 {
                     string location = Path.GetDirectoryName(dialog.FileName);
@@ -84,7 +84,7 @@ namespace PlenBotLogUploader
         private async Task UpdateArcAsync()
         {
             buttonUpdate.Enabled = false;
-            var processes = Process.GetProcessesByName("Gw2-64").ToList();
+            System.Collections.Generic.List<Process> processes = Process.GetProcessesByName("Gw2-64").ToList();
             if (processes.Count == 0)
             {
                 SetInformationText("Downloading newest version of arcdps...");
@@ -98,7 +98,7 @@ namespace PlenBotLogUploader
             else
             {
                 Interlocked.Exchange(ref gw2Instances, processes.Count);
-                foreach (var process in processes)
+                foreach (Process process in processes)
                 {
                     process.EnableRaisingEvents = true;
                     process.Exited += ProcessExited;
@@ -122,14 +122,14 @@ namespace PlenBotLogUploader
             string availableVersion = availableVersionResponse.Split(' ')[0];
             if ((availableVersion != "") && (File.Exists($@"{GW2Location}\bin64\d3d9.dll")))
             {
-                using (var md5 = System.Security.Cryptography.MD5.Create())
+                using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
                 {
                     try
                     {
                         if (File.Exists($@"{GW2Location}\bin64\d3d9.dll"))
                         {
                             byte[] hash = null;
-                            using (var stream = File.OpenRead($@"{GW2Location}\bin64\d3d9.dll"))
+                            using (FileStream stream = File.OpenRead($@"{GW2Location}\bin64\d3d9.dll"))
                             {
                                 hash = md5.ComputeHash(stream);
                             }
@@ -139,7 +139,7 @@ namespace PlenBotLogUploader
                                 groupBoxUpdating.Enabled = true;
                                 if (manual)
                                 {
-                                    var result = MessageBox.Show("New arcdps version available.\nDo you want to download the new version?", "arcdps version checker", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                    DialogResult result = MessageBox.Show("New arcdps version available.\nDo you want to download the new version?", "arcdps version checker", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                                     if (result.Equals(DialogResult.Yes))
                                     {
                                         await UpdateArcAsync();
@@ -171,7 +171,7 @@ namespace PlenBotLogUploader
                             groupBoxUpdating.Enabled = true;
                             if (manual)
                             {
-                                var result = MessageBox.Show("New arcdps version available.\nDo you want to download the new version?", "arcdps version checker", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                DialogResult result = MessageBox.Show("New arcdps version available.\nDo you want to download the new version?", "arcdps version checker", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                                 if (result.Equals(DialogResult.Yes))
                                 {
                                     await UpdateArcAsync();
@@ -198,7 +198,7 @@ namespace PlenBotLogUploader
                 groupBoxUpdating.Enabled = true;
                 if (manual)
                 {
-                    var result = MessageBox.Show("New arcdps version available\nDo you want to download the new version?", "arcdps version checker", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    DialogResult result = MessageBox.Show("New arcdps version available\nDo you want to download the new version?", "arcdps version checker", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (result.Equals(DialogResult.Yes))
                     {
                         await UpdateArcAsync();
@@ -207,9 +207,15 @@ namespace PlenBotLogUploader
             }
         }
 
-        private async void ButtonCheckNow_Click(object sender, EventArgs e) => await CheckNewVersionAsync(true);
+        private async void ButtonCheckNow_Click(object sender, EventArgs e)
+        {
+            await CheckNewVersionAsync(true);
+        }
 
-        private async void TimerCheckNewArcversion_Tick(object sender, EventArgs e) => await CheckNewVersionAsync();
+        private async void TimerCheckNewArcversion_Tick(object sender, EventArgs e)
+        {
+            await CheckNewVersionAsync();
+        }
 
         private async void ButtonEnabler_ClickAsync(object sender, EventArgs e)
         {
@@ -224,7 +230,10 @@ namespace PlenBotLogUploader
             _ = Process.Start("https://deltaconnected.com/arcdps/");
         }
 
-        private async void ButtonUpdate_Click(object sender, EventArgs e) => await UpdateArcAsync();
+        private async void ButtonUpdate_Click(object sender, EventArgs e)
+        {
+            await UpdateArcAsync();
+        }
 
         private void FormArcVersions_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -232,6 +241,9 @@ namespace PlenBotLogUploader
             _ = Process.Start("https://deltaconnected.com/arcdps/");
         }
 
-        public void CheckBoxAutoUpdateArc_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.ArcAutoUpdate = checkBoxAutoUpdateArc.Checked;
+        public void CheckBoxAutoUpdateArc_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ArcAutoUpdate = checkBoxAutoUpdateArc.Checked;
+        }
     }
 }

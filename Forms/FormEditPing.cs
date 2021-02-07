@@ -27,7 +27,7 @@ namespace PlenBotLogUploader
             textBoxURL.Text = config?.URL ?? "";
             textBoxAuthName.Text = config?.Authentication.AuthName ?? "Bearer";
             textBoxAuthToken.Text = config?.Authentication.AuthToken ?? "";
-            var method = config?.Method ?? PingMethod.Post;
+            PingMethod method = config?.Method ?? PingMethod.Post;
             switch (method)
             {
                 case PingMethod.Get:
@@ -72,7 +72,7 @@ namespace PlenBotLogUploader
                     {
                         chosenMethod = PingMethod.Delete;
                     }
-                    var auth = new PingAuthentication()
+                    PingAuthentication auth = new PingAuthentication()
                     {
                         Active = textBoxAuthToken.Text != "",
                         UseAsAuth = radioButtonUseAuthField.Checked,
@@ -117,7 +117,7 @@ namespace PlenBotLogUploader
 
         private async void ButtonTestPing_Click(object sender, EventArgs e)
         {
-            var chosenMethod = PingMethod.Post;
+            PingMethod chosenMethod = PingMethod.Post;
             if (radioButtonMethodPut.Checked)
             {
                 chosenMethod = PingMethod.Put;
@@ -130,15 +130,15 @@ namespace PlenBotLogUploader
             {
                 chosenMethod = PingMethod.Delete;
             }
-            var auth = new PingAuthentication()
+            PingAuthentication auth = new PingAuthentication()
             {
                 Active = textBoxAuthToken.Text.Trim() != "",
                 UseAsAuth = radioButtonUseAuthField.Checked,
                 AuthName = textBoxAuthName.Text,
                 AuthToken = textBoxAuthToken.Text
             };
-            var tempPing = new PingConfiguration() { Active = false, Name = textBoxName.Text, URL = textBoxURL.Text, Method = chosenMethod, Authentication = auth };
-            var result = await tempPing.PingServerAsync(null, null);
+            PingConfiguration tempPing = new PingConfiguration() { Active = false, Name = textBoxName.Text, URL = textBoxURL.Text, Method = chosenMethod, Authentication = auth };
+            bool result = await tempPing.PingServerAsync(null, null);
             if (result)
             {
                 MessageBox.Show("Ping test successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

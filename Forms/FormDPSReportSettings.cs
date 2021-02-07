@@ -43,7 +43,7 @@ namespace PlenBotLogUploader
 
         private void CheckBoxDPSReportEnableUsertoken_CheckedChanged(object sender, EventArgs e)
         {
-            var enable = checkBoxDPSReportEnableUsertoken.Checked;
+            bool enable = checkBoxDPSReportEnableUsertoken.Checked;
             textBoxDPSReportUsertoken.Enabled = enable;
             buttonDPSReportShowUsertoken.Enabled = enable;
         }
@@ -52,10 +52,10 @@ namespace PlenBotLogUploader
         {
             try
             {
-                var uri = new Uri("https://dps.report/getUserToken");
-                using (var responseMessage = await mainLink.HttpClientController.GetAsync(uri))
+                Uri uri = new Uri("https://dps.report/getUserToken");
+                using (System.Net.Http.HttpResponseMessage responseMessage = await mainLink.HttpClientController.GetAsync(uri))
                 {
-                    var response = await responseMessage.Content.ReadAsStringAsync();
+                    string response = await responseMessage.Content.ReadAsStringAsync();
                     var anonObject = new { userToken = "" };
                     var responseJson = JsonConvert.DeserializeAnonymousType(response, anonObject);
                     textBoxDPSReportUsertoken.Text = responseJson.userToken;

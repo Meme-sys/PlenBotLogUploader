@@ -7,20 +7,20 @@ using System.Windows.Forms;
 
 namespace PlenBotLogUploader
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-            var currProcess = Process.GetCurrentProcess();
-            var otherProcesses = Process.GetProcessesByName("PlenBotLogUploader")
+            Process currProcess = Process.GetCurrentProcess();
+            System.Collections.Generic.List<Process> otherProcesses = Process.GetProcessesByName("PlenBotLogUploader")
                 .Where(x => !x.Id.Equals(currProcess.Id))
                 .ToList();
-            var args = Environment.GetCommandLineArgs().ToList();
-            var localDir = $"{Path.GetDirectoryName(Application.ExecutablePath.Replace('/', '\\'))}\\";
+            System.Collections.Generic.List<string> args = Environment.GetCommandLineArgs().ToList();
+            string localDir = $"{Path.GetDirectoryName(Application.ExecutablePath.Replace('/', '\\'))}\\";
             if (args.Count == 3)
             {
                 if (args[1].ToLower().Equals("-update"))
@@ -33,7 +33,7 @@ namespace PlenBotLogUploader
                     }
                     else
                     {
-                        foreach (var process in otherProcesses)
+                        foreach (Process process in otherProcesses)
                         {
                             try
                             {
@@ -73,7 +73,7 @@ namespace PlenBotLogUploader
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                using (var formMain = new FormMain())
+                using (FormMain formMain = new FormMain())
                 {
                     Application.Run(formMain);
                 }

@@ -13,6 +13,9 @@ namespace PlenBotLogUploader.Aleeva
         [JsonProperty("avatar")]
         public string Avatar { get; set; }
 
-        public override string ToString() => $"{Name} ({ID})";
+        public override string ToString()
+        {
+            return $"{Name} ({ID})";
+        }
     }
 }

@@ -19,16 +19,19 @@ namespace PlenBotLogUploader.RemotePing
 
         public PingAuthentication Authentication { get; set; }
 
-        public Task<bool> PingServerAsync(FormMain mainLink, DPSReportJSON reportJSON) => PingServerAsync(this, mainLink, reportJSON);
+        public Task<bool> PingServerAsync(FormMain mainLink, DPSReportJSON reportJSON)
+        {
+            return PingServerAsync(this, mainLink, reportJSON);
+        }
 
         public static async Task<bool> PingServerAsync(PingConfiguration configuration, FormMain mainLink, DPSReportJSON reportJSON)
         {
             bool result = false;
-            using (var controller = new HttpClientController())
+            using (HttpClientController controller = new HttpClientController())
             {
                 if (configuration.Method.Equals(PingMethod.Post) || configuration.Method.Equals(PingMethod.Put))
                 {
-                    var fields = new Dictionary<string, string>();
+                    Dictionary<string, string> fields = new Dictionary<string, string>();
                     if (reportJSON != null)
                     {
                         fields.Add("permalink", reportJSON.Permalink);
@@ -47,7 +50,7 @@ namespace PlenBotLogUploader.RemotePing
                             controller.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(configuration.Authentication.AuthName, configuration.Authentication.AuthToken);
                         }
                     }
-                    using (var content = new FormUrlEncodedContent(fields))
+                    using (FormUrlEncodedContent content = new FormUrlEncodedContent(fields))
                     {
                         HttpResponseMessage responseMessage = null;
                         try
@@ -61,7 +64,7 @@ namespace PlenBotLogUploader.RemotePing
                                 responseMessage = await controller.PostAsync(configuration.URL, content);
                             }
                             string response = await responseMessage.Content.ReadAsStringAsync();
-                            var statusJSON = JsonConvert.DeserializeObject<PingResponse>(response);
+                            PingResponse statusJSON = JsonConvert.DeserializeObject<PingResponse>(response);
                             if (responseMessage.IsSuccessStatusCode)
                             {
                                 mainLink?.AddToText($">:> Log {reportJSON.UrlId} pinged. {statusJSON.Message} (code: {responseMessage.StatusCode})");
@@ -118,7 +121,7 @@ namespace PlenBotLogUploader.RemotePing
                             responseMessage = await controller.GetAsync(fullLink);
                         }
                         string response = await responseMessage.Content.ReadAsStringAsync();
-                        var statusJSON = JsonConvert.DeserializeObject<PingResponse>(response);
+                        PingResponse statusJSON = JsonConvert.DeserializeObject<PingResponse>(response);
                         if (responseMessage.IsSuccessStatusCode)
                         {
                             mainLink?.AddToText($">:> Log {reportJSON.UrlId} pinged. {statusJSON.Message} (code: {responseMessage.StatusCode})");

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PlenBotLogUploader.TwitchIRCClient
 {
-    class TwitchIrcClient : IDisposable
+    internal class TwitchIrcClient : IDisposable
     {
         // public
         /// <summary>

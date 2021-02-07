@@ -79,7 +79,10 @@ namespace PlenBotLogUploader
             Hide();
         }
 
-        private void FormAleeva_FormClosed(object sender, FormClosedEventArgs e) => controller.Dispose();
+        private void FormAleeva_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            controller.Dispose();
+        }
 
         public async Task PostLogToAleeva(DPSReportJSON reportJSON)
         {
@@ -91,15 +94,15 @@ namespace PlenBotLogUploader
                 }
                 try
                 {
-                    var uri = new Uri($"{aleevaAPIBaseUrl}/report");
-                    var logObject = new AleevaAddReport() { DPSReportPermalink = reportJSON.Permalink, SendNotification = checkBoxSendNotification.Checked };
+                    Uri uri = new Uri($"{aleevaAPIBaseUrl}/report");
+                    AleevaAddReport logObject = new AleevaAddReport() { DPSReportPermalink = reportJSON.Permalink, SendNotification = checkBoxSendNotification.Checked };
                     if (checkBoxSendNotification.Checked)
                     {
                         logObject.NotificationServerId = Properties.Settings.Default.AleevaSelectedServer;
                         logObject.NotificationChannelId = Properties.Settings.Default.AleevaSelectedChannel;
                     }
-                    var jsonLogObject = JsonConvert.SerializeObject(logObject);
-                    using (var content = new StringContent(jsonLogObject, Encoding.UTF8, "application/json"))
+                    string jsonLogObject = JsonConvert.SerializeObject(logObject);
+                    using (StringContent content = new StringContent(jsonLogObject, Encoding.UTF8, "application/json"))
                     {
                         using (await controller.PostAsync(uri, content)) { }
                     }
@@ -113,9 +116,9 @@ namespace PlenBotLogUploader
 
         public async Task GetAleevaTokenFromAccessCode(string access_code)
         {
-            var aleeva = new AleevaAuthToken() { AccessCode = access_code, GrantType = "access_code" };
-            var uri = new Uri($"{aleevaAPIBaseUrl}/auth/token");
-            var aleevaKeyValues = new List<KeyValuePair<string, string>>
+            AleevaAuthToken aleeva = new AleevaAuthToken() { AccessCode = access_code, GrantType = "access_code" };
+            Uri uri = new Uri($"{aleevaAPIBaseUrl}/auth/token");
+            List<KeyValuePair<string, string>> aleevaKeyValues = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("grant_type", aleeva.GrantType),
                 new KeyValuePair<string, string>("client_id", aleeva.ClientId),
@@ -125,12 +128,12 @@ namespace PlenBotLogUploader
             };
             try
             {
-                using (var content = new FormUrlEncodedContent(aleevaKeyValues))
+                using (FormUrlEncodedContent content = new FormUrlEncodedContent(aleevaKeyValues))
                 {
-                    using (var response = await mainLink.HttpClientController.PostAsync(uri, content))
+                    using (HttpResponseMessage response = await mainLink.HttpClientController.PostAsync(uri, content))
                     {
-                        var responseMessage = await response.Content.ReadAsStringAsync();
-                        var responseToken = JsonConvert.DeserializeObject<AleevaAuthTokenResponse>(responseMessage);
+                        string responseMessage = await response.Content.ReadAsStringAsync();
+                        AleevaAuthTokenResponse responseToken = JsonConvert.DeserializeObject<AleevaAuthTokenResponse>(responseMessage);
                         AleevaAuthorised = responseToken.IsSuccess;
                         if (responseToken.IsSuccess)
                         {
@@ -163,9 +166,9 @@ namespace PlenBotLogUploader
 
         public async Task GetAleevaTokenFromRefreshToken()
         {
-            var aleeva = new AleevaAuthToken() { RefreshToken = Properties.Settings.Default.AleevaRefreshToken, GrantType = "refresh_token" };
-            var uri = new Uri($"{aleevaAPIBaseUrl}/auth/token");
-            var aleevaKeyValues = new List<KeyValuePair<string, string>>
+            AleevaAuthToken aleeva = new AleevaAuthToken() { RefreshToken = Properties.Settings.Default.AleevaRefreshToken, GrantType = "refresh_token" };
+            Uri uri = new Uri($"{aleevaAPIBaseUrl}/auth/token");
+            List<KeyValuePair<string, string>> aleevaKeyValues = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("grant_type", aleeva.GrantType),
                 new KeyValuePair<string, string>("client_id", aleeva.ClientId),
@@ -175,12 +178,12 @@ namespace PlenBotLogUploader
             };
             try
             {
-                using (var content = new FormUrlEncodedContent(aleevaKeyValues))
+                using (FormUrlEncodedContent content = new FormUrlEncodedContent(aleevaKeyValues))
                 {
-                    using (var response = await mainLink.HttpClientController.PostAsync(uri, content))
+                    using (HttpResponseMessage response = await mainLink.HttpClientController.PostAsync(uri, content))
                     {
-                        var responseMessage = await response.Content.ReadAsStringAsync();
-                        var responseToken = JsonConvert.DeserializeObject<AleevaAuthTokenResponse>(responseMessage);
+                        string responseMessage = await response.Content.ReadAsStringAsync();
+                        AleevaAuthTokenResponse responseToken = JsonConvert.DeserializeObject<AleevaAuthTokenResponse>(responseMessage);
                         AleevaAuthorised = responseToken.IsSuccess;
                         if (responseToken.IsSuccess)
                         {
@@ -190,12 +193,12 @@ namespace PlenBotLogUploader
                             Properties.Settings.Default.AleevaRefreshToken = responseToken.RefreshToken;
                             Properties.Settings.Default.AleevaRefreshTokenExpire = DateTime.Now.AddSeconds(responseToken.RefreshExpiresIn);
                             await AleevaLoadServers();
-                            var selectedServer = aleevaServers.Where(x => x.ID.Equals(Properties.Settings.Default.AleevaSelectedServer)).First();
+                            AleevaServer selectedServer = aleevaServers.Where(x => x.ID.Equals(Properties.Settings.Default.AleevaSelectedServer)).First();
                             if (selectedServer != null)
                             {
                                 comboBoxServer.SelectedItem = selectedServer;
                                 await AleevaLoadChannels(selectedServer.ID);
-                                var selectedChannel = aleevaServerChannels.Where(x => x.ID.Equals(Properties.Settings.Default.AleevaSelectedChannel)).First();
+                                AleevaChannel selectedChannel = aleevaServerChannels.Where(x => x.ID.Equals(Properties.Settings.Default.AleevaSelectedChannel)).First();
                                 if (selectedChannel != null)
                                 {
                                     comboBoxChannel.SelectedItem = selectedChannel;
@@ -246,21 +249,21 @@ namespace PlenBotLogUploader
                 {
                     comboBoxChannel.Items.Clear();
                 }
-                var uri = new Uri($"{aleevaAPIBaseUrl}/server?mode=UPLOADS");
-                using (var response = await controller.GetAsync(uri))
+                Uri uri = new Uri($"{aleevaAPIBaseUrl}/server?mode=UPLOADS");
+                using (HttpResponseMessage response = await controller.GetAsync(uri))
                 {
                     if (response.IsSuccessStatusCode)
                     {
-                        var responseMessage = await response.Content.ReadAsStringAsync();
-                        var jArray = JArray.Parse(responseMessage);
-                        foreach (var token in jArray)
+                        string responseMessage = await response.Content.ReadAsStringAsync();
+                        JArray jArray = JArray.Parse(responseMessage);
+                        foreach (JToken token in jArray)
                         {
-                            var server = token.ToObject<AleevaServer>();
+                            AleevaServer server = token.ToObject<AleevaServer>();
                             aleevaServers.Add(server);
                         }
                     }
                 }
-                foreach (var server in aleevaServers)
+                foreach (AleevaServer server in aleevaServers)
                 {
                     comboBoxServer.Items.Add(server);
                 }
@@ -280,7 +283,7 @@ namespace PlenBotLogUploader
         {
             if (comboBoxServer.SelectedItem.GetType().Equals(typeof(AleevaServer)))
             {
-                var server = (AleevaServer)comboBoxServer.SelectedItem;
+                AleevaServer server = (AleevaServer)comboBoxServer.SelectedItem;
                 Properties.Settings.Default.AleevaSelectedServer = server.ID;
                 await AleevaLoadChannels(server.ID);
             }
@@ -303,21 +306,21 @@ namespace PlenBotLogUploader
                 {
                     comboBoxChannel.Items.Clear();
                 }
-                var uri = new Uri($"{aleevaAPIBaseUrl}/server/{serverId}/channel?mode=UPLOADS");
-                using (var response = await controller.GetAsync(uri))
+                Uri uri = new Uri($"{aleevaAPIBaseUrl}/server/{serverId}/channel?mode=UPLOADS");
+                using (HttpResponseMessage response = await controller.GetAsync(uri))
                 {
                     if (response.IsSuccessStatusCode)
                     {
-                        var responseMessage = await response.Content.ReadAsStringAsync();
-                        var jArray = JArray.Parse(responseMessage);
-                        foreach (var token in jArray)
+                        string responseMessage = await response.Content.ReadAsStringAsync();
+                        JArray jArray = JArray.Parse(responseMessage);
+                        foreach (JToken token in jArray)
                         {
-                            var channel = token.ToObject<AleevaChannel>();
+                            AleevaChannel channel = token.ToObject<AleevaChannel>();
                             aleevaServerChannels.Add(channel);
                         }
                     }
                 }
-                foreach (var channel in aleevaServerChannels)
+                foreach (AleevaChannel channel in aleevaServerChannels)
                 {
                     comboBoxChannel.Items.Add(channel);
                 }
@@ -332,12 +335,15 @@ namespace PlenBotLogUploader
         {
             if (comboBoxChannel.SelectedItem.GetType().Equals(typeof(AleevaChannel)))
             {
-                var channel = (AleevaChannel)comboBoxChannel.SelectedItem;
+                AleevaChannel channel = (AleevaChannel)comboBoxChannel.SelectedItem;
                 Properties.Settings.Default.AleevaSelectedChannel = channel.ID;
             }
         }
 
-        private void CheckBoxSendNotification_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.AleevaSendNotification = checkBoxSendNotification.Checked;
+        private void CheckBoxSendNotification_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AleevaSendNotification = checkBoxSendNotification.Checked;
+        }
 
         private void FormAleeva_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
         {

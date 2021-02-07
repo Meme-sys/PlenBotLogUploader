@@ -32,7 +32,7 @@ namespace PlenBotLogUploader.DPSReport
         /// <returns>A dictionary with all encounters</returns>
         public static Dictionary<int, BossData> FromFile(string file)
         {
-            var allBosses = GetAllBosses();
+            Dictionary<int, BossData> allBosses = GetAllBosses();
             if (allBosses.Count > 0)
             {
                 allBosses.Clear();
@@ -55,7 +55,7 @@ namespace PlenBotLogUploader.DPSReport
         /// <returns>A dictionary with all encounters</returns>
         public static async Task<Dictionary<int, BossData>> FromFileAsync(string file)
         {
-            var allBosses = GetAllBosses();
+            Dictionary<int, BossData> allBosses = GetAllBosses();
             if (allBosses.Count > 0)
             {
                 allBosses.Clear();
@@ -133,7 +133,7 @@ namespace PlenBotLogUploader.DPSReport
         /// <returns>BossData object or null</returns>
         public static BossData GetBossDataFromId(int bossId)
         {
-            var bossDataRef = GetAllBosses()
+            IEnumerable<BossData> bossDataRef = GetAllBosses()
                 .Where(x => x.Value.BossId.Equals(bossId))
                 .Select(x => x.Value);
             if (bossDataRef.Count() == 1)

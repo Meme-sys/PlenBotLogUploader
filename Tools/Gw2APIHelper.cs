@@ -20,10 +20,10 @@ namespace PlenBotLogUploader.Tools
         {
             try
             {
-                using (var accountResponse = await HttpClientController.GetAsync($"{gw2api}v2/account?access_token={apiKey}"))
+                using (System.Net.Http.HttpResponseMessage accountResponse = await HttpClientController.GetAsync($"{gw2api}v2/account?access_token={apiKey}"))
                 {
-                    var accountContent = await accountResponse.Content.ReadAsStringAsync();
-                    var accountInfo = JsonConvert.DeserializeObject<GW2Account>(accountContent);
+                    string accountContent = await accountResponse.Content.ReadAsStringAsync();
+                    GW2Account accountInfo = JsonConvert.DeserializeObject<GW2Account>(accountContent);
                     return accountInfo;
                 }
             }

@@ -34,9 +34,9 @@ namespace PlenBotLogUploader.Tools
 
         public static DiscordEmbeds ConstructSessionEmbeds(List<DPSReportJSON> reportsJSON, LogSessionSettings logSessionSettings)
         {
-            var discordEmbedsSuccessFailure = new List<DiscordAPIJSONContentEmbed>();
-            var discordEmbedsSuccess = new List<DiscordAPIJSONContentEmbed>();
-            var discordEmbedsFailure = new List<DiscordAPIJSONContentEmbed>();
+            List<DiscordAPIJSONContentEmbed> discordEmbedsSuccessFailure = new List<DiscordAPIJSONContentEmbed>();
+            List<DiscordAPIJSONContentEmbed> discordEmbedsSuccess = new List<DiscordAPIJSONContentEmbed>();
+            List<DiscordAPIJSONContentEmbed> discordEmbedsFailure = new List<DiscordAPIJSONContentEmbed>();
 
             var RaidLogs = reportsJSON
                 .Where(x => Bosses.GetWingForBoss(x.EVTC.BossId) > 0)
@@ -53,31 +53,31 @@ namespace PlenBotLogUploader.Tools
                     .ThenBy(x => x.LogData.UploadTime)
                     .ToList();
             }
-            var FractalLogs = reportsJSON
+            List<DPSReportJSON> FractalLogs = reportsJSON
                 .Where(x => allBosses
                     .Where(y => y.Value.BossId.Equals(x.EVTC.BossId))
                     .Where(y => y.Value.Type.Equals(BossType.Fractal))
                     .Count() > 0)
                 .ToList();
-            var StrikeLogs = reportsJSON
+            List<DPSReportJSON> StrikeLogs = reportsJSON
                 .Where(x => allBosses
                     .Where(y => y.Value.BossId.Equals(x.EVTC.BossId))
                     .Where(y => y.Value.Type.Equals(BossType.Strike))
                     .Count() > 0)
                 .ToList();
-            var GolemLogs = reportsJSON
+            List<DPSReportJSON> GolemLogs = reportsJSON
                 .Where(x => allBosses
                     .Where(y => y.Value.BossId.Equals(x.EVTC.BossId))
                     .Where(y => y.Value.Type.Equals(BossType.Golem))
                     .Count() > 0)
                 .ToList();
-            var WvWLogs = reportsJSON
+            List<DPSReportJSON> WvWLogs = reportsJSON
                 .Where(x => allBosses
                     .Where(y => y.Value.BossId.Equals(x.EVTC.BossId))
                     .Where(y => y.Value.Type.Equals(BossType.WvW))
                     .Count() > 0)
                 .ToList();
-            var OtherLogs = reportsJSON
+            List<DPSReportJSON> OtherLogs = reportsJSON
                 .Where(x => allBosses
                     .Where(y => y.Value.BossId.Equals(x.EVTC.BossId))
                     .Where(y => y.Value.Type.Equals(BossType.None))
@@ -86,10 +86,10 @@ namespace PlenBotLogUploader.Tools
                     .Count() == 0)
                 .ToList();
 
-            var durationText = $"Session duration: {logSessionSettings.ElapsedTime}\n\n";
-            var builderSuccessFailure = new StringBuilder(durationText);
-            var builderSuccess = new StringBuilder(durationText);
-            var builderFailure = new StringBuilder(durationText);
+            string durationText = $"Session duration: {logSessionSettings.ElapsedTime}\n\n";
+            StringBuilder builderSuccessFailure = new StringBuilder(durationText);
+            StringBuilder builderSuccess = new StringBuilder(durationText);
+            StringBuilder builderFailure = new StringBuilder(durationText);
             int messageSuccessFailureCount = 0, messageSuccessCount = 0, messageFailureCount = 0;
 
             if (RaidLogs.Count > 0)
@@ -100,7 +100,7 @@ namespace PlenBotLogUploader.Tools
                     foreach (var data in RaidLogs)
                     {
                         string bossName = data.LogData.Encounter.Boss + (data.LogData.ChallengeMode ? " CM" : "");
-                        var bossData = Bosses.GetBossDataFromId(data.LogData.Encounter.BossId);
+                        BossData bossData = Bosses.GetBossDataFromId(data.LogData.Encounter.BossId);
                         if (bossData != null)
                         {
                             bossName = bossData.Name + (data.LogData.ChallengeMode ? " CM" : "");
@@ -150,7 +150,7 @@ namespace PlenBotLogUploader.Tools
                             lastWing = Bosses.GetWingForBoss(data.LogData.EVTC.BossId);
                         }
                         string bossName = data.LogData.Encounter.Boss + (data.LogData.ChallengeMode ? " CM" : "");
-                        var bossData = Bosses.GetBossDataFromId(data.LogData.Encounter.BossId);
+                        BossData bossData = Bosses.GetBossDataFromId(data.LogData.Encounter.BossId);
                         if (bossData != null)
                         {
                             bossName = bossData.Name + (data.LogData.ChallengeMode ? " CM" : "");
@@ -197,10 +197,10 @@ namespace PlenBotLogUploader.Tools
                     builderSuccessFailure.Append("\n\n");
                 }
                 builderSuccessFailure.Append("***Fractal logs:***\n");
-                foreach (var log in FractalLogs)
+                foreach (DPSReportJSON log in FractalLogs)
                 {
                     string bossName = log.Encounter.Boss;
-                    var bossData = Bosses.GetBossDataFromId(log.Encounter.BossId);
+                    BossData bossData = Bosses.GetBossDataFromId(log.Encounter.BossId);
                     if (bossData != null)
                     {
                         bossName = bossData.Name + (log.ChallengeMode ? " CM" : "");
@@ -246,10 +246,10 @@ namespace PlenBotLogUploader.Tools
                     builderSuccessFailure.Append("\n\n");
                 }
                 builderSuccessFailure.Append("***Strike mission logs:***\n");
-                foreach (var log in StrikeLogs)
+                foreach (DPSReportJSON log in StrikeLogs)
                 {
                     string bossName = log.Encounter.Boss;
-                    var bossData = Bosses.GetBossDataFromId(log.Encounter.BossId);
+                    BossData bossData = Bosses.GetBossDataFromId(log.Encounter.BossId);
                     if (bossData != null)
                     {
                         bossName = bossData.Name;
@@ -295,7 +295,7 @@ namespace PlenBotLogUploader.Tools
                     builderSuccessFailure.Append("\n\n");
                 }
                 builderSuccessFailure.Append("***Golem logs:***\n");
-                foreach (var log in GolemLogs)
+                foreach (DPSReportJSON log in GolemLogs)
                 {
                     builderSuccessFailure.Append($"{log.Permalink}\n");
                     if (builderSuccessFailure.Length >= maxAllowedMessageSize)
@@ -336,7 +336,7 @@ namespace PlenBotLogUploader.Tools
                     builderSuccessFailure.Append("\n\n");
                 }
                 builderSuccessFailure.Append("***WvW logs:***\n");
-                foreach (var log in WvWLogs)
+                foreach (DPSReportJSON log in WvWLogs)
                 {
                     builderSuccessFailure.Append($"{log.Permalink}\n");
                     if (builderSuccessFailure.Length >= maxAllowedMessageSize)
@@ -377,10 +377,10 @@ namespace PlenBotLogUploader.Tools
                     builderSuccessFailure.Append("\n\n");
                 }
                 builderSuccessFailure.Append("***Other logs:***\n");
-                foreach (var log in OtherLogs)
+                foreach (DPSReportJSON log in OtherLogs)
                 {
                     string bossName = log.Encounter.Boss;
-                    var bossData = Bosses.GetBossDataFromId(log.Encounter.BossId);
+                    BossData bossData = Bosses.GetBossDataFromId(log.Encounter.BossId);
                     if (bossData != null)
                     {
                         bossName = bossData.Name;

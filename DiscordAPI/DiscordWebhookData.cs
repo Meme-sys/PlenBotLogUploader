@@ -48,7 +48,7 @@ namespace PlenBotLogUploader.DiscordAPI
             try
             {
                 string response = await httpController.DownloadFileToStringAsync(URL);
-                var pingTest = JsonConvert.DeserializeObject<DiscordAPIJSONWebhookResponse>(response);
+                DiscordAPIJSONWebhookResponse pingTest = JsonConvert.DeserializeObject<DiscordAPIJSONWebhookResponse>(response);
                 return pingTest.Success;
             }
             catch
@@ -62,7 +62,10 @@ namespace PlenBotLogUploader.DiscordAPI
         /// </summary>
         /// <param name="bossId">Queried boss ID</param>
         /// <returns></returns>
-        public bool IsBossEnabled(int bossId) => !BossesDisable.Contains(bossId);
+        public bool IsBossEnabled(int bossId)
+        {
+            return !BossesDisable.Contains(bossId);
+        }
 
         /// <summary>
         /// Returns a string that represents the current object.
@@ -91,12 +94,12 @@ namespace PlenBotLogUploader.DiscordAPI
                 int.TryParse(values[0], out int active);
                 int.TryParse(values[3], out int successFailToggle);
                 int.TryParse(values[4], out int showPlayers);
-                var bossesDisableList = new List<int>();
+                List<int> bossesDisableList = new List<int>();
                 if (values.Count() > 5)
                 {
-                    var bossesDisable = values[5];
-                    var bossesDisableSplit = bossesDisable.Split(';');
-                    foreach (var bossIdString in bossesDisableSplit)
+                    string bossesDisable = values[5];
+                    string[] bossesDisableSplit = bossesDisable.Split(';');
+                    foreach (string bossIdString in bossesDisableSplit)
                     {
                         if (int.TryParse(bossIdString, out int bossId))
                         {

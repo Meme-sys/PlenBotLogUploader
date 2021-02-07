@@ -97,7 +97,7 @@ namespace PlenBotLogUploader
                 if (Properties.Settings.Default.FirstRun)
                 {
                     MessageBox.Show("It looks like this is the first time you are running this program.\nIf you have any issues feel free to contact me directly via Twitch, Discord (@Plenyx#1029) or via GitHub!\n\nPlenyx", "Thank you for using PlenBotLogUploader", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    var arcFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Guild Wars 2\\addons\\arcdps\\arcdps.cbtlogs\\";
+                    string arcFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Guild Wars 2\\addons\\arcdps\\arcdps.cbtlogs\\";
                     if (Directory.Exists(arcFolder))
                     {
                         Properties.Settings.Default.LogsLocation = arcFolder;
@@ -256,7 +256,7 @@ namespace PlenBotLogUploader
                     File.AppendAllText($"{LocalDir}uploaded_logs.csv", "Boss;BossId;Success;Duration;RecordedBy;EliteInsightsVersion;arcdpsVersion;Permalink\n");
                 }
                 // startup check
-                using (var registryRun = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
+                using (RegistryKey registryRun = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
                 {
                     if (registryRun.GetValue("PlenBot Log Uploader") != null)
                     {
@@ -322,8 +322,8 @@ namespace PlenBotLogUploader
 
         private void FormMain_DragDrop(object sender, DragEventArgs e)
         {
-            var files = ((string[])e.Data.GetData(DataFormats.FileDrop)).ToList();
-            foreach (var file in files)
+            List<string> files = ((string[])e.Data.GetData(DataFormats.FileDrop)).ToList();
+            foreach (string file in files)
             {
                 Task.Run(async () =>
                 {
@@ -336,7 +336,7 @@ namespace PlenBotLogUploader
 
         protected async Task DoDragDropFile(string file)
         {
-            var postData = new Dictionary<string, string>()
+            Dictionary<string, string> postData = new Dictionary<string, string>()
             {
                 { "generator", "ei" },
                 { "json", "1" }
@@ -348,7 +348,7 @@ namespace PlenBotLogUploader
                 if (!file.EndsWith(".zevtc"))
                 {
                     zipfilelocation = $"{LocalDir}{Path.GetFileName(file)}.zevtc";
-                    using (var zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@file, Path.GetFileName(file)); }
+                    using (ZipArchive zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@file, Path.GetFileName(file)); }
                     archived = true;
                 }
                 try
@@ -395,12 +395,12 @@ namespace PlenBotLogUploader
                             if (!e.FullPath.EndsWith(".zevtc"))
                             {
                                 zipfilelocation = $"{LocalDir}{Path.GetFileName(e.FullPath)}.zevtc";
-                                using (var zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@e.FullPath, Path.GetFileName(e.FullPath)); }
+                                using (ZipArchive zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@e.FullPath, Path.GetFileName(e.FullPath)); }
                                 archived = true;
                             }
                             try
                             {
-                                var postData = new Dictionary<string, string>()
+                                Dictionary<string, string> postData = new Dictionary<string, string>()
                                 {
                                     { "generator", "ei" },
                                     { "json", "1" }
@@ -430,7 +430,10 @@ namespace PlenBotLogUploader
             }
         }
 
-        public void ShowBalloon(string title, string description, int ms) => notifyIconTray.ShowBalloonTip(ms, title, description, ToolTipIcon.None);
+        public void ShowBalloon(string title, string description, int ms)
+        {
+            notifyIconTray.ShowBalloonTip(ms, title, description, ToolTipIcon.None);
+        }
 
         private void LogsScan(string directory)
         {
@@ -461,7 +464,7 @@ namespace PlenBotLogUploader
                         {
                             buttonUpdateNow.Visible = true;
                         }
-                        var notes = await HttpClientController.DownloadFileToStringAsync("https://plenbot.net/uploader/release-info/");
+                        string notes = await HttpClientController.DownloadFileToStringAsync("https://plenbot.net/uploader/release-info/");
                         AddToText($">>> New release available (r{response})");
                         AddToText(">>> https://github.com/HardstuckGuild/PlenBotLogUploader/releases/");
                         AddToText(notes);
@@ -489,7 +492,7 @@ namespace PlenBotLogUploader
 
         protected async Task DoCommandArgs()
         {
-            var args = Environment.GetCommandLineArgs().ToList();
+            List<string> args = Environment.GetCommandLineArgs().ToList();
             if (args.Count > 1)
             {
                 if ((args.Count == 2) && (args[1].Equals("-m")))
@@ -504,7 +507,7 @@ namespace PlenBotLogUploader
                 }
                 else
                 {
-                    var postData = new Dictionary<string, string>()
+                    Dictionary<string, string> postData = new Dictionary<string, string>()
                     {
                         { "generator", "ei" },
                         { "json", "1" }
@@ -522,7 +525,7 @@ namespace PlenBotLogUploader
                             if (!arg.EndsWith(".zevtc"))
                             {
                                 zipfilelocation = $"{LocalDir}{Path.GetFileName(arg)}.zevtc";
-                                using (var zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@arg, Path.GetFileName(arg)); }
+                                using (ZipArchive zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@arg, Path.GetFileName(arg)); }
                                 archived = true;
                             }
                             try
@@ -556,7 +559,7 @@ namespace PlenBotLogUploader
                 richTextBoxMainConsole.Invoke((Action<string>)delegate (string text) { AddToText(text); }, s);
                 return;
             }
-            var messagePre = s.IndexOf(' ');
+            int messagePre = s.IndexOf(' ');
             if (messagePre != -1)
             {
                 richTextBoxMainConsole.SelectionColor = Color.Blue;
@@ -590,10 +593,10 @@ namespace PlenBotLogUploader
             if (ChannelJoined && checkBoxPostToTwitch.Checked && !bypassMessage && IsOBSRunning())
             {
                 AddToText($">:> {reportJSON.Permalink}");
-                var bossData = Bosses.GetBossDataFromId(reportJSON.ExtraJSON?.TriggerID ?? reportJSON.Encounter.BossId);
+                BossData bossData = Bosses.GetBossDataFromId(reportJSON.ExtraJSON?.TriggerID ?? reportJSON.Encounter.BossId);
                 if (bossData != null)
                 {
-                    var format = bossData.TwitchMessageFormat(reportJSON, lastLogPullCounter);
+                    string format = bossData.TwitchMessageFormat(reportJSON, lastLogPullCounter);
                     if (!string.IsNullOrWhiteSpace(format))
                     {
                         lastLogMessage = format;
@@ -614,11 +617,11 @@ namespace PlenBotLogUploader
 
         public async Task HttpUploadLogAsync(string file, Dictionary<string, string> postData, bool bypassMessage = false)
         {
-            using (var content = new MultipartFormDataContent())
+            using (MultipartFormDataContent content = new MultipartFormDataContent())
             {
                 foreach (string key in postData.Keys)
                 {
-                    using (var stringContent = new StringContent(postData[key]))
+                    using (StringContent stringContent = new StringContent(postData[key]))
                     {
                         content.Add(stringContent, key);
                     }
@@ -628,20 +631,20 @@ namespace PlenBotLogUploader
                 int bossId = 1;
                 try
                 {
-                    using (var inputStream = File.OpenRead(file))
+                    using (FileStream inputStream = File.OpenRead(file))
                     {
-                        using (var contentStream = new StreamContent(inputStream))
+                        using (StreamContent contentStream = new StreamContent(inputStream))
                         {
                             content.Add(contentStream, "file", Path.GetFileName(file));
                             try
                             {
-                                var uri = new Uri($"{DPSReportServer}/uploadContent{((Properties.Settings.Default.DPSReportUsertokenEnabled) ? $"?userToken={Properties.Settings.Default.DPSReportUsertoken}" : "")}");
-                                using (var responseMessage = await HttpClientController.PostAsync(uri, content))
+                                Uri uri = new Uri($"{DPSReportServer}/uploadContent{((Properties.Settings.Default.DPSReportUsertokenEnabled) ? $"?userToken={Properties.Settings.Default.DPSReportUsertoken}" : "")}");
+                                using (HttpResponseMessage responseMessage = await HttpClientController.PostAsync(uri, content))
                                 {
                                     string response = await responseMessage.Content.ReadAsStringAsync();
                                     try
                                     {
-                                        var reportJSON = JsonConvert.DeserializeObject<DPSReportJSON>(response);
+                                        DPSReportJSON reportJSON = JsonConvert.DeserializeObject<DPSReportJSON>(response);
                                         if (string.IsNullOrEmpty(reportJSON.Error))
                                         {
                                             bossId = reportJSON.Encounter.BossId;
@@ -652,7 +655,7 @@ namespace PlenBotLogUploader
                                                 try
                                                 {
                                                     string jsonString = await HttpClientController.DownloadFileToStringAsync($"https://dps.report/getJson?permalink={reportJSON.Permalink}");
-                                                    var extraJSON = JsonConvert.DeserializeObject<DPSReportJSONExtraJSON>(jsonString);
+                                                    DPSReportJSONExtraJSON extraJSON = JsonConvert.DeserializeObject<DPSReportJSONExtraJSON>(jsonString);
                                                     reportJSON.ExtraJSON = extraJSON;
                                                     bossId = reportJSON.ExtraJSON.TriggerID;
                                                     lastLogBossCM = reportJSON.ExtraJSON.IsCM;
@@ -779,8 +782,8 @@ namespace PlenBotLogUploader
 
         public Task ExecuteSessionLogWebhooksAsync(LogSessionSettings logSessionSettings)
         {
-            var builder = new System.Text.StringBuilder($">:> Session summary:{Environment.NewLine}");
-            foreach (var log in SessionLogs)
+            System.Text.StringBuilder builder = new System.Text.StringBuilder($">:> Session summary:{Environment.NewLine}");
+            foreach (DPSReportJSON log in SessionLogs)
             {
                 builder.AppendLine($"{log?.ExtraJSON.FightName ?? log.Encounter.Boss}: {log.Permalink}");
             }
@@ -790,12 +793,15 @@ namespace PlenBotLogUploader
         #endregion
 
         #region Twitch bot methods
-        public bool IsTwitchConnectionNull() => chatConnect == null;
+        public bool IsTwitchConnectionNull()
+        {
+            return chatConnect == null;
+        }
 
         public bool IsOBSRunning()
         {
-            var processes = Process.GetProcesses();
-            foreach (var process in processes)
+            Process[] processes = Process.GetProcesses();
+            foreach (Process process in processes)
             {
                 if ((process.ProcessName.ToLower().Equals("obs"))
                     || (process.ProcessName.ToLower().Equals("obs64"))
@@ -956,7 +962,7 @@ namespace PlenBotLogUploader
                     AddToText("> (Spotify) SMART SONG RECOGNITION USED");
                     try
                     {
-                        var process = Process.GetProcessesByName("Spotify").FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.MainWindowTitle));
+                        Process process = Process.GetProcessesByName("Spotify").FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.MainWindowTitle));
                         process.Dispose();
                         if (process.MainWindowTitle.Contains("Spotify"))
                         {
@@ -991,7 +997,7 @@ namespace PlenBotLogUploader
                     if (lastLogBossId > 0)
                     {
                         AddToText("> PULLS COMMAND USED");
-                        var bossData = Bosses.GetBossDataFromId(lastLogBossId);
+                        BossData bossData = Bosses.GetBossDataFromId(lastLogBossId);
                         await chatConnect.SendChatMessageAsync(Properties.Settings.Default.TwitchChannelName, $"{bossData.Name}{((lastLogBossCM) ? " CM" : "")} | Current pull: {lastLogPullCounter}");
                     }
                 }
@@ -1000,7 +1006,7 @@ namespace PlenBotLogUploader
                     AddToText("> (Spotify) SONG COMMAND USED");
                     try
                     {
-                        var process = Process.GetProcessesByName("Spotify").FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.MainWindowTitle));
+                        Process process = Process.GetProcessesByName("Spotify").FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.MainWindowTitle));
                         if (process.MainWindowTitle.Contains("Spotify"))
                         {
                             await chatConnect.SendChatMessageAsync(Properties.Settings.Default.TwitchChannelName, "No song is being played.");
@@ -1022,10 +1028,10 @@ namespace PlenBotLogUploader
                     {
                         using (Gw2APIHelper gw2Api = new Gw2APIHelper(Properties.Settings.Default.GW2APIKey))
                         {
-                            var userInfo = await gw2Api.GetUserInfoAsync();
+                            GW2Account userInfo = await gw2Api.GetUserInfoAsync();
                             if (userInfo != null)
                             {
-                                var playerWorld = GW2.AllServers[userInfo.World];
+                                GW2Server playerWorld = GW2.AllServers[userInfo.World];
                                 await chatConnect.SendChatMessageAsync(Properties.Settings.Default.TwitchChannelName, $"GW2 Account name: {userInfo.Name} | Server: {playerWorld.Name} ({playerWorld.Region})");
                             }
                             else
@@ -1063,7 +1069,7 @@ namespace PlenBotLogUploader
         {
             using (FolderBrowserDialog dialog = new FolderBrowserDialog() { Description = "Select the arcdps folder containing the combat logs.\nThe default location is in \"My Documents\\Guild Wars 2\\addons\\arcdps\\arcdps.cbtlogs\\\"" })
             {
-                var result = dialog.ShowDialog();
+                DialogResult result = dialog.ShowDialog();
                 if (result.Equals(DialogResult.OK) && !string.IsNullOrWhiteSpace(dialog.SelectedPath))
                 {
                     Properties.Settings.Default.LogsLocation = dialog.SelectedPath;
@@ -1086,7 +1092,10 @@ namespace PlenBotLogUploader
             }
         }
 
-        private void CheckBoxTrayMinimizeToIcon_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.TrayMinimize = checkBoxTrayMinimizeToIcon.Checked;
+        private void CheckBoxTrayMinimizeToIcon_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.TrayMinimize = checkBoxTrayMinimizeToIcon.Checked;
+        }
 
         private void CheckBoxPostToTwitch_CheckedChanged(object sender, EventArgs e)
         {
@@ -1099,9 +1108,15 @@ namespace PlenBotLogUploader
             }
         }
 
-        private void CheckBoxTwitchOnlySuccess_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.UploadToTwitchOnlySuccess = checkBoxTwitchOnlySuccess.Checked;
+        private void CheckBoxTwitchOnlySuccess_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.UploadToTwitchOnlySuccess = checkBoxTwitchOnlySuccess.Checked;
+        }
 
-        private void CheckBoxFileSizeIgnore_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.UploadIgnoreFileSize = checkBoxFileSizeIgnore.Checked;
+        private void CheckBoxFileSizeIgnore_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.UploadIgnoreFileSize = checkBoxFileSizeIgnore.Checked;
+        }
 
         private void NotifyIconTray_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -1120,15 +1135,30 @@ namespace PlenBotLogUploader
             }
         }
 
-        private void FormMain_FormClosing(object sender, FormClosingEventArgs e) => Properties.Settings.Default.Save();
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
 
-        private void ButtonChangeTwitchChannel_Click(object sender, EventArgs e) => twitchNameLink.Show();
+        private void ButtonChangeTwitchChannel_Click(object sender, EventArgs e)
+        {
+            twitchNameLink.Show();
+        }
 
-        private void ToolStripMenuItemUploadLogs_CheckedChanged(object sender, EventArgs e) => checkBoxUploadLogs.Checked = toolStripMenuItemUploadLogs.Checked;
+        private void ToolStripMenuItemUploadLogs_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxUploadLogs.Checked = toolStripMenuItemUploadLogs.Checked;
+        }
 
-        private void ToolStripMenuItemExit_Click(object sender, EventArgs e) => Close();
+        private void ToolStripMenuItemExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
-        private void ToolStripMenuItemPostToTwitch_CheckedChanged(object sender, EventArgs e) => checkBoxPostToTwitch.Checked = toolStripMenuItemPostToTwitch.Checked;
+        private void ToolStripMenuItemPostToTwitch_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxPostToTwitch.Checked = toolStripMenuItemPostToTwitch.Checked;
+        }
 
         private void ButtonOpenLogs_Click(object sender, EventArgs e)
         {
@@ -1231,7 +1261,7 @@ namespace PlenBotLogUploader
         {
             buttonUpdateNow.Enabled = false;
             AddToText(">>> Downloading update...");
-            var result = await HttpClientController.DownloadFileAsync("https://plenbot.net/uploader/update/", $"{LocalDir}PlenBotLogUploader_Update.exe");
+            bool result = await HttpClientController.DownloadFileAsync("https://plenbot.net/uploader/update/", $"{LocalDir}PlenBotLogUploader_Update.exe");
             if (result)
             {
                 _ = Process.Start($"{LocalDir}PlenBotLogUploader_Update.exe", "-update " + Path.GetFileName(Application.ExecutablePath.Replace('/', '\\')));
@@ -1260,7 +1290,7 @@ namespace PlenBotLogUploader
 
         private void CheckBoxStartWhenWindowsStarts_CheckedChanged(object sender, EventArgs e)
         {
-            using (var registryRun = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
+            using (RegistryKey registryRun = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
             {
                 if (checkBoxStartWhenWindowsStarts.Checked)
                 {
@@ -1275,7 +1305,7 @@ namespace PlenBotLogUploader
 
         private void ButtonReset_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Are you sure you want to do this?\nThis resets all your settings but not boss data, webhooks and ping configurations.\nIf you click yes the application will close itself.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Are you sure you want to do this?\nThis resets all your settings but not boss data, webhooks and ping configurations.\nIf you click yes the application will close itself.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result.Equals(DialogResult.Yes))
             {
                 _ = Process.Start(LocalDir);
