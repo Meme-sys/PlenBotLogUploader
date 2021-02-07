@@ -78,6 +78,7 @@
             this.timerCheckUpdate = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.richTextBoxMainConsole = new System.Windows.Forms.RichTextBox();
+            this.PlenDonate = new System.Windows.Forms.LinkLabel();
             this.groupBoxTwitchSettings.SuspendLayout();
             this.groupBoxArcdpsLogs.SuspendLayout();
             this.contextMenuStripIcon.SuspendLayout();
@@ -318,13 +319,13 @@
             this.toolStripSeparatorThird,
             this.toolStripMenuItemExit});
             this.contextMenuStripIcon.Name = "contextMenuStripIcon";
-            this.contextMenuStripIcon.Size = new System.Drawing.Size(278, 220);
+            this.contextMenuStripIcon.Size = new System.Drawing.Size(283, 220);
             // 
             // toolStripMenuItemUploadLogs
             // 
             this.toolStripMenuItemUploadLogs.CheckOnClick = true;
             this.toolStripMenuItemUploadLogs.Name = "toolStripMenuItemUploadLogs";
-            this.toolStripMenuItemUploadLogs.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemUploadLogs.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItemUploadLogs.Text = "Upload Logs";
             this.toolStripMenuItemUploadLogs.CheckedChanged += new System.EventHandler(this.ToolStripMenuItemUploadLogs_CheckedChanged);
             // 
@@ -332,71 +333,71 @@
             // 
             this.toolStripMenuItemPostToTwitch.CheckOnClick = true;
             this.toolStripMenuItemPostToTwitch.Name = "toolStripMenuItemPostToTwitch";
-            this.toolStripMenuItemPostToTwitch.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemPostToTwitch.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItemPostToTwitch.Text = "Post Links to Twitch Chat";
             this.toolStripMenuItemPostToTwitch.CheckedChanged += new System.EventHandler(this.ToolStripMenuItemPostToTwitch_CheckedChanged);
             // 
             // toolStripSeparatorFirst
             // 
             this.toolStripSeparatorFirst.Name = "toolStripSeparatorFirst";
-            this.toolStripSeparatorFirst.Size = new System.Drawing.Size(274, 6);
+            this.toolStripSeparatorFirst.Size = new System.Drawing.Size(279, 6);
             // 
             // toolStripMenuItemOpenDPSReportServer
             // 
             this.toolStripMenuItemOpenDPSReportServer.Name = "toolStripMenuItemOpenDPSReportServer";
-            this.toolStripMenuItemOpenDPSReportServer.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemOpenDPSReportServer.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItemOpenDPSReportServer.Text = "Open DPS.report Settings";
             this.toolStripMenuItemOpenDPSReportServer.Click += new System.EventHandler(this.ToolStripMenuItemOpenDPSReportServer_Click);
             // 
             // toolStripMenuItemOpenCustomName
             // 
             this.toolStripMenuItemOpenCustomName.Name = "toolStripMenuItemOpenCustomName";
-            this.toolStripMenuItemOpenCustomName.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemOpenCustomName.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItemOpenCustomName.Text = "Open Custom Name Settings";
             this.toolStripMenuItemOpenCustomName.Click += new System.EventHandler(this.ToolStripMenuItemOpenCustomName_Click);
             // 
             // toolStripMenuItemOpenTwitchCommands
             // 
             this.toolStripMenuItemOpenTwitchCommands.Name = "toolStripMenuItemOpenTwitchCommands";
-            this.toolStripMenuItemOpenTwitchCommands.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemOpenTwitchCommands.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItemOpenTwitchCommands.Text = "Open Twitch Commands";
             this.toolStripMenuItemOpenTwitchCommands.Click += new System.EventHandler(this.ToolStripMenuItemOpenTwitchCommands_Click);
             // 
             // toolStripMenuItemOpenArcVersionsSettings
             // 
             this.toolStripMenuItemOpenArcVersionsSettings.Name = "toolStripMenuItemOpenArcVersionsSettings";
-            this.toolStripMenuItemOpenArcVersionsSettings.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemOpenArcVersionsSettings.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItemOpenArcVersionsSettings.Text = "Open Arcdps Version Checking Settings";
             this.toolStripMenuItemOpenArcVersionsSettings.Click += new System.EventHandler(this.ToolStripMenuItemOpenArcVersionsSettings_Click);
             // 
             // toolStripSeparatorSecond
             // 
             this.toolStripSeparatorSecond.Name = "toolStripSeparatorSecond";
-            this.toolStripSeparatorSecond.Size = new System.Drawing.Size(274, 6);
+            this.toolStripSeparatorSecond.Size = new System.Drawing.Size(279, 6);
             // 
             // toolStripMenuItemDiscordWebhooks
             // 
             this.toolStripMenuItemDiscordWebhooks.Name = "toolStripMenuItemDiscordWebhooks";
-            this.toolStripMenuItemDiscordWebhooks.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemDiscordWebhooks.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItemDiscordWebhooks.Text = "Discord Webhooks";
             this.toolStripMenuItemDiscordWebhooks.Click += new System.EventHandler(this.ToolStripMenuItemDiscordWebhooks_Click);
             // 
             // toolStripMenuItemOpenPingSettings
             // 
             this.toolStripMenuItemOpenPingSettings.Name = "toolStripMenuItemOpenPingSettings";
-            this.toolStripMenuItemOpenPingSettings.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemOpenPingSettings.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItemOpenPingSettings.Text = "Remote Server Pings";
             this.toolStripMenuItemOpenPingSettings.Click += new System.EventHandler(this.ToolStripMenuItemOpenPingSettings_Click);
             // 
             // toolStripSeparatorThird
             // 
             this.toolStripSeparatorThird.Name = "toolStripSeparatorThird";
-            this.toolStripSeparatorThird.Size = new System.Drawing.Size(274, 6);
+            this.toolStripSeparatorThird.Size = new System.Drawing.Size(279, 6);
             // 
             // toolStripMenuItemExit
             // 
             this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
-            this.toolStripMenuItemExit.Size = new System.Drawing.Size(277, 22);
+            this.toolStripMenuItemExit.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItemExit.Text = "Shutdown";
             this.toolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
             // 
@@ -525,7 +526,7 @@
             // buttonUpdateNow
             // 
             this.buttonUpdateNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.buttonUpdateNow.Location = new System.Drawing.Point(727, 313);
+            this.buttonUpdateNow.Location = new System.Drawing.Point(693, 305);
             this.buttonUpdateNow.Name = "buttonUpdateNow";
             this.buttonUpdateNow.Size = new System.Drawing.Size(126, 40);
             this.buttonUpdateNow.TabIndex = 8;
@@ -556,6 +557,17 @@
             this.richTextBoxMainConsole.Text = "";
             this.richTextBoxMainConsole.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.RichTextBoxUploadInfo_LinkClicked);
             // 
+            // PlenDonate
+            // 
+            this.PlenDonate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PlenDonate.Image = ((System.Drawing.Image)(resources.GetObject("PlenDonate.Image")));
+            this.PlenDonate.LinkColor = System.Drawing.Color.Black;
+            this.PlenDonate.Location = new System.Drawing.Point(825, 293);
+            this.PlenDonate.Name = "PlenDonate";
+            this.PlenDonate.Size = new System.Drawing.Size(67, 76);
+            this.PlenDonate.TabIndex = 10;
+            this.toolTip.SetToolTip(this.PlenDonate, "Toss a coin to your PlenGa @ https://paypal.me/plenyx");
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -565,6 +577,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(904, 381);
+            this.Controls.Add(this.PlenDonate);
             this.Controls.Add(this.buttonUpdateNow);
             this.Controls.Add(this.groupBoxOtherSettings);
             this.Controls.Add(this.groupBoxArcdpsLogs);
@@ -640,6 +653,7 @@
         private System.Windows.Forms.Button buttonGW2API;
         private System.Windows.Forms.Button buttonAleevaSettings;
         private System.Windows.Forms.Button buttonCopyApplicationSession;
+        private System.Windows.Forms.LinkLabel PlenDonate;
     }
 }
 

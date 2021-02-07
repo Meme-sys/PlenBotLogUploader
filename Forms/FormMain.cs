@@ -83,14 +83,15 @@ namespace PlenBotLogUploader
             logSessionLink = new FormLogSession(this);
             gw2APILink = new FormGW2API();
             aleevaLink = new FormAleeva(this);
+            //Actually needed? 
             #region tooltips
-            toolTip.SetToolTip(checkBoxUploadLogs, "If checked, all created logs will be uploaded.");
-            toolTip.SetToolTip(checkBoxFileSizeIgnore, "If checked, logs with less than 8 kB filesize will not be uploaded.");
-            toolTip.SetToolTip(checkBoxPostToTwitch, "If checked, logs will be posted to Twitch channel if properly connected to it and OBS is running.");
-            toolTip.SetToolTip(checkBoxTwitchOnlySuccess, "If checked, only successful logs will be linked to Twitch channel if properly connected to it.");
-            toolTip.SetToolTip(labelMaximumUploads, "Sets the maximum allowed uploads for drag & drop.");
-            toolTip.SetToolTip(buttonCopyApplicationSession, "Copies all the logs uploaded during the application session into the clipboard.");
-            toolTip.SetToolTip(twitchCommandsLink.checkBoxSongEnable, "If checked, the given command will output current song from Spotify to Twitch chat.");
+            toolTip.SetToolTip(checkBoxUploadLogs, "Created logs will be uploaded automatically.");
+            toolTip.SetToolTip(checkBoxFileSizeIgnore, "Logs with a filesize of 8 KB or less will not be uploaded.");
+            toolTip.SetToolTip(checkBoxPostToTwitch, "Logs will be posted to Twitch chat if properly connected and OBS is running.");
+            toolTip.SetToolTip(checkBoxTwitchOnlySuccess, "Only successful logs will be linked to Twitch chat.");
+            toolTip.SetToolTip(labelMaximumUploads, "Set maximum for allowed drag & drop uploads.");
+            toolTip.SetToolTip(buttonCopyApplicationSession, "Copy all logs uploaded during session to clipboard.");
+            toolTip.SetToolTip(twitchCommandsLink.checkBoxSongEnable, "Given command will output current song from Spotify to Twitch chat.");
             #endregion
             try
             {
