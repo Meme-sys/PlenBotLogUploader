@@ -49,7 +49,7 @@
             this.buttonDPSReportServer = new System.Windows.Forms.Button();
             this.labelLocationInfo = new System.Windows.Forms.Label();
             this.buttonLogsLocation = new System.Windows.Forms.Button();
-            this.checkBoxTrayMinimiseToIcon = new System.Windows.Forms.CheckBox();
+            this.checkBoxTrayMinimizeToIcon = new System.Windows.Forms.CheckBox();
             this.notifyIconTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStripIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemUploadLogs = new System.Windows.Forms.ToolStripMenuItem();
@@ -285,15 +285,15 @@
             this.buttonLogsLocation.UseVisualStyleBackColor = true;
             this.buttonLogsLocation.Click += new System.EventHandler(this.ButtonLogsLocation_Click);
             // 
-            // checkBoxTrayMinimiseToIcon
+            // checkBoxTrayMinimizeToIcon
             // 
-            this.checkBoxTrayMinimiseToIcon.AutoSize = true;
-            this.checkBoxTrayMinimiseToIcon.Location = new System.Drawing.Point(9, 19);
-            this.checkBoxTrayMinimiseToIcon.Name = "checkBoxTrayMinimiseToIcon";
-            this.checkBoxTrayMinimiseToIcon.Size = new System.Drawing.Size(102, 17);
-            this.checkBoxTrayMinimiseToIcon.TabIndex = 0;
-            this.checkBoxTrayMinimiseToIcon.Text = "Minimize to Tray";
-            this.checkBoxTrayMinimiseToIcon.UseVisualStyleBackColor = true;
+            this.checkBoxTrayMinimizeToIcon.AutoSize = true;
+            this.checkBoxTrayMinimizeToIcon.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxTrayMinimizeToIcon.Name = "checkBoxTrayMinimizeToIcon";
+            this.checkBoxTrayMinimizeToIcon.Size = new System.Drawing.Size(102, 17);
+            this.checkBoxTrayMinimizeToIcon.TabIndex = 0;
+            this.checkBoxTrayMinimizeToIcon.Text = "Minimize to Tray";
+            this.checkBoxTrayMinimizeToIcon.UseVisualStyleBackColor = true;
             // 
             // notifyIconTray
             // 
@@ -411,7 +411,7 @@
             this.groupBoxOtherSettings.Controls.Add(this.checkBoxStartWhenWindowsStarts);
             this.groupBoxOtherSettings.Controls.Add(this.buttonDiscordWebhooks);
             this.groupBoxOtherSettings.Controls.Add(this.buttonArcVersionChecking);
-            this.groupBoxOtherSettings.Controls.Add(this.checkBoxTrayMinimiseToIcon);
+            this.groupBoxOtherSettings.Controls.Add(this.checkBoxTrayMinimizeToIcon);
             this.groupBoxOtherSettings.Controls.Add(this.buttonPingSettings);
             this.groupBoxOtherSettings.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBoxOtherSettings.Location = new System.Drawing.Point(692, 12);
@@ -612,7 +612,7 @@
         private System.Windows.Forms.Button buttonOpenLogs;
         private System.Windows.Forms.Button buttonCustomName;
         private System.Windows.Forms.Button buttonDPSReportServer;
-        private System.Windows.Forms.CheckBox checkBoxTrayMinimiseToIcon;
+        private System.Windows.Forms.CheckBox checkBoxTrayMinimizeToIcon;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenDPSReportServer;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenCustomName;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenPingSettings;

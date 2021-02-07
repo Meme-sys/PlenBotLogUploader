@@ -86,12 +86,12 @@ namespace PlenBotLogUploader.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool FirstTimeMinimise {
+        public bool FirstTimeMinimize {
             get {
-                return ((bool)(this["FirstTimeMinimise"]));
+                return ((bool)(this["FirstTimeMinimize"]));
             }
             set {
-                this["FirstTimeMinimise"] = value;
+                this["FirstTimeMinimize"] = value;
             }
         }
         
@@ -194,12 +194,12 @@ namespace PlenBotLogUploader.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool TrayMinimise {
+        public bool TrayMinimize {
             get {
-                return ((bool)(this["TrayMinimise"]));
+                return ((bool)(this["TrayMinimize"]));
             }
             set {
-                this["TrayMinimise"] = value;
+                this["TrayMinimize"] = value;
             }
         }
         

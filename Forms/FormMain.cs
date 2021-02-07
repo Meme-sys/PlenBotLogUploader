@@ -28,7 +28,7 @@ namespace PlenBotLogUploader
         public string DPSReportServer { get; set; } = "";
         public string LocalDir { get; } = $"{Path.GetDirectoryName(Application.ExecutablePath.Replace('/', '\\'))}\\";
         public HttpClientController HttpClientController { get; } = new HttpClientController();
-        public bool StartedMinimised { get; private set; } = false;
+        public bool StartedMinimized { get; private set; } = false;
 
         // fields
         private readonly FormTwitchNameSetup twitchNameLink;
@@ -173,9 +173,9 @@ namespace PlenBotLogUploader
                 {
                     checkBoxFileSizeIgnore.Checked = true;
                 }
-                if (Properties.Settings.Default.TrayMinimise)
+                if (Properties.Settings.Default.TrayMinimize)
                 {
-                    checkBoxTrayMinimiseToIcon.Checked = true;
+                    checkBoxTrayMinimizeToIcon.Checked = true;
                 }
                 if (Properties.Settings.Default.CustomTwitchNameEnabled)
                 {
@@ -267,7 +267,7 @@ namespace PlenBotLogUploader
                 checkBoxPostToTwitch.CheckedChanged += new EventHandler(CheckBoxPostToTwitch_CheckedChanged);
                 checkBoxUploadLogs.CheckedChanged += new EventHandler(CheckBoxUploadAll_CheckedChanged);
                 checkBoxFileSizeIgnore.CheckedChanged += new EventHandler(CheckBoxFileSizeIgnore_CheckedChanged);
-                checkBoxTrayMinimiseToIcon.CheckedChanged += new EventHandler(CheckBoxTrayMinimiseToIcon_CheckedChanged);
+                checkBoxTrayMinimizeToIcon.CheckedChanged += new EventHandler(CheckBoxTrayMinimizeToIcon_CheckedChanged);
                 checkBoxTwitchOnlySuccess.CheckedChanged += new EventHandler(CheckBoxTwitchOnlySuccess_CheckedChanged);
                 checkBoxStartWhenWindowsStarts.CheckedChanged += new EventHandler(CheckBoxStartWhenWindowsStarts_CheckedChanged);
                 comboBoxMaxUploads.SelectedIndexChanged += new EventHandler(ComboBoxMaxUploads_SelectedIndexChanged);
@@ -301,14 +301,14 @@ namespace PlenBotLogUploader
 
         private void FormMain_Resize(object sender, EventArgs e)
         {
-            if (WindowState.Equals(FormWindowState.Minimized) && checkBoxTrayMinimiseToIcon.Checked)
+            if (WindowState.Equals(FormWindowState.Minimized) && checkBoxTrayMinimizeToIcon.Checked)
             {
                 ShowInTaskbar = false;
                 Hide();
-                if (Properties.Settings.Default.FirstTimeMinimise)
+                if (Properties.Settings.Default.FirstTimeMinimize)
                 {
-                    ShowBalloon("Uploader minimised", "Double click the icon to bring back the uploader.\nYou can also right click for quick settings.", 6500);
-                    Properties.Settings.Default.FirstTimeMinimise = false;
+                    ShowBalloon("Uploader minimized", "Double click the icon to bring back the uploader.\nYou can also right click for quick settings.", 6500);
+                    Properties.Settings.Default.FirstTimeMinimize = false;
                 }
             }
         }
@@ -494,9 +494,9 @@ namespace PlenBotLogUploader
             {
                 if ((args.Count == 2) && (args[1].Equals("-m")))
                 {
-                    StartedMinimised = true;
+                    StartedMinimized = true;
                     WindowState = FormWindowState.Minimized;
-                    if (checkBoxTrayMinimiseToIcon.Checked)
+                    if (checkBoxTrayMinimizeToIcon.Checked)
                     {
                         ShowInTaskbar = false;
                         Hide();
@@ -1086,7 +1086,7 @@ namespace PlenBotLogUploader
             }
         }
 
-        private void CheckBoxTrayMinimiseToIcon_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.TrayMinimise = checkBoxTrayMinimiseToIcon.Checked;
+        private void CheckBoxTrayMinimizeToIcon_CheckedChanged(object sender, EventArgs e) => Properties.Settings.Default.TrayMinimize = checkBoxTrayMinimizeToIcon.Checked;
 
         private void CheckBoxPostToTwitch_CheckedChanged(object sender, EventArgs e)
         {

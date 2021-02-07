@@ -17,7 +17,7 @@
     <Setting Name="CustomTwitchOAuthPassword" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="FirstTimeMinimise" Type="System.Boolean" Scope="User">
+    <Setting Name="FirstTimeMinimize" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="UploadLogs" Type="System.Boolean" Scope="User">
@@ -44,7 +44,7 @@
     <Setting Name="FirstRun" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="TrayMinimise" Type="System.Boolean" Scope="User">
+    <Setting Name="TrayMinimize" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="TwitchCommandUploaderEnabled" Type="System.Boolean" Scope="User">
