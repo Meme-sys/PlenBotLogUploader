@@ -21,9 +21,6 @@ namespace PlenBotLogUploader
         private readonly Dictionary<int, BossData> allBosses = Bosses.GetAllBosses();
         private int webhookIdsKey = 0;
         private readonly Dictionary<int, DiscordWebhookData> allWebhooks = DiscordWebhooks.GetAllWebhooks();
-
-        // consts
-        private const int maxAllowedMessageSize = 1800;
         #endregion
 
         public FormDiscordWebhooks(FormMain mainLink)
@@ -58,7 +55,7 @@ namespace PlenBotLogUploader
         {
             e.Cancel = true;
             Hide();
-            using (StreamWriter writer = new StreamWriter($@"{mainLink.LocalDir}\discord_webhooks.txt"))
+            using (var writer = new StreamWriter($@"{mainLink.LocalDir}\discord_webhooks.txt"))
             {
                 await writer.WriteLineAsync("## Edit the contents of this file at your own risk, use the application interface instead.");
                 foreach (int key in allWebhooks.Keys)
@@ -74,20 +71,18 @@ namespace PlenBotLogUploader
             string successString = (reportJSON.Encounter.Success ?? false) ? ":white_check_mark:" : "❌";
             string extraJSON = (reportJSON.ExtraJSON == null) ? "" : $"Recorded by: {reportJSON.ExtraJSON.RecordedBy}\nDuration: {reportJSON.ExtraJSON.Duration}\nElite Insights version: {reportJSON.ExtraJSON.EliteInsightsVersion}\n";
             string icon = "";
-            var bossDataRef = allBosses
-                .Where(anon => anon.Value.BossId.Equals(reportJSON.Encounter.BossId))
-                .Select(anon => anon.Value);
-            if (bossDataRef.Count() == 1)
+            var bossData = Bosses.GetBossDataFromId(reportJSON.Encounter.BossId);
+            if (bossData != null)
             {
-                bossName = bossDataRef.First().Name + (reportJSON.ChallengeMode ? " CM" : "");
-                icon = bossDataRef.First().Icon;
+                bossName = bossData.Name + (reportJSON.ChallengeMode ? " CM" : "");
+                icon = bossData.Icon;
             }
-            int color = (reportJSON.Encounter.Success ?? false) ? 32768 : 16711680;
+            int colour = (reportJSON.Encounter.Success ?? false) ? 32768 : 16711680;
             var discordContentEmbedThumbnail = new DiscordAPIJSONContentEmbedThumbnail()
             {
                 Url = icon
             };
-            DateTime timestampDateTime = DateTime.UtcNow;
+            var timestampDateTime = DateTime.UtcNow;
             if (DateTime.TryParse(reportJSON.ExtraJSON.TimeStart, out DateTime timeStart))
             {
                 timestampDateTime = timeStart;
@@ -171,6 +166,7 @@ namespace PlenBotLogUploader
 
         public async Task ExecuteSessionWebhooksAsync(List<DPSReportJSON> reportsJSON, LogSessionSettings logSessionSettings)
         {
+<<<<<<< HEAD
             var RaidLogs = reportsJSON
                     .Where(anon => Bosses.GetWingForBoss(anon.EVTC.BossId) > 0)
                     .Select(anon => new { LogData = anon, RaidWing = Bosses.GetWingForBoss(anon.EVTC.BossId) })
@@ -418,52 +414,16 @@ namespace PlenBotLogUploader
                 }
             }
             if (OtherLogs.Count > 0)
+=======
+            var discordEmbeds = SessionTextConstructor.ConstructSessionEmbeds(reportsJSON, logSessionSettings);
+            if (logSessionSettings.UseSelectedWebhooksInstead)
+>>>>>>> origin/master
             {
-                if (!builder.ToString().EndsWith("***\n"))
-                {
-                    builder.Append("\n\n");
-                }
-                builder.Append("***Other logs:***\n");
-                foreach (var log in OtherLogs)
-                {
-                    string bossName = log.Encounter.Boss;
-                    var bossDataRef = allBosses
-                        .Where(anon => anon.Value.BossId.Equals(log.Encounter.BossId))
-                        .Select(anon => anon.Value);
-                    if (bossDataRef.Count() == 1)
-                    {
-                        bossName = bossDataRef.First().Name;
-                    }
-                    string duration = (log.ExtraJSON == null) ? "" : $" {log.ExtraJSON.Duration}";
-                    string successText = (logSessionSettings.ShowSuccess) ? ((log.Encounter.Success ?? false) ? " :white_check_mark:" : " ❌") : "";
-                    builder.Append($"[{bossName}]({log.Permalink}){duration}{successText}\n");
-                    if (builder.Length >= maxAllowedMessageSize)
-                    {
-                        messageCount++;
-                        if (logSessionSettings.UseSelectedWebhooksInstead)
-                        {
-                            await SendDiscordMessageToSelectedWebhooksAsync(logSessionSettings.SelectedWebhooks, logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                        }
-                        else
-                        {
-                            await SendDiscordMessageToAllActiveWebhooksAsync(logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                        }
-                        builder.Clear();
-                        builder.Append("***Other logs:***\n");
-                    }
-                }
+                await SendDiscordMessageToSelectedWebhooksAsync(logSessionSettings.SelectedWebhooks, discordEmbeds, logSessionSettings.ContentText);
             }
-            if (!builder.ToString().EndsWith("***\n"))
+            else
             {
-                messageCount++;
-                if (logSessionSettings.UseSelectedWebhooksInstead)
-                {
-                    await SendDiscordMessageToSelectedWebhooksAsync(logSessionSettings.SelectedWebhooks, logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                }
-                else
-                {
-                    await SendDiscordMessageToAllActiveWebhooksAsync(logSessionSettings.Name + ((messageCount > 1) ? $" part {messageCount}" : ""), builder.ToString(), logSessionSettings.ContentText);
-                }
+                await SendDiscordMessageToAllActiveWebhooksAsync(discordEmbeds, logSessionSettings.ContentText);
             }
             if (logSessionSettings.UseSelectedWebhooksInstead && logSessionSettings.SelectedWebhooks.Count > 0)
             {
@@ -475,28 +435,25 @@ namespace PlenBotLogUploader
             }
         }
 
-        private async Task SendDiscordMessageToAllActiveWebhooksAsync(string title, string description, string contentText)
+        private async Task SendDiscordMessageToAllActiveWebhooksAsync(SessionTextConstructor.DiscordEmbeds discordEmbeds, string contentText)
         {
-            var discordContentEmbedThumbnail = new DiscordAPIJSONContentEmbedThumbnail()
-            {
-                Url = "https://wiki.guildwars2.com/images/5/5e/Legendary_Insight.png"
-            };
-            var discordContentEmbed = new DiscordAPIJSONContentEmbed()
-            {
-                Title = title,
-                Description = description,
-                Color = 32768,
-                TimeStamp = DateTime.UtcNow.ToString("yyyy'-'MM'-'ddTHH':'mm':'ssZ"),
-                Thumbnail = discordContentEmbedThumbnail
-            };
-            var discordContent = new DiscordAPIJSONContent()
+            string jsonContentSuccessFailure = JsonConvert.SerializeObject(new DiscordAPIJSONContent()
             {
                 Content = contentText,
-                Embeds = new List<DiscordAPIJSONContentEmbed>() { discordContentEmbed }
-            };
+                Embeds = discordEmbeds.SuccessFailure
+            });
+            string jsonContentSuccess = JsonConvert.SerializeObject(new DiscordAPIJSONContent()
+            {
+                Content = contentText,
+                Embeds = discordEmbeds.Success
+            });
+            string jsonContentFailure = JsonConvert.SerializeObject(new DiscordAPIJSONContent()
+            {
+                Content = contentText,
+                Embeds = discordEmbeds.Failure
+            });
             try
             {
-                string jsonContent = JsonConvert.SerializeObject(discordContent);
                 foreach (var key in allWebhooks.Keys)
                 {
                     var webhook = allWebhooks[key];
@@ -504,6 +461,9 @@ namespace PlenBotLogUploader
                     {
                         continue;
                     }
+                    var jsonContent =
+                        (webhook.SuccessFailToggle.Equals(DiscordWebhookDataSuccessToggle.OnSuccessAndFailure)) ? jsonContentSuccessFailure :
+                        ((webhook.SuccessFailToggle.Equals(DiscordWebhookDataSuccessToggle.OnSuccessOnly) ? jsonContentSuccess : jsonContentFailure));
                     var uri = new Uri(webhook.URL);
                     using (var content = new StringContent(jsonContent, Encoding.UTF8, "application/json"))
                     {
@@ -517,30 +477,30 @@ namespace PlenBotLogUploader
             }
         }
 
-        private async Task SendDiscordMessageToSelectedWebhooksAsync(List<DiscordWebhookData> webhooks, string title, string description, string contentText)
+        private async Task SendDiscordMessageToSelectedWebhooksAsync(List<DiscordWebhookData> webhooks, SessionTextConstructor.DiscordEmbeds discordEmbeds, string contentText)
         {
-            var discordContentEmbedThumbnail = new DiscordAPIJSONContentEmbedThumbnail()
-            {
-                Url = "https://wiki.guildwars2.com/images/5/5e/Legendary_Insight.png"
-            };
-            var discordContentEmbed = new DiscordAPIJSONContentEmbed()
-            {
-                Title = title,
-                Description = description,
-                Color = 32768,
-                TimeStamp = DateTime.UtcNow.ToString("yyyy'-'MM'-'ddTHH':'mm':'ssZ"),
-                Thumbnail = discordContentEmbedThumbnail
-            };
-            var discordContent = new DiscordAPIJSONContent()
+            string jsonContentSuccessFailure = JsonConvert.SerializeObject(new DiscordAPIJSONContent()
             {
                 Content = contentText,
-                Embeds = new List<DiscordAPIJSONContentEmbed>() { discordContentEmbed }
-            };
+                Embeds = discordEmbeds.SuccessFailure
+            });
+            string jsonContentSuccess = JsonConvert.SerializeObject(new DiscordAPIJSONContent()
+            {
+                Content = contentText,
+                Embeds = discordEmbeds.Success
+            });
+            string jsonContentFailure = JsonConvert.SerializeObject(new DiscordAPIJSONContent()
+            {
+                Content = contentText,
+                Embeds = discordEmbeds.Failure
+            });
             try
             {
-                string jsonContent = JsonConvert.SerializeObject(discordContent);
                 foreach (var webhook in webhooks)
                 {
+                    var jsonContent =
+                        (webhook.SuccessFailToggle.Equals(DiscordWebhookDataSuccessToggle.OnSuccessAndFailure)) ? jsonContentSuccessFailure :
+                        ((webhook.SuccessFailToggle.Equals(DiscordWebhookDataSuccessToggle.OnSuccessOnly) ? jsonContentSuccess : jsonContentFailure));
                     var uri = new Uri(webhook.URL);
                     using (var content = new StringContent(jsonContent, Encoding.UTF8, "application/json"))
                     {

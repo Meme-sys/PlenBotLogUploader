@@ -31,14 +31,14 @@ namespace PlenBotLogUploader
 
         private void ButtonSuccessSave_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show($"This will change all non-golem, non-wvw, non-event Twitch message on success to \"{textBoxSuccessMessage.Text}\".\nAre you sure?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var result = MessageBox.Show($"This will change all non-golem, non-wvw, non-event Twitch message on success to \"{textBoxSuccessMessage.Text}\".\nAre you sure?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result.Equals(DialogResult.Yes))
             {
                 var BossesToChange = allBosses
-                    .Where(anon => !anon.Value.Type.Equals(BossType.Golem))
-                    .Where(anon => !anon.Value.Type.Equals(BossType.WvW))
-                    .Where(anon => !anon.Value.Event)
-                    .ToDictionary(anon => anon.Key, anon => anon.Value);
+                    .Where(x => !x.Value.Type.Equals(BossType.Golem))
+                    .Where(x => !x.Value.Type.Equals(BossType.WvW))
+                    .Where(x => !x.Value.Event)
+                    .ToDictionary(x => x.Key, x => x.Value);
                 foreach (var key in BossesToChange.Keys)
                 {
                     var boss = allBosses[key];
@@ -50,14 +50,14 @@ namespace PlenBotLogUploader
 
         private void ButtonFailSave_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show($"This will change all non-golem, non-wvw, non-event Twitch message on fail to \"{textBoxFailMessage.Text}\".\nAre you sure?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var result = MessageBox.Show($"This will change all non-golem, non-wvw, non-event Twitch message on fail to \"{textBoxFailMessage.Text}\".\nAre you sure?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result.Equals(DialogResult.Yes))
             {
                 var BossesToChange = allBosses
-                    .Where(anon => !anon.Value.Type.Equals(BossType.Golem))
-                    .Where(anon => !anon.Value.Type.Equals(BossType.WvW))
-                    .Where(anon => !anon.Value.Event)
-                    .ToDictionary(anon => anon.Key, anon => anon.Value);
+                    .Where(x => !x.Value.Type.Equals(BossType.Golem))
+                    .Where(x => !x.Value.Type.Equals(BossType.WvW))
+                    .Where(x => !x.Value.Event)
+                    .ToDictionary(x => x.Key, x => x.Value);
                 foreach (var key in BossesToChange.Keys)
                 {
                     var boss = allBosses[key];

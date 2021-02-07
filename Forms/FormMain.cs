@@ -256,7 +256,7 @@ namespace PlenBotLogUploader
                     File.AppendAllText($"{LocalDir}uploaded_logs.csv", "Boss;BossId;Success;Duration;RecordedBy;EliteInsightsVersion;arcdpsVersion;Permalink\n");
                 }
                 // startup check
-                using (RegistryKey registryRun = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
+                using (var registryRun = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
                 {
                     if (registryRun.GetValue("PlenBot Log Uploader") != null)
                     {
@@ -336,7 +336,7 @@ namespace PlenBotLogUploader
 
         protected async Task DoDragDropFile(string file)
         {
-            Dictionary<string, string> postData = new Dictionary<string, string>
+            var postData = new Dictionary<string, string>()
             {
                 { "generator", "ei" },
                 { "json", "1" }
@@ -348,7 +348,7 @@ namespace PlenBotLogUploader
                 if (!file.EndsWith(".zevtc"))
                 {
                     zipfilelocation = $"{LocalDir}{Path.GetFileName(file)}.zevtc";
-                    using (ZipArchive zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@file, Path.GetFileName(file)); }
+                    using (var zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@file, Path.GetFileName(file)); }
                     archived = true;
                 }
                 try
@@ -395,12 +395,12 @@ namespace PlenBotLogUploader
                             if (!e.FullPath.EndsWith(".zevtc"))
                             {
                                 zipfilelocation = $"{LocalDir}{Path.GetFileName(e.FullPath)}.zevtc";
-                                using (ZipArchive zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@e.FullPath, Path.GetFileName(e.FullPath)); }
+                                using (var zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@e.FullPath, Path.GetFileName(e.FullPath)); }
                                 archived = true;
                             }
                             try
                             {
-                                Dictionary<string, string> postData = new Dictionary<string, string>
+                                var postData = new Dictionary<string, string>()
                                 {
                                     { "generator", "ei" },
                                     { "json", "1" }
@@ -504,7 +504,7 @@ namespace PlenBotLogUploader
                 }
                 else
                 {
-                    Dictionary<string, string> postData = new Dictionary<string, string>
+                    var postData = new Dictionary<string, string>()
                     {
                         { "generator", "ei" },
                         { "json", "1" }
@@ -522,7 +522,7 @@ namespace PlenBotLogUploader
                             if (!arg.EndsWith(".zevtc"))
                             {
                                 zipfilelocation = $"{LocalDir}{Path.GetFileName(arg)}.zevtc";
-                                using (ZipArchive zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@arg, Path.GetFileName(arg)); }
+                                using (var zipfile = ZipFile.Open(zipfilelocation, ZipArchiveMode.Create)) { zipfile.CreateEntryFromFile(@arg, Path.GetFileName(arg)); }
                                 archived = true;
                             }
                             try
@@ -590,12 +590,10 @@ namespace PlenBotLogUploader
             if (ChannelJoined && checkBoxPostToTwitch.Checked && !bypassMessage && IsOBSRunning())
             {
                 AddToText($">:> {reportJSON.Permalink}");
-                var bossDataRef = allBosses
-                    .Where(anon => anon.Value.BossId.Equals(reportJSON.ExtraJSON?.TriggerID ?? reportJSON.Encounter.BossId))
-                    .Select(anon => anon.Value);
-                if (bossDataRef.Count() == 1)
+                var bossData = Bosses.GetBossDataFromId(reportJSON.ExtraJSON?.TriggerID ?? reportJSON.Encounter.BossId);
+                if (bossData != null)
                 {
-                    var format = bossDataRef.First().TwitchMessageFormat(reportJSON, lastLogPullCounter);
+                    var format = bossData.TwitchMessageFormat(reportJSON, lastLogPullCounter);
                     if (!string.IsNullOrWhiteSpace(format))
                     {
                         lastLogMessage = format;
@@ -630,9 +628,9 @@ namespace PlenBotLogUploader
                 int bossId = 1;
                 try
                 {
-                    using (FileStream inputStream = File.OpenRead(file))
+                    using (var inputStream = File.OpenRead(file))
                     {
-                        using (StreamContent contentStream = new StreamContent(inputStream))
+                        using (var contentStream = new StreamContent(inputStream))
                         {
                             content.Add(contentStream, "file", Path.GetFileName(file));
                             try
@@ -898,18 +896,23 @@ namespace PlenBotLogUploader
                     {
                         reconnectedFailCounter++;
                     }
-                    if (reconnectedFailCounter <= 3)
+                    if (reconnectedFailCounter <= 4)
                     {
+<<<<<<< HEAD
                         AddToText($"<-?-> TRYING TO RECONNECT TO TWITCH IN {reconnectedFailCounter * 10}s");
                         await Task.Run(() =>
+=======
+                        AddToText($"<-?-> TRYING TO RECONNECT TO TWITCH IN {reconnectedFailCounter*15}s");
+                        await Task.Run(async () =>
+>>>>>>> origin/master
                         {
-                            Thread.Sleep(reconnectedFailCounter * 10000);
+                            await Task.Delay(reconnectedFailCounter * 15000);
                             ReconnectTwitchBot();
                         });
                     }
                     else
                     {
-                        AddToText("<-?-> FAILED TO RECONNECT TO TWITCH AFTER 3 ATTEMPTS, TRY TO CONNECT MANUALLY");
+                        AddToText("<-?-> FAILED TO RECONNECT TO TWITCH AFTER 4 ATTEMPTS, TRY TO CONNECT MANUALLY");
                         DisconnectTwitchBot();
                     }
                     break;
@@ -958,8 +961,12 @@ namespace PlenBotLogUploader
                     AddToText("> (Spotify) SMART SONG RECOGNITION USED");
                     try
                     {
+<<<<<<< HEAD
                         Process process = Process.GetProcessesByName("Spotify").FirstOrDefault(anon => !string.IsNullOrWhiteSpace(anon.MainWindowTitle));
                         process.Dispose();
+=======
+                        var process = Process.GetProcessesByName("Spotify").FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.MainWindowTitle));
+>>>>>>> origin/master
                         if (process.MainWindowTitle.Contains("Spotify"))
                         {
                             await chatConnect.SendChatMessageAsync(Properties.Settings.Default.TwitchChannelName, "No song is being played.");
@@ -993,10 +1000,8 @@ namespace PlenBotLogUploader
                     if (lastLogBossId > 0)
                     {
                         AddToText("> PULLS COMMAND USED");
-                        var bossDataRef = allBosses
-                            .Where(anon => anon.Value.BossId.Equals(lastLogBossId))
-                            .Select(anon => anon.Value);
-                        await chatConnect.SendChatMessageAsync(Properties.Settings.Default.TwitchChannelName, $"{bossDataRef.First().Name}{((lastLogBossCM) ? " CM" : "")} | Current pull: {lastLogPullCounter}");
+                        var bossData = Bosses.GetBossDataFromId(lastLogBossId);
+                        await chatConnect.SendChatMessageAsync(Properties.Settings.Default.TwitchChannelName, $"{bossData.Name}{((lastLogBossCM) ? " CM" : "")} | Current pull: {lastLogPullCounter}");
                     }
                 }
                 else if (command.Equals(twitchCommandsLink.textBoxSongCommand.Text.ToLower()) && twitchCommandsLink.checkBoxSongEnable.Checked)
@@ -1004,7 +1009,7 @@ namespace PlenBotLogUploader
                     AddToText("> (Spotify) SONG COMMAND USED");
                     try
                     {
-                        Process process = Process.GetProcessesByName("Spotify").FirstOrDefault(anon => !string.IsNullOrWhiteSpace(anon.MainWindowTitle));
+                        var process = Process.GetProcessesByName("Spotify").FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.MainWindowTitle));
                         if (process.MainWindowTitle.Contains("Spotify"))
                         {
                             await chatConnect.SendChatMessageAsync(Properties.Settings.Default.TwitchChannelName, "No song is being played.");
@@ -1029,7 +1034,7 @@ namespace PlenBotLogUploader
                             var userInfo = await gw2Api.GetUserInfoAsync();
                             if (userInfo != null)
                             {
-                                var playerWorld = GW2.GW2Servers[userInfo.World];
+                                var playerWorld = GW2.AllServers[userInfo.World];
                                 await chatConnect.SendChatMessageAsync(Properties.Settings.Default.TwitchChannelName, $"GW2 Account name: {userInfo.Name} | Server: {playerWorld.Name} ({playerWorld.Region})");
                             }
                             else
@@ -1067,7 +1072,7 @@ namespace PlenBotLogUploader
         {
             using (FolderBrowserDialog dialog = new FolderBrowserDialog() { Description = "Select the arcdps folder containing the combat logs.\nThe default location is in \"My Documents\\Guild Wars 2\\addons\\arcdps\\arcdps.cbtlogs\\\"" })
             {
-                DialogResult result = dialog.ShowDialog();
+                var result = dialog.ShowDialog();
                 if (result.Equals(DialogResult.OK) && !string.IsNullOrWhiteSpace(dialog.SelectedPath))
                 {
                     Properties.Settings.Default.LogsLocation = dialog.SelectedPath;
@@ -1264,7 +1269,7 @@ namespace PlenBotLogUploader
 
         private void CheckBoxStartWhenWindowsStarts_CheckedChanged(object sender, EventArgs e)
         {
-            using (RegistryKey registryRun = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
+            using (var registryRun = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
             {
                 if (checkBoxStartWhenWindowsStarts.Checked)
                 {
@@ -1279,7 +1284,7 @@ namespace PlenBotLogUploader
 
         private void ButtonReset_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to do this?\nThis resets all your settings but not boss data, webhooks and ping configurations.\nIf you click yes the application will close itself.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var result = MessageBox.Show("Are you sure you want to do this?\nThis resets all your settings but not boss data, webhooks and ping configurations.\nIf you click yes the application will close itself.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result.Equals(DialogResult.Yes))
             {
                 _ = Process.Start(LocalDir);

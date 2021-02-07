@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 ﻿using System.Collections.Generic;
 using System.IO;
+=======
+﻿using System.IO;
+using System.Linq;
+>>>>>>> origin/master
 using System.Threading.Tasks;
 
 namespace PlenBotLogUploader.DPSReport
@@ -122,6 +127,23 @@ namespace PlenBotLogUploader.DPSReport
                 { 43, new BossData() { BossId = (int)BossIds.WvW, Name = "World vs World", SuccessMsg = "WvW log: <log>", FailMsg = "WvW log: <log>", Icon = "https://wiki.guildwars2.com/images/5/54/Commander_tag_%28blue%29.png", Type = BossType.WvW } },
                 { 44, new BossData() { BossId = (int)BossIds.Xera, Name = "Xera", Icon = "https://wiki.guildwars2.com/images/4/4b/Mini_Xera.png", Type = BossType.Raid } }
             };
+        }
+
+        /// <summary>
+        /// Returns a BossData object based on its boss id, null if no object has been found.
+        /// </summary>
+        /// <param name="bossId">The boss id to query for</param>
+        /// <returns>BossData object or null</returns>
+        public static BossData GetBossDataFromId(int bossId)
+        {
+            var bossDataRef = GetAllBosses()
+                .Where(x => x.Value.BossId.Equals(bossId))
+                .Select(x => x.Value);
+            if (bossDataRef.Count() == 1)
+            {
+                return bossDataRef.First();
+            }
+            return null;
         }
 
         /// <summary>
