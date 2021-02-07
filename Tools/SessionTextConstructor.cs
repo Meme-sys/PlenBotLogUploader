@@ -26,7 +26,7 @@ namespace PlenBotLogUploader.Tools
             {
                 Title = title,
                 Description = text,
-                Colour = 32768,
+                Color = 32768,
                 TimeStamp = DateTime.UtcNow.ToString("yyyy'-'MM'-'ddTHH':'mm':'ssZ"),
                 Thumbnail = defaultThumbnail
             };

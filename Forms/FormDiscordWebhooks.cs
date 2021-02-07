@@ -77,7 +77,7 @@ namespace PlenBotLogUploader
                 bossName = bossData.Name + (reportJSON.ChallengeMode ? " CM" : "");
                 icon = bossData.Icon;
             }
-            int colour = (reportJSON.Encounter.Success ?? false) ? 32768 : 16711680;
+            int color = (reportJSON.Encounter.Success ?? false) ? 32768 : 16711680;
             var discordContentEmbedThumbnail = new DiscordAPIJSONContentEmbedThumbnail()
             {
                 Url = icon
